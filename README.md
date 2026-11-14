@@ -133,3 +133,27 @@ Chúc bạn chơi vui. 🏆
 - Hạ chuỗi tướng địch nhận thêm vàng (đã sửa lỗi nhân 0). Vàng thụ động giảm 1.7 → 1.3/s.
 - Vàng chung: người last hit lính nhận 100% vàng, tướng phe địch đứng gần (trong khoảng ~550) nhận thêm 50%.
 - Hỗ trợ hạ gục: ai đã gây sát thương trong 6 giây trước khi mục tiêu chết nhận vàng bằng 40% tiền thưởng hạ gục và kinh nghiệm (trước đây bị lỗi, không ai được tính).
+
+
+---
+
+## Nâng cấp: địa hình kiểu Liên Quân + AI thông minh hơn
+
+**Địa hình (bản đồ 5v5 và 1v1)**
+- Rừng giữa các đường giờ có **tường đá và rừng cây chặn đường**; tướng, lính, quái không đi xuyên qua. Chỉ có Tốc biến và vài chiêu bay mới vượt tường được.
+- Mỗi trại quái nằm trong một **khoảng trống** nối ra đường chính hoặc dòng sông, nên có ngõ ngách để vào rừng, đón đầu hoặc bỏ chạy.
+- Căn cứ có **tường bao**, chỉ thông ra ba đường. Sông ở giữa luôn đi qua được.
+- Thêm 4 **bụi cỏ ven sông** quanh vị trí Rồng và Caesar để phục kích.
+- Bản đồ nhỏ (minimap) cũng hiện tường.
+- Chuột phải để di chuyển giờ **tự tìm đường vòng** quanh tường.
+
+**AI**
+- **Tự tìm đường (A\*)** quanh tường, không còn kẹt vào đá.
+- **Đánh giá thế trận**: so sánh sức mạnh cả nhóm hai bên (máu, cấp, đồ, trụ địch) rồi mới quyết định giao tranh, rút lui hay tiếp tục đẩy đường.
+- **Về thủ**: khi trụ hoặc nhà chính bị tấn công, những tướng gần nhất tự quay về hỗ trợ.
+- **Tranh Rồng và Caesar** theo nhóm khi đủ người và địch không áp đảo.
+- **Đi rừng gank**: sát thủ/đấu sĩ đi rừng tìm tướng địch yếu máu để săn.
+- **Dùng chiêu đúng lúc**: hồi máu khi đồng đội yếu, khiên khi bị đánh, tăng tốc để truy đuổi hoặc chạy, bứt/tốc biến để thoát thân, chiêu kết liễu khi địch còn ít máu, chiêu cuối khi đáng tay.
+- **Tập trung hỏa lực** vào tướng địch yếu nhất trong tầm.
+- **Né chiêu** (độ khó Thường và Khó): tránh đạn thẳng và vùng nổ.
+- Sửa lỗi: tướng AI từng dùng Tốc biến *lao vào* kẻ địch khi sắp chết, và bắn kỹ năng cận chiến từ quá xa.
