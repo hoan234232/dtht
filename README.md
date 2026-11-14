@@ -65,14 +65,17 @@ Mỗi tướng có **3 chiêu**: 2 chiêu thường và 1 **chiêu cuối** (m�
 | Thao tác | Tác dụng |
 |---|---|
 | Kéo ở nửa trái màn hình | Di chuyển (joystick) |
-| Giữ nút **ĐÁNH** | Đánh thường |
+| Giữ nút **ĐÁNH** | Đánh thường; **giữ & kéo** để chọn mục tiêu trong tầm (hiện vòng tầm đánh, kéo hướng nào chọn mục tiêu hướng đó, thả tay để giữ khóa) |
+| **Chạm vào kẻ địch** (tướng, lính, quái, trụ) | Khóa mục tiêu đánh thường (hiện vòng đỏ; chạm lại để bỏ khóa). Nếu mục tiêu ngoài tầm, đòn đánh tạm tự chọn mục tiêu gần nhất |
 | **Chạm nhanh** nút chiêu | Tự ngắm |
 | **Giữ & kéo** nút chiêu | Tự chọn hướng, vùng hoặc mục tiêu, **thả tay để tung** |
 | Kéo ngón tay vào nút ✕ khi đang ngắm | Hủy chiêu |
 | Nút Hồi máu, Tốc biến, Biến về | Phép bổ trợ (45s hồi chiêu cho hồi máu và tốc biến) |
 | 🎯 TƯỚNG | Ưu tiên đánh tướng địch |
 | 🛒, 📊, ⏸, 🔊 | Cửa hàng, bảng vàng, tạm dừng, âm thanh |
-| Chạm lên minimap | Đánh dấu vị trí |
+| Chạm / kéo trên minimap | Dời camera tới vị trí đó để xem giao tranh (chạm đúp = đánh dấu) |
+| Kéo ngón tay ở nửa phải màn hình | Dời camera xem chỗ khác |
+| Nút ◎ VỀ TƯỚNG (hoặc phím `C`) | Đưa camera về lại tướng của bạn |
 
 ### Cách ngắm skill
 

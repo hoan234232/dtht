@@ -1025,6 +1025,28 @@ const cv=$('cv'),ctx=cv.getContext('2d');
 const mapCv=document.createElement('canvas'),mctx=mapCv.getContext('2d');
 const miniCv=document.createElement('canvas'),nctx=miniCv.getContext('2d');
 const STEP=1/60;
+let camDrag=null,mmDrag=null,lastMm=0,lastMmP=null,atkSel=null;
+function dragSelect(){const h=G.player,a=atkSel;if(!h||h.dead)return;
+ const l=Math.min(1,hyp(a.dx,a.dy)/(70*HK)),ang=Math.atan2(a.dy,a.dx),R=h.range+40,px=h.x+Math.cos(ang)*R*l,py=h.y+Math.sin(ang)*R*l;
+ let best=null,bs=1e12;
+ forEachNear(h.x,h.y,R+80,u=>{if(u===h||!isEnemy(h,u)||!visibleTo(u,h.team)||!attackable(u))return;
+  if(hyp(u.x-h.x,u.y-h.y)-u.r-h.r>h.range+30)return;
+  const d=hyp(u.x-px,u.y-py)-(u.kind==='hero'?30:0);if(d<bs){bs=d;best=u}});
+ if(best&&h.lock!==best){h.lock=best;h.focus=best;sfx('click')}}
+function pickEnemyAt(wx,wy){const h=G.player,tol=34/G.cam.z;let best=null,bs=1e12;
+ forEachNear(wx,wy,tol+60,u=>{if(u===h||!isEnemy(h,u)||!visibleTo(u,h.team)||!attackable(u))return;
+  const d=hyp(u.x-wx,u.y-wy)-u.r;if(d>tol)return;const sc=d-(u.kind==='hero'?25:0);if(sc<bs){bs=sc;best=u}});
+ return best}
+function tapSelect(x,y){const h=G&&G.player;if(!h||h.dead||G.over||paused)return;
+ const w=s2w(x,y),u=pickEnemyAt(w.x,w.y);if(!u)return;
+ if(h.lock===u){h.lock=null;sfx('click')}else{h.lock=u;if(validTarget(h,u,10))h.focus=u;sfx('ping')}}
+function pickFocus(h,range,sticky){let L=h.lock;
+ if(L&&(L.dead||L.unspawned||!visibleTo(L,h.team)||dist2(h.x,h.y,L.x,L.y)>(range+450)*(range+450)))L=h.lock=null;
+ if(L&&validTarget(h,L,10))return L;
+ if(sticky&&validTarget(h,h.focus,10))return h.focus;
+ return acquire(h,range,SAVE.pref,true)}
+function camBtn(){const k=HK;return{x:MX+MM+22*k,y:MY+20*k,r:18*k}}
+function mmView(p){G.cam.free=true;G.cam.fx=clamp((p.x-MX)/MM*G.map.S,0,G.map.S);G.cam.fy=clamp((p.y-MY)/MM*G.map.S,0,G.map.S)}
 let joy=null,atkHeld=false,btnPtr={},keys={},moveTarget=null,lastPtrType=(window.matchMedia&&matchMedia('(pointer:coarse)').matches)?'touch':'mouse';
 let hudBtns=[],loadTimer=null,endShown=false,AIM=null,mouseS=null,cancelB={x:0,y:0,r:20},loadTimers=[];
 
@@ -1109,7 +1131,7 @@ function resetGame(cfg){
  G.player=player;G.cam.x=player.x;G.cam.y=player.y;
  G.grid.cols=Math.ceil(m.S/G.grid.cell);G.grid.buckets=Array.from({length:G.grid.cols*G.grid.cols},()=>[]);
  updateShields();prerenderMap();prerenderMini();layoutHUD();
- endShown=false;paused=false;shopOpen=false;scoreOpen=false;AIM=null;joy=null;atkHeld=false;moveTarget=null;keys={};
+ endShown=false;paused=false;shopOpen=false;scoreOpen=false;AIM=null;joy=null;camDrag=null;mmDrag=null;atkSel=null;atkHeld=false;moveTarget=null;keys={};
  $('shopPanel').classList.remove('open');$('pauseModal').classList.add('hidden');$('scoreModal').classList.add('hidden');$('endScreen').classList.add('hidden');
 }
 function updateShields(){
@@ -1824,8 +1846,8 @@ function playerControl(h,dt){
   if(d>14){mx=(moveTarget.x-h.x)/d;my=(moveTarget.y-h.y)/d}else moveTarget=null}
  h.mvx=mx;h.mvy=my;
  const moving=hyp(mx,my)>.05;
- if(atkHeld){h.focus=acquire(h,h.range+30,SAVE.pref,true);if(h.focus)tryAttack(h)}
- else if(SAVE.auto&&!moving&&!h.dash){if(!validTarget(h,h.focus,10))h.focus=acquire(h,h.range+10,SAVE.pref,true);if(h.focus)tryAttack(h)}
+ if(atkHeld){h.focus=pickFocus(h,h.range+30,false);if(h.focus)tryAttack(h)}
+ else if(SAVE.auto&&!moving&&!h.dash){h.focus=pickFocus(h,h.range+10,true);if(h.focus)tryAttack(h)}
  else if(!moving&&h.focus&&!validTarget(h,h.focus,10))h.focus=null;
 }
 function updateMinion(m,dt){
@@ -1955,8 +1977,8 @@ function update(dt){
  // camera
  const p=G.player;
  G.cam.z=clamp(ch/780,.5,1.15);
- const tx=p.x+(p.mvx||0)*70,ty=p.y+(p.mvy||0)*70;
- const k=1-Math.exp(-6*dt);G.cam.x=lerp(G.cam.x,tx,k);G.cam.y=lerp(G.cam.y,ty,k);
+ const fr=G.cam.free,tx=fr?G.cam.fx:p.x+(p.mvx||0)*70,ty=fr?G.cam.fy:p.y+(p.mvy||0)*70;
+ const k=1-Math.exp(-(fr?16:6)*dt);G.cam.x=lerp(G.cam.x,tx,k);G.cam.y=lerp(G.cam.y,ty,k);
  const vw=cw/G.cam.z/2,vh=ch/G.cam.z/2,S=G.map.S;
  G.cam.x=vw*2>S?S/2:clamp(G.cam.x,vw,S-vw);G.cam.y=vh*2>S?S/2:clamp(G.cam.y,vh,S-vh);
  G.shake*=Math.exp(-5*dt);
@@ -2260,6 +2282,15 @@ function drawHUD(){
  // camera rect
  ctx.strokeStyle='rgba(255,255,255,.4)';ctx.lineWidth=1;
  ctx.strokeRect(mx+(G.cam.x-cw/G.cam.z/2)*sc,my+(G.cam.y-ch/G.cam.z/2)*sc,cw/G.cam.z*sc,ch/G.cam.z*sc);
+ if(atkSel&&atkSel.on&&!p.dead){const q=w2s(p.x,p.y),rg=(p.range+p.r)*G.cam.z;ctx.save();ctx.strokeStyle='rgba(255,224,138,.6)';ctx.lineWidth=2;ctx.setLineDash([4,6]);
+  ctx.beginPath();ctx.arc(q.x,q.y,rg,0,TAU);ctx.stroke();ctx.restore()}
+ {const L=p.lock;if(L&&!L.dead&&!p.dead){const q=w2s(L.x,L.y),rad=(L.r+11)*G.cam.z,inR=validTarget(p,L,10);
+  ctx.save();ctx.strokeStyle=inR?C.red:C.orange;ctx.globalAlpha=inR?1:.6;ctx.lineWidth=2.5;ctx.setLineDash([7,5]);ctx.lineDashOffset=-G.time*30;
+  ctx.beginPath();ctx.arc(q.x,q.y,rad,0,TAU);ctx.stroke();ctx.setLineDash([]);
+  ctx.fillStyle=ctx.strokeStyle;ctx.beginPath();ctx.moveTo(q.x-6,q.y-rad-16);ctx.lineTo(q.x+6,q.y-rad-16);ctx.lineTo(q.x,q.y-rad-6);ctx.fill();ctx.restore()}}
+ if(G.cam.free){const c=camBtn();ctx.fillStyle='rgba(13,26,46,.92)';ctx.beginPath();ctx.arc(c.x,c.y,c.r,0,TAU);ctx.fill();
+  ctx.strokeStyle=C.gold;ctx.lineWidth=2;ctx.stroke();ctx.textAlign='center';ctx.font=F(900,17*k);ctx.fillStyle=C.goldL;ctx.fillText('◎',c.x,c.y+6*k);
+  ctx.font=F(800,8*k);ctx.fillStyle=C.dim;ctx.fillText('VỀ TƯỚNG',c.x,c.y+c.r+10*k)}
  // ===== top center score =====
  const cx=cw/2;const ph=clamp(cw-SA.r-196*k-66-cx-4,66*k,110*k);
  ctx.fillStyle='rgba(7,13,23,.8)';rr(ctx,cx-ph,6,ph*2,34*k,17*k);ctx.fill();
@@ -2345,7 +2376,7 @@ function drawHUD(){
  // hints
  if(G.hintT>0&&!p.dead){ctx.globalAlpha=clamp(G.hintT/2,0,1)*.85;ctx.font=F(700,12*k);ctx.textAlign='center';
   ctx.fillStyle=C.cyan;
-  const msg=lastPtrType==='touch'?'◐ Trái: di chuyển • ⚔: đánh • Chạm nhanh chiêu: tự ngắm • Giữ & kéo chiêu: ngắm hướng / vùng / mục tiêu':
+  const msg=lastPtrType==='touch'?'◐ Trái: di chuyển • ⚔: đánh • Chạm nhanh chiêu: tự ngắm • Giữ & kéo chiêu: ngắm hướng / vùng / mục tiêu • Kéo màn hình / chạm minimap: xem chỗ khác • Chạm kẻ địch / kéo nút ĐÁNH: chọn mục tiêu':
    'WASD / chuột phải: di chuyển • Space: đánh • 1/2/3: nhấn nhanh = tự ngắm, giữ + rê chuột rồi thả = ngắm tay • F/G/B • Tab';
   ctx.fillText(msg,cx,ch-52*k);ctx.globalAlpha=1}
 }
@@ -2409,14 +2440,17 @@ cv.addEventListener('pointerdown',e=>{
  const p=ptr(e);
  if(e.button===2){if(AIM&&AIM.src==='key'){AIM=null;return}if(!G.player.dead)moveTarget=s2w(p.x,p.y);return}
  if(paused||G.over)return;
- // minimap ping
+ if(G.cam.free){const c=camBtn();if(dist2(p.x,p.y,c.x,c.y)<(c.r+8)*(c.r+8)){G.cam.free=false;sfx('click');return}}
+ // minimap: chạm/kéo = xem vị trí, chạm đúp = đánh dấu
  if(p.x>=MX&&p.x<=MX+MM&&p.y>=MY&&p.y<=MY+MM){
-  const w={x:(p.x-MX)/MM*G.map.S,y:(p.y-MY)/MM*G.map.S};
-  G.pings.push({x:w.x,y:w.y,t:0});sfx('ping');return}
+  const now=performance.now();
+  if(lastMmP&&now-lastMm<350&&dist2(p.x,p.y,lastMmP.x,lastMmP.y)<400){const w={x:(p.x-MX)/MM*G.map.S,y:(p.y-MY)/MM*G.map.S};G.pings.push({x:w.x,y:w.y,t:0});sfx('ping');lastMmP=null}
+  else{mmView(p);mmDrag=e.pointerId;lastMm=now;lastMmP=p}
+  return}
  const b=hitBtn(p.x,p.y);
  if(b){btnPtr[e.pointerId]=b.id;pressBtn(b.id,e.pointerId);return}
  if(shopOpen&&p.x>cw-Math.min(360,cw*.46))return;
- if(p.x<cw*.45&&p.y>60&&!G.player.dead){joy={id:e.pointerId,ox:p.x,oy:p.y,dx:0,dy:0}}
+ if(p.y>60){if(p.x<cw*.45&&!G.player.dead)joy={id:e.pointerId,ox:p.x,oy:p.y,dx:0,dy:0,px:p.x,py:p.y,t0:performance.now(),moved:false};else camDrag={id:e.pointerId,x:p.x,y:p.y,on:false,t0:performance.now()}}
 });
 cv.addEventListener('pointermove',e=>{
  const p=ptr(e);
@@ -2424,15 +2458,26 @@ cv.addEventListener('pointermove',e=>{
  if(AIM&&AIM.ptr===e.pointerId){const bb=hudBtns.find(x=>x.id==='sk'+AIM.i);
   if(bb){AIM.dx=p.x-bb.x;AIM.dy=p.y-bb.y;if(hyp(AIM.dx,AIM.dy)>14*HK)AIM.moved=true;
    AIM.cancel=AIM.moved&&dist2(p.x,p.y,cancelB.x,cancelB.y)<(cancelB.r+10)*(cancelB.r+10)}}
+ if(atkSel&&atkSel.ptr===e.pointerId&&G){const bb=hudBtns.find(x=>x.id==='atk');
+  if(bb){atkSel.dx=p.x-bb.x;atkSel.dy=p.y-bb.y;if(hyp(atkSel.dx,atkSel.dy)>16*HK)atkSel.on=true;if(atkSel.on)dragSelect()}
+  return}
+ if(mmDrag===e.pointerId&&G){mmView(p);return}
+ if(camDrag&&e.pointerId===camDrag.id&&G){const dx=p.x-camDrag.x,dy=p.y-camDrag.y;
+  if(camDrag.on||hyp(dx,dy)>8){if(!camDrag.on){camDrag.on=true;if(!G.cam.free){G.cam.free=true;G.cam.fx=G.cam.x;G.cam.fy=G.cam.y}}
+   G.cam.fx=clamp(G.cam.fx-dx/G.cam.z,0,G.map.S);G.cam.fy=clamp(G.cam.fy-dy/G.cam.z,0,G.map.S);camDrag.x=p.x;camDrag.y=p.y}
+  return}
  if(!joy||e.pointerId!==joy.id)return;
  let dx=p.x-joy.ox,dy=p.y-joy.oy;const l=hyp(dx,dy),max=62*HK;
  if(l>max){dx=dx/l*max;dy=dy/l*max}
- joy.dx=dx;joy.dy=dy;
+ joy.dx=dx;joy.dy=dy;if(l>10)joy.moved=true;
 });
 function ptrEnd(e){
- if(joy&&e.pointerId===joy.id)joy=null;
+ if(camDrag&&e.pointerId===camDrag.id){if(!camDrag.on&&performance.now()-camDrag.t0<350)tapSelect(camDrag.x,camDrag.y);camDrag=null}
+ if(mmDrag===e.pointerId)mmDrag=null;
+ if(joy&&e.pointerId===joy.id){if(!joy.moved&&performance.now()-joy.t0<350)tapSelect(joy.px,joy.py);joy=null}
  if(AIM&&AIM.ptr===e.pointerId)finishAim();
  if(btnPtr[e.pointerId]==='atk')atkHeld=false;
+ if(atkSel&&atkSel.ptr===e.pointerId)atkSel=null;
  delete btnPtr[e.pointerId];
 }
 cv.addEventListener('pointerup',ptrEnd);cv.addEventListener('pointercancel',e=>{if(AIM&&AIM.ptr===e.pointerId)AIM=null;ptrEnd(e)});
@@ -2440,7 +2485,7 @@ cv.addEventListener('contextmenu',e=>e.preventDefault());
 function pressBtn(id,pid){
  const p=G.player;
  if(lastPtrType==='touch'&&navigator.vibrate){try{navigator.vibrate(id==='atk'?5:10)}catch(e){}}
- if(id==='atk'){atkHeld=true;return}
+ if(id==='atk'){atkHeld=true;atkSel={ptr:pid,dx:0,dy:0,on:false};return}
  if(id==='pause'){openPause();return}
  if(id==='shop'){shopOpen?closeShop():openShop();return}
  if(id==='snd'){setMute(!SAVE.mute);return}
@@ -2456,6 +2501,7 @@ window.addEventListener('keydown',e=>{
  const k=e.key.toLowerCase();
  if(SCR!=='game'||!G)return;
  if(k==='tab'){e.preventDefault();toggleScore();return}
+ if(k==='c'){G.cam.free=false;return}
  if(k==='escape'&&AIM){AIM=null;return}
  if(k==='escape'||k==='p'){if(shopOpen)closeShop();else if(scoreOpen)toggleScore();else paused?closePause():openPause();return}
  if(paused||G.over)return;
