@@ -255,6 +255,72 @@ body{-webkit-touch-callout:none;-webkit-text-size-adjust:100%}
   #pauseModal h3{margin-bottom:2px}#pauseModal .mbtn{margin:0}
   #endScreen{gap:1vh}.endbtns .mbtn{min-height:40px;padding:8px 22px}
 }
+
+/* ================= LOBBY MENU / PICK / MATCH ================= */
+.lobmain{grid-template-columns:minmax(240px,330px) 1fr!important}
+.lob-show{position:relative;align-items:center;justify-content:center;text-align:center;padding:14px;gap:6px}
+.show-glow{position:absolute;inset:0;background:radial-gradient(circle at 50% 42%,rgba(242,193,78,.16),transparent 62%);pointer-events:none}
+#shImg{width:min(230px,38vh);aspect-ratio:1;border-radius:18px;border:3px solid var(--gold);box-shadow:0 0 30px rgba(242,193,78,.4);position:relative}
+#shName{font-size:clamp(18px,4vh,28px);font-weight:900;font-style:italic;color:var(--goldL);position:relative}
+#shTitle{font-size:12px;color:var(--dim);position:relative}
+#shRole{display:inline-block;font-size:11px;font-weight:800;padding:3px 12px;border-radius:12px;color:#0b1220;position:relative}
+.show-hint{font-size:11px;color:var(--dim);max-width:340px;line-height:1.5;margin-top:6px;position:relative}
+.show-hint b{color:var(--goldL)}
+#pick{display:flex;flex-direction:column;background:linear-gradient(160deg,#081120,#0a1626 55%,#0b1120)}
+.pk-main{flex:1;display:grid;grid-template-columns:minmax(170px,210px) 1fr minmax(270px,340px);gap:10px;padding:10px 14px;min-height:0;position:relative;z-index:2;padding-left:max(14px,var(--sal));padding-right:max(14px,var(--sar))}
+.pk-left{overflow-y:auto;padding-bottom:10px}
+.pknote{margin:4px 12px 0;font-size:10px;color:var(--dim2);line-height:1.5}
+.tslot span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tslot .q{width:20px;height:20px;flex:0 0 auto;border-radius:5px;border:1px dashed var(--line2);display:flex;align-items:center;justify-content:center;color:var(--dim2);font-weight:900;font-size:11px}
+.tslot .st{font-size:9.5px;color:var(--dim2)}
+.tslot.wait .st{animation:qpulse 1s infinite alternate}
+.tslot.lk{color:var(--text)}
+@keyframes qpulse{from{opacity:.4}to{opacity:1}}
+#pkTimer{width:46px;height:46px;border-radius:50%;border:2px solid var(--goldD);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;color:var(--goldL);flex:0 0 auto}
+#pkTimer.low{color:var(--red);border-color:var(--red);animation:vsPulse .5s infinite alternate}
+.htile.taken{filter:grayscale(.9) brightness(.45);cursor:not-allowed}
+.htile .tkd{position:absolute;top:3px;right:3px;font-size:7.5px;font-weight:900;background:var(--gold);color:#241a05;padding:1px 4px;border-radius:5px}
+.pk-right{display:flex;flex-direction:column}
+#pkScroll{flex:1;overflow-y:auto;min-height:0}
+#lockBtn{margin:8px 12px 12px;flex:0 0 auto;padding:12px;min-height:48px;border-radius:12px;font-size:16px;font-weight:900;font-style:italic;letter-spacing:2px;color:#241a05;
+  background:linear-gradient(180deg,#ffe08a,#f2c14e 45%,#c9963a);border:1px solid #ffe9ad;box-shadow:0 0 18px rgba(242,193,78,.45),0 4px 0 #7a5a1e}
+#lockBtn:active{transform:translateY(3px);box-shadow:0 1px 0 #7a5a1e}
+#lockBtn:disabled{filter:grayscale(.7) brightness(.7);cursor:default;font-size:13px;letter-spacing:1px}
+.sktabs{display:flex;gap:8px;padding:2px 14px 8px}
+.sktab{flex:1;min-height:44px;border:1px solid var(--line2);border-radius:10px;padding:6px 4px;background:rgba(10,20,36,.7);display:flex;flex-direction:column;align-items:center;gap:4px;font-size:9.5px;color:var(--dim);font-weight:700;text-align:center;line-height:1.15}
+.sktab img{width:44px;height:44px;border-radius:9px;border:1px solid var(--line2)}
+.sktab.on{border-color:var(--gold);color:var(--goldL);box-shadow:0 0 12px rgba(242,193,78,.3) inset}
+.sktab.ult img{border-color:var(--gold)}
+.skcard{margin:0 14px 8px;padding:9px 11px;border:1px solid var(--line2);border-radius:10px;background:rgba(7,13,23,.6)}
+.skcard .skn{font-size:13px;font-weight:800}
+.skchips{display:flex;flex-wrap:wrap;gap:4px;margin:6px 0}
+.skchip{font-size:9.5px;padding:2px 7px;border-radius:9px;border:1px solid var(--line2);color:var(--cyan);white-space:nowrap}
+.skcard .skd{font-size:11px;line-height:1.5;color:var(--text)}
+.skhow{font-size:10px;color:var(--goldL);margin-top:7px;line-height:1.45;border-top:1px dashed var(--line);padding-top:5px}
+#loadStatus{font-size:clamp(15px,3.2vh,24px);font-weight:900;font-style:italic;letter-spacing:4px;color:var(--goldL)}
+#loadStatus.ok{color:var(--green);text-shadow:0 0 18px rgba(63,224,143,.6)}
+.loadcard.q .qimg{margin-top:0;width:100%;aspect-ratio:1;border-radius:10px;border:2px dashed var(--red);display:flex;align-items:center;justify-content:center;font-size:clamp(20px,4vh,34px);font-weight:900;color:var(--dim2);animation:qpulse .8s infinite alternate}
+.loadcard.flip{animation:flipIn .5s ease both}
+@keyframes flipIn{from{transform:perspective(400px) rotateY(90deg);opacity:0}to{transform:none;opacity:1}}
+.lrole{font-size:9px!important;font-weight:800;margin-top:1px!important}
+@media (max-width:900px),(max-height:460px){
+  .lobmain{grid-template-columns:minmax(210px,250px) 1fr!important}
+  .pk-main{grid-template-columns:176px 1fr 252px;gap:8px;padding-top:8px;padding-bottom:max(8px,var(--sab))}
+  #hdLore{display:none}
+  #hdStats{display:grid;grid-template-columns:1fr 1fr}
+  #hdStats .statrow{padding:2px 10px}#hdStats .statrow b{width:46px}
+  .sktab img{width:36px;height:36px}.sktab{padding:4px 3px}
+  .skcard .skd{font-size:10.5px}
+  #pkTimer{width:40px;height:40px;font-size:17px}
+  #lockBtn{min-height:44px;padding:9px;margin:6px 10px 8px;font-size:15px}
+  .pknote{display:none}
+}
+
+/* grid fix: tile heights via padding so rows never collapse */
+.htile{aspect-ratio:auto!important;height:0!important;padding:0 0 119%!important}
+.htile>img{position:absolute;left:0;top:0}
+.teamcol{min-width:0}.tslot{min-width:0}.tslot span{min-width:0}
+.pk-left .teams{margin:0 8px 8px;gap:6px}
 </style>
 </head>
 <body>
@@ -275,7 +341,7 @@ body{-webkit-touch-callout:none;-webkit-text-size-adjust:100%}
     </div>
     <div class="sp"></div>
     <div class="badge" id="winsBadge">🏆 0 thắng</div>
-    <button class="icobtn" id="infoBtn" title="Chi tiết tướng">ℹ</button>
+    
     <button class="icobtn" id="sndBtn" title="Âm thanh">🔊</button>
     <button class="icobtn" id="fsBtn" title="Toàn màn hình">⛶</button>
   </div>
@@ -292,11 +358,34 @@ body{-webkit-touch-callout:none;-webkit-text-size-adjust:100%}
       </button>
       <div class="ptitle">ĐỘ KHÓ MÁY</div>
       <div class="seg" id="diffSeg"><button data-d="0">Dễ</button><button data-d="1" class="on">Thường</button><button data-d="2">Khó</button></div>
+      <button id="startBtn">⚔ TÌM TRẬN</button>
+      <div class="hintline">Chạy 100% offline • Không cần mạng<br>Cảm hứng MOBA mobile • Tài nguyên tự dựng</div>
+    </div>
+    <div class="panel lob-show">
+      <div class="show-glow"></div>
+      <div class="ptitle" style="position:absolute;top:0;left:0">TƯỚNG GẦN NHẤT</div>
+      <img id="shImg" alt="">
+      <div id="shName"></div><div id="shTitle"></div><span id="shRole"></span>
+      <div class="show-hint">Nhấn <b>TÌM TRẬN</b> để vào phòng chọn tướng. Bạn chọn &amp; khóa tướng, đội hình đối thủ chỉ lộ diện ở màn hình ghép trận.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PICK ============ -->
+<div id="pick" class="screen hidden">
+  <div class="aurora"><i></i><i></i><i></i></div><div class="grain"></div>
+  <div class="topbar">
+    <button class="icobtn" id="pkBack" title="Thoát">←</button>
+    <div class="logo"><div><div class="t1">CHỌN TƯỚNG</div><div class="t2" id="pkSub"></div></div></div>
+    <div class="sp"></div>
+    <div id="pkTimer">60</div>
+    <button class="icobtn" id="pkSnd" title="Âm thanh">🔊</button>
+  </div>
+  <div class="pk-main">
+    <div class="panel pk-left">
       <div class="ptitle">ĐỘI HÌNH</div>
       <div class="teams"><div class="teamcol b"><h4>PHE XANH</h4><div id="teamBlue"></div></div><div class="teamcol r"><h4>PHE ĐỎ</h4><div id="teamRed"></div></div></div>
-      <button class="smallbtn" id="rerollBtn">🎲 Đổi đội hình máy</button>
-      <button id="startBtn">⚔ VÀO TRẬN</button>
-      <div class="hintline">Chạy 100% offline • Không cần mạng<br>Cảm hứng MOBA mobile • Tài nguyên tự dựng</div>
+      <div class="pknote">🔒 Tướng đối thủ được giấu cho đến khi cả hai bên khóa xong và ghép trận.</div>
     </div>
     <div class="panel lob-mid">
       <div class="filters">
@@ -306,13 +395,16 @@ body{-webkit-touch-callout:none;-webkit-text-size-adjust:100%}
       <div id="heroCount">120 / 120 TƯỚNG</div>
       <div id="heroGrid"></div>
     </div>
-    <div class="panel lob-right" id="lobRight">
-      <div class="ptitle" style="display:flex;justify-content:space-between;align-items:center">TƯỚNG ĐÃ CHỌN<button class="drawerX" id="infoX">✕</button></div>
-      <div id="hdTop"><img id="hdImg" alt=""><div><div id="hdName"></div><div id="hdTitle"></div><span id="hdRole"></span></div></div>
-      <div id="hdLore"></div>
-      <div id="hdStats"></div>
-      <div class="ptitle" style="padding-top:8px">BỘ CHIÊU</div>
-      <div id="hdSkills"></div>
+    <div class="panel pk-right">
+      <div id="pkScroll">
+        <div class="ptitle">TƯỚNG ĐANG CHỌN</div>
+        <div id="hdTop"><img id="hdImg" alt=""><div><div id="hdName"></div><div id="hdTitle"></div><span id="hdRole"></span></div></div>
+        <div id="hdLore"></div>
+        <div id="hdStats"></div>
+        <div class="ptitle" style="padding-top:8px">BỘ CHIÊU • CHẠM ĐỂ ĐỌC</div>
+        <div id="hdSkills"></div>
+      </div>
+      <button id="lockBtn">✔ KHÓA TƯỚNG</button>
     </div>
   </div>
 </div>
@@ -320,7 +412,7 @@ body{-webkit-touch-callout:none;-webkit-text-size-adjust:100%}
 <!-- ============ LOADING ============ -->
 <div id="loading" class="screen hidden">
   <div class="aurora"><i></i><i></i><i></i></div>
-  <div id="loadMap"></div>
+  <div id="loadStatus"></div><div id="loadMap"></div>
   <div id="loadTeams"><div class="loadcol b" id="loadBlue"></div><div id="loadVS">VS</div><div class="loadcol r" id="loadRed"></div></div>
   <div id="loadBarW"><div id="loadBar"></div></div>
   <div id="loadTip"></div>
@@ -358,9 +450,9 @@ body{-webkit-touch-callout:none;-webkit-text-size-adjust:100%}
     <div id="endTableWrap"><div id="endTable"></div></div>
     <div class="endbtns"><button class="mbtn gold" id="againBtn">⚔ CHƠI LẠI</button><button class="mbtn" id="lobbyBtn">🏠 VỀ SẢNH</button></div>
   </div>
-  <div id="toast"></div>
 </div>
 
+<div id="toast"></div>
 <script>
 (function(){'use strict';
 /* ================================================================
@@ -420,7 +512,7 @@ function ambStart(){if(!AC||ambG)return;ambG=AC.createGain();ambG.gain.value=0;a
  const lfo=AC.createOscillator(),lg=AC.createGain();lfo.frequency.value=.08;lg.gain.value=.02;lfo.connect(lg);lg.connect(ambG.gain);lfo.start();ambNodes.push(lfo);
  ambG.gain.linearRampToValueAtTime(.5,AC.currentTime+2)}
 function ambStop(){if(!ambG)return;const g=ambG,ns=ambNodes;ambG=null;ambNodes=[];g.gain.linearRampToValueAtTime(0,AC.currentTime+.6);setTimeout(()=>{ns.forEach(n=>{try{n.stop()}catch(e){}});try{g.disconnect()}catch(e){}},800)}
-function syncSndUI(){$('sndBtn').textContent=SAVE.mute?'🔇':'🔊'}
+function syncSndUI(){const t=SAVE.mute?'🔇':'🔊';$('sndBtn').textContent=t;if($('pkSnd'))$('pkSnd').textContent=t}
 
 /* ================= ROLES / HERO DATA ================= */
 const ROLES=[
@@ -476,6 +568,16 @@ const PLAN={
  ho_tro:{s1:['bolt','slow','chain'],s2:['heal','shield','haste'],u:['sanctuary','heal','barrage']}
 };
 const TARGETED={strike:1,execute:1,drain:1,chain:1,assassinate:1};
+const AIMMODE={bolt:'dir',fan:'dir',dash:'dir',blink:'dir',slow:'point',barrage:'point',strike:'target',execute:'target',drain:'target',chain:'target',assassinate:'target'};
+function rangeText(d){const m=AIMMODE[d.type]||'self';
+ if(m==='self')return d.range?'Bán kính '+d.range:'Bản thân';
+ if(m==='point')return 'Tầm '+d.range+' • Vùng '+d.r;
+ return 'Tầm '+d.range}
+function aimLabel(d){const m=AIMMODE[d.type]||'self';
+ if(m==='dir')return '🎯 Chỉ hướng: nhấn nhanh = tự ngắm kẻ địch gần nhất. Giữ & kéo nút chiêu để chọn hướng, thả tay để tung.';
+ if(m==='point')return '🎯 Chọn vùng: nhấn nhanh = tự ngắm. Giữ & kéo để đặt vùng trong tầm, thả tay để tung.';
+ if(m==='target')return '🎯 Nhắm mục tiêu: nhấn nhanh = đánh mục tiêu gần nhất. Giữ nút để hiện tầm, kéo để đổi mục tiêu trong tầm, thả tay để tung.';
+ return '⚡ Tức thời: nhấn là tung ngay.'}
 function mkSkill(type,role,v,ult){
  const magic=(role==='phap_su'||role==='ho_tro'||role==='do_don');
  let stat=magic?(role==='do_don'?'hp':'ap'):'ad';
@@ -678,34 +780,50 @@ function roleImg(role,size,col){return iconURL('r'+role+(col||''),size,(c,s)=>dr
 function skillImg(def,i,size){const sk=def.skills[i];return iconURL('s'+def.id+'_'+i,size,(c,s)=>{c.fillStyle='#0a1626';c.fillRect(0,0,s,s);drawSkillIcon(c,sk.type,s/2,s/2,s*.72,sk.ult?C.gold:def.colA)})}
 function itemImg(it,size){return iconURL('i'+it.id,size,(c,s)=>drawItemIcon(c,it,s/2,s/2,s*.78))}
 
-/* ================= LOBBY UI ================= */
-let sel=SAVE.hero,mode=SAVE.mode,diff=SAVE.diff,filterRole=null,searchTxt='';
-let teamCfg={allies:[],enemies:[]};
-function rollTeams(){
- const pool=HEROES.filter(h=>h.id!==sel);
- const pickRole=(role,used)=>{const c=pool.filter(h=>h.role===role&&!used.has(h.id));const h=c[Math.floor(Math.random()*c.length)]||pool.filter(h=>!used.has(h.id))[0];used.add(h.id);return h.id};
- const used=new Set([sel]);
- const myRole=HEROES[sel].role;
- let need=['do_don','phap_su','xa_thu','ho_tro','sat_thu','dau_si'];
- const ix=need.indexOf(myRole);if(ix>=0)need.splice(ix,1);
- teamCfg.allies=mode===5?need.slice(0,4).map(r=>pickRole(r,used)):[];
- teamCfg.enemies=(mode===5?['do_don','dau_si','phap_su','xa_thu','sat_thu']:[ROLES[Math.floor(Math.random()*6)].id]).map(r=>pickRole(r,used));
- renderTeams();
+/* ================= LOBBY / PICK UI ================= */
+let sel=SAVE.hero,mode=SAVE.mode,diff=SAVE.diff,filterRole=null,searchTxt='',skSel=0;
+let PK=null,pkIv=null;const PKT=60;
+const SCRS=['lobby','pick','loading','game'];
+function showScr(id){SCRS.forEach(s=>$(s).classList.toggle('hidden',s!==id))}
+const pkEl=()=>(Date.now()-PK.t0)/1000;
+function updateLobby(){
+ const h=HEROES[SAVE.hero],r=ROLE_BY[h.role];
+ $('shImg').src=heroImg(h,300);$('shName').textContent=h.name;$('shTitle').textContent='« '+h.title+' »';
+ $('shRole').textContent=r.name;$('shRole').style.background=r.color;
+ $('winsBadge').textContent=`🏆 ${SAVE.wins} thắng • ${SAVE.games} trận`;
 }
-function slotHTML(id,me){const h=HEROES[id];return `<div class="tslot${me?' me':''}"><img src="${heroImg(h,40)}" alt=""><span>${me?'⭐ ':''}${h.name}</span></div>`}
+function slotHero(h,cls,pre){return `<div class="tslot ${cls||''}"><img src="${heroImg(h,40)}" alt=""><span>${pre||''}${h.name}</span></div>`}
 function renderTeams(){
- $('teamBlue').innerHTML=slotHTML(sel,true)+teamCfg.allies.map(i=>slotHTML(i,false)).join('');
- $('teamRed').innerHTML=teamCfg.enemies.map(i=>slotHTML(i,false)).join('');
+ if(!PK)return;
+ const me=HEROES[sel];
+ let b=`<div class="tslot me"><img src="${heroImg(me,40)}" alt=""><span>${PK.locked?'🔒 ':'⭐ '}${me.name}</span></div>`;
+ b+=PK.allies.map(a=>a.id!=null?slotHero(HEROES[a.id],'lk','🔒 '):`<div class="tslot wait"><span class="q">…</span><span class="st">Chọn...</span></div>`).join('');
+ $('teamBlue').innerHTML=b;
+ $('teamRed').innerHTML=PK.enemies.map(e=>`<div class="tslot hid"><span class="q">?</span><span class="st">${e.locked?'🔒 Đã khóa':'Chọn...'}</span></div>`).join('');
 }
 function renderChips(){
  $('roleChips').innerHTML=`<button class="chip${!filterRole?' on':''}" data-r="" style="${!filterRole?'background:'+C.gold:''}">Tất cả</button>`+
   ROLES.map(r=>`<button class="chip${filterRole===r.id?' on':''}" data-r="${r.id}" style="${filterRole===r.id?'background:'+r.color:''}"><img src="${roleImg(r.id,26,filterRole===r.id?'#0b1220':r.color)}">${r.name}</button>`).join('');
 }
 function renderGrid(){
- const q=norm(searchTxt);let n=0;
- $('heroGrid').innerHTML=HEROES.filter(h=>(!filterRole||h.role===filterRole)&&(!q||norm(h.name).includes(q)))
-  .map(h=>{n++;return `<button class="htile${h.id===sel?' sel':''}" data-id="${h.id}"><img src="${heroImg(h,96)}" alt="${h.name}"><span class="rl"><img src="${roleImg(h.role,22)}"></span><span class="nm">${h.name}</span></button>`}).join('');
+ const q=norm(searchTxt);let n=0;const g=$('heroGrid'),st=g.scrollTop;
+ const taken=new Set(PK?PK.allies.filter(a=>a.id!=null).map(a=>a.id):[]);
+ g.innerHTML=HEROES.filter(h=>(!filterRole||h.role===filterRole)&&(!q||norm(h.name).includes(q)))
+  .map(h=>{n++;const tk=taken.has(h.id);return `<button class="htile${h.id===sel?' sel':''}${tk?' taken':''}" data-id="${h.id}"><img src="${heroImg(h,96)}" alt="${h.name}"><span class="rl"><img src="${roleImg(h.role,22)}"></span><span class="nm">${h.name}</span>${tk?'<span class="tkd">ĐỒNG ĐỘI</span>':''}</button>`}).join('');
+ g.scrollTop=st;
  $('heroCount').textContent=`${n} / 120 TƯỚNG`;
+}
+function renderSkillUI(){
+ const h=HEROES[sel],sk=h.skills[skSel];
+ const chips=['⏱ Hồi chiêu '+sk.cd+'s','💧 Tiêu hao '+sk.mana,'📏 '+rangeText(sk)];
+ if(sk.base>0&&!['shield','heal','haste','sanctuary'].includes(sk.type))chips.push(sk.dt==='magic'?'🔮 Sát thương phép':'🗡 Sát thương vật lý');
+ if(sk.stun)chips.push('😵 Choáng '+sk.stun+'s');
+ if(sk.slow)chips.push('❄ Làm chậm '+Math.round(sk.slow*100)+'%');
+ if(sk.ult)chips.push('🔓 Mở khóa cấp 4');
+ $('hdSkills').innerHTML=`<div class="sktabs">${h.skills.map((k,i)=>`<button class="sktab${i===skSel?' on':''}${k.ult?' ult':''}" data-i="${i}"><img src="${skillImg(h,i,72)}"><span>${k.name}</span></button>`).join('')}</div>
+ <div class="skcard"><div class="skn">${sk.name}${sk.ult?'<span class="ulttag">CHIÊU CUỐI</span>':''}</div>
+ <div class="skchips">${chips.map(c=>`<span class="skchip">${c}</span>`).join('')}</div>
+ <div class="skd">${sk.desc}</div><div class="skhow">${aimLabel(sk)}</div></div>`;
 }
 function renderDetail(){
  const h=HEROES[sel],r=ROLE_BY[h.role];
@@ -714,24 +832,82 @@ function renderDetail(){
  $('hdLore').textContent=h.lore;
  const bars=[['Sát thương',clamp((h.ad+h.ap)/170,0,1)],['Chống chịu',clamp((h.hp/1400+h.armor/45)/2,0,1)],['Cơ động',clamp((h.ms-190)/70,0,1)],['Độ khó',clamp(h.complexity/4,0,1)]];
  $('hdStats').innerHTML=bars.map(b=>`<div class="statrow"><b>${b[0]}</b><div class="sbar"><i style="width:${Math.round(b[1]*100)}%"></i></div></div>`).join('');
- $('hdSkills').innerHTML=h.skills.map((sk,i)=>`<div class="skrow"><img src="${skillImg(h,i,72)}"><div><div class="skn">${sk.name}${sk.ult?'<span class="ulttag">CHIÊU CUỐI</span>':''}</div><div class="skm">Hồi chiêu ${sk.cd}s • Năng lượng ${sk.mana}${sk.ult?' • Mở khóa cấp 4':''}</div><div class="skd">${sk.desc}</div></div></div>`).join('');
+ renderSkillUI();
 }
-function selectHero(i){sel=i;SAVE.hero=i;persist();renderGrid();renderDetail();rollTeams();sfx('click')}
-function setMode(m){mode=m;SAVE.mode=m;persist();$('mode5').classList.toggle('on',m===5);$('mode1').classList.toggle('on',m===1);rollTeams();sfx('click')}
+function selectHero(i){
+ if(!PK||PK.locked)return;
+ if(PK.allies.some(a=>a.id===i)){toast('Đồng đội đã chọn tướng này');sfx('deny');return}
+ sel=i;skSel=0;
+ document.querySelectorAll('#heroGrid .htile').forEach(t=>t.classList.toggle('sel',+t.dataset.id===i));
+ renderDetail();renderTeams();updateLock();sfx('click');
+ $('pkScroll').scrollTop=0;
+}
+function setMode(m){mode=m;SAVE.mode=m;persist();$('mode5').classList.toggle('on',m===5);$('mode1').classList.toggle('on',m===1);sfx('click')}
 function setDiff(d){diff=d;SAVE.diff=d;persist();[...$('diffSeg').children].forEach(b=>b.classList.toggle('on',+b.dataset.d===d));sfx('click')}
+function updateLock(){if(!PK)return;const b=$('lockBtn');b.disabled=PK.locked;b.textContent=PK.locked?'🔒 ĐÃ KHÓA — CHỜ GHÉP TRẬN...':'✔ KHÓA TƯỚNG'}
+function pickAllyHero(){
+ const myRole=HEROES[sel].role,taken=new Set(PK.allies.filter(a=>a.id!=null).map(a=>HEROES[a.id].role));
+ const need=['do_don','phap_su','xa_thu','ho_tro','sat_thu','dau_si'].filter(r=>r!==myRole&&!taken.has(r));
+ const role=need.length?need[0]:ROLES[Math.floor(Math.random()*6)].id;
+ const used=new Set([sel]);PK.allies.forEach(a=>{if(a.id!=null)used.add(a.id)});PK.enemies.forEach(e=>used.add(e.id));
+ let c=HEROES.filter(h=>h.role===role&&!used.has(h.id));if(!c.length)c=HEROES.filter(h=>!used.has(h.id));
+ return c[Math.floor(Math.random()*c.length)].id;
+}
+function startPick(){
+ sel=SAVE.hero;filterRole=null;searchTxt='';$('searchInp').value='';skSel=0;
+ const eRoles=mode===5?['do_don','dau_si','phap_su','xa_thu','sat_thu']:[ROLES[Math.floor(Math.random()*6)].id];
+ const usedE=new Set();
+ const enemies=eRoles.map(r=>{const c=HEROES.filter(h=>h.role===r&&!usedE.has(h.id));const h=c[Math.floor(Math.random()*c.length)];usedE.add(h.id);
+  return {id:h.id,locked:false,lockAt:6+Math.random()*(mode===5?30:14)}});
+ const allies=mode===5?Array.from({length:4},()=>({id:null,lockAt:4+Math.random()*26})):[];
+ PK={t0:Date.now(),locked:false,done:false,allies,enemies};
+ SCR='pick';showScr('pick');
+ $('pkSub').textContent=(mode===5?'5v5 • THUNG LŨNG CỔ ĐẠI':'1v1 • ĐỘC ĐẠO TRANH HÙNG')+' • ĐỘ KHÓ: '+DIFF[diff].name.toUpperCase();
+ renderChips();renderGrid();renderDetail();renderTeams();updateLock();
+ clearInterval(pkIv);pkIv=setInterval(pkTick,200);pkTick();
+}
+function stopPick(){clearInterval(pkIv);pkIv=null;PK=null;SCR='lobby';showScr('lobby');updateLobby();sfx('click')}
+function lockIn(){
+ if(!PK||PK.locked)return;
+ PK.locked=true;SAVE.hero=sel;persist();
+ const usedAlly=new Set(PK.allies.map(a=>a.id).filter(x=>x!=null));
+ for(const e of PK.enemies)if(e.id===sel){
+  const c=HEROES.filter(h=>h.role===HEROES[sel].role&&h.id!==sel&&!usedAlly.has(h.id)&&!PK.enemies.some(x=>x.id===h.id));
+  if(c.length)e.id=c[Math.floor(Math.random()*c.length)].id}
+ const now=pkEl();
+ PK.allies.forEach(a=>{if(a.id==null)a.lockAt=Math.min(a.lockAt,now+.5+Math.random()*1.6)});
+ PK.enemies.forEach(e=>{if(!e.locked)e.lockAt=Math.min(e.lockAt,now+1+Math.random()*2.5)});
+ sfx('buy');renderTeams();updateLock();renderGrid();
+}
+function pkTick(){
+ if(!PK)return;
+ const el=pkEl();let ch2=false;
+ for(const a of PK.allies)if(a.id==null&&el>=a.lockAt){a.id=pickAllyHero();ch2=true;sfx('ping')}
+ for(const e of PK.enemies)if(!e.locked&&el>=e.lockAt){e.locked=true;ch2=true}
+ const left=Math.max(0,Math.ceil(PKT-el)),t=$('pkTimer');
+ t.textContent=PK.locked?'✓':left;t.classList.toggle('low',!PK.locked&&left<=5);
+ if(!PK.locked&&left<=0){lockIn();ch2=true}
+ if(ch2){renderTeams();renderGrid()}
+ if(PK.locked&&!PK.done&&PK.allies.every(a=>a.id!=null)&&PK.enemies.every(e=>e.locked)){PK.done=true;setTimeout(goMatch,900)}
+}
+function goMatch(){
+ if(!PK||!PK.done)return;
+ clearInterval(pkIv);pkIv=null;
+ const cfg={mode,diff,heroId:sel,allies:PK.allies.map(a=>a.id),enemies:PK.enemies.map(e=>e.id)};
+ PK=null;beginLoading(false,cfg);
+}
 function buildLobby(){
- renderChips();renderGrid();renderDetail();rollTeams();syncSndUI();
- $('winsBadge').textContent=`🏆 ${SAVE.wins} thắng • ${SAVE.games} trận`;
+ renderChips();syncSndUI();updateLobby();
  $('heroGrid').addEventListener('click',e=>{const t=e.target.closest('.htile');if(t)selectHero(+t.dataset.id)});
  $('roleChips').addEventListener('click',e=>{const t=e.target.closest('.chip');if(!t)return;filterRole=t.dataset.r||null;renderChips();renderGrid();sfx('click')});
  $('searchInp').addEventListener('input',e=>{searchTxt=e.target.value;renderGrid()});
+ $('hdSkills').addEventListener('click',e=>{const t=e.target.closest('.sktab');if(!t)return;skSel=+t.dataset.i;renderSkillUI();sfx('click')});
  $('mode5').onclick=()=>setMode(5);$('mode1').onclick=()=>setMode(1);
  $('diffSeg').addEventListener('click',e=>{if(e.target.dataset.d!==undefined)setDiff(+e.target.dataset.d)});
- $('rerollBtn').onclick=()=>{rollTeams();sfx('click')};
- $('sndBtn').onclick=()=>{audioInit();setMute(!SAVE.mute)};
+ $('sndBtn').onclick=()=>{audioInit();setMute(!SAVE.mute)};$('pkSnd').onclick=$('sndBtn').onclick;
  $('fsBtn').onclick=goFull;$('pauseFs').onclick=goFull;
- $('startBtn').onclick=()=>{$('lobRight').classList.remove('open');audioInit();if(AC&&AC.state==='suspended')AC.resume();sfx('click');beginLoading()};
- $('infoBtn').onclick=()=>$('lobRight').classList.toggle('open');$('infoX').onclick=()=>$('lobRight').classList.remove('open');
+ $('startBtn').onclick=()=>{audioInit();if(AC&&AC.state==='suspended')AC.resume();sfx('click');startPick()};
+ $('lockBtn').onclick=lockIn;$('pkBack').onclick=stopPick;
  if(!document.documentElement.requestFullscreen){$('fsBtn').style.display='none';$('pauseFs').style.display='none'}
  setDiff(diff);setMode(mode);
 }
@@ -783,7 +959,7 @@ const mapCv=document.createElement('canvas'),mctx=mapCv.getContext('2d');
 const miniCv=document.createElement('canvas'),nctx=miniCv.getContext('2d');
 const STEP=1/60;
 let joy=null,atkHeld=false,btnPtr={},keys={},moveTarget=null,lastPtrType=(window.matchMedia&&matchMedia('(pointer:coarse)').matches)?'touch':'mouse';
-let hudBtns=[],loadTimer=null,endShown=false;
+let hudBtns=[],loadTimer=null,endShown=false,AIM=null,mouseS=null,cancelB={x:0,y:0,r:20},loadTimers=[];
 
 function newId(){return G.nextId++}
 function baseUnit(o){return Object.assign({id:newId(),x:0,y:0,vx:0,vy:0,r:14,hp:100,maxHp:100,team:0,dead:false,flash:0,face:0,
@@ -866,7 +1042,7 @@ function resetGame(cfg){
  G.player=player;G.cam.x=player.x;G.cam.y=player.y;
  G.grid.cols=Math.ceil(m.S/G.grid.cell);G.grid.buckets=Array.from({length:G.grid.cols*G.grid.cols},()=>[]);
  updateShields();prerenderMap();prerenderMini();layoutHUD();
- endShown=false;paused=false;shopOpen=false;scoreOpen=false;joy=null;atkHeld=false;moveTarget=null;keys={};
+ endShown=false;paused=false;shopOpen=false;scoreOpen=false;AIM=null;joy=null;atkHeld=false;moveTarget=null;keys={};
  $('shopPanel').classList.remove('open');$('pauseModal').classList.add('hidden');$('scoreModal').classList.add('hidden');$('endScreen').classList.add('hidden');
 }
 function updateShields(){
@@ -1144,13 +1320,13 @@ function bestSkillTarget(h,range,needHero){
  return best;
 }
 function deny(h){if(h&&h.isPlayer)sfx('deny');return false}
-function castSkill(h,i,aim,tgt){
+function castSkill(h,i,aim,tgt,manual){
  const s=h.skills[i],d=s.def;
  if(h.dead||h.stunT>0||h.recallT>0||h.dash)return deny(h);
  if(d.ult&&s.lvl<1){if(h.isPlayer)toast('Chiêu cuối mở khóa ở cấp 4');return deny(h)}
  if(s.cd>0)return deny(h);
  if(h.mp<d.mana){if(h.isPlayer)toast('Không đủ năng lượng');return deny(h)}
- if(!tgt)tgt=bestSkillTarget(h,d.range||h.range,d.type==='assassinate');
+ if(!tgt&&(!manual||d.targeted))tgt=bestSkillTarget(h,d.range||h.range,d.type==='assassinate');
  if(d.targeted&&!tgt)return h.isPlayer?toast('Không có mục tiêu trong tầm'):false;
  if(!aim){
   if(tgt){const lead=d.speed?Math.sqrt(dist2(h.x,h.y,tgt.x,tgt.y))/d.speed*(h.isPlayer?.7:DIFF[G.cfg.diff].lead):0;
@@ -1158,6 +1334,7 @@ function castSkill(h,i,aim,tgt){
   else aim={x:h.x+Math.cos(h.face)*(d.range||200)*.75,y:h.y+Math.sin(h.face)*(d.range||200)*.75};
  }
  if(d.range){const dx=aim.x-h.x,dy=aim.y-h.y,dd=hyp(dx,dy);if(dd>d.range){aim={x:h.x+dx/dd*d.range,y:h.y+dy/dd*d.range}}}
+ {const fp=(tgt&&(!manual||d.targeted))?tgt:aim;h.face=Math.atan2(fp.y-h.y,fp.x-h.x)}
  const mult=1+.22*(Math.max(1,s.lvl)-1);
  sfxMute=!(h.isPlayer||dist2(h.x,h.y,G.player.x,G.player.y)<700*700);
  const ok=execSkill(h,d,aim,tgt,mult);sfxMute=false;
@@ -1165,7 +1342,7 @@ function castSkill(h,i,aim,tgt){
  const cdr=hasBuff(h,'cdr')?.15:0;
  s.cd=d.cd*(1-.04*(Math.max(1,s.lvl)-1))*(1-cdr);
  h.mp-=d.mana;h.revealT=1.2;h.recallT=0;
- if(tgt)h.face=Math.atan2(tgt.y-h.y,tgt.x-h.x);else h.face=Math.atan2(aim.y-h.y,aim.x-h.x);
+ 
  if(h.isPlayer){sfx(d.ult?'ult':'cast');fx('ring',h.x,h.y,{r:d.range||160,color:h.def.colA,dur:.35,faint:true});
   if(d.ult)G.shake=Math.max(G.shake,5)}
  else if(dist2(h.x,h.y,G.player.x,G.player.y)<700*700)sfx(d.ult?'ult':'bolt');
@@ -1185,7 +1362,7 @@ function teleport(h,x,y){const S=G.map.S;h.x=clamp(x,50,S-50);h.y=clamp(y,50,S-5
 function execSkill(h,d,aim,tgt,mult){
  const pow=skillPow(h,d,mult),col=h.def.colA;
  switch(d.type){
-  case 'bolt':G.proj.push({x:h.x,y:h.y,vx:Math.cos(h.face),vy:Math.sin(h.face),src:h,speed:d.speed,r:13,dmg:pow,type:d.dt,kind:'skill',color:col,life:d.range/d.speed,slow:d.slow});sfx('bolt');return true;
+  case 'bolt':{const ba=Math.atan2(aim.y-h.y,aim.x-h.x);G.proj.push({x:h.x,y:h.y,vx:Math.cos(ba),vy:Math.sin(ba),src:h,speed:d.speed,r:13,dmg:pow,type:d.dt,kind:'skill',color:col,life:d.range/d.speed,slow:d.slow});sfx('bolt');return true}
   case 'fan':{const base=Math.atan2(aim.y-h.y,aim.x-h.x);
    for(let k=0;k<d.n;k++){const a=base+(k/(d.n-1)-.5)*d.spread;
     G.proj.push({x:h.x,y:h.y,vx:Math.cos(a),vy:Math.sin(a),src:h,speed:d.speed,r:10,dmg:pow,type:d.dt,kind:'skill',color:col,life:d.range/d.speed})}return true}
@@ -1203,7 +1380,9 @@ function execSkill(h,d,aim,tgt,mult){
   case 'slow':aoeDamage(h,aim.x,aim.y,d.r,pow,d.dt,{slow:d.slow,slowDur:d.dur});fx('zone',aim.x,aim.y,{r:d.r,color:'#7fd4ff',dur:.6});return true;
   case 'stun':aoeDamage(h,h.x,h.y,d.range,pow,d.dt,{stun:d.stun});fx('nova',h.x,h.y,{r:d.range,color:C.goldL,dur:.5});return true;
   case 'chain':{const list=[];forEachNear(h.x,h.y,d.range,u=>{if(u!==h&&isEnemy(h,u)&&visibleTo(u,h.team)&&!u.dead&&u.kind!=='tower'&&u.kind!=='core')list.push(u)});
-   list.sort((a,b)=>dist2(h.x,h.y,a.x,a.y)-dist2(h.x,h.y,b.x,b.y));
+   const ox=tgt?tgt.x:h.x,oy=tgt?tgt.y:h.y;
+   list.sort((a,b)=>dist2(ox,oy,a.x,a.y)-dist2(ox,oy,b.x,b.y));
+   if(tgt){const ix=list.indexOf(tgt);if(ix>0){list.splice(ix,1);list.unshift(tgt)}}
    const k=Math.min(d.k,list.length);if(!k)return false;
    let px=h.x,py=h.y;for(let j=0;j<k;j++){const u=list[j];fx('beam',px,py,{x2:u.x,y2:u.y,color:col,dur:.25});
     dealDamage(h,u,pow*Math.pow(.85,j),d.dt,{});px=u.x;py=u.y}return true}
@@ -1240,6 +1419,96 @@ function castSummonerRaw(h,kind){
  else if(kind==='recall'){if(h.recallT>0){h.recallT=0;return true}
   h.recallT=4.5;sfx('recall');fx('ring',h.x,h.y,{r:40,color:C.cyan,dur:.5})}
  return true;
+}
+
+/* ================= SKILL AIMING ================= */
+function skTgtOK(h,u,d){return u!==h&&isEnemy(h,u)&&visibleTo(u,h.team)&&!u.dead&&!u.unspawned&&u.kind!=='tower'&&u.kind!=='core'&&!(d.type==='assassinate'&&u.kind==='camp')}
+function pickTargetNear(h,d,range,cur){
+ if(!cur)return bestSkillTarget(h,range,d.type==='assassinate');
+ let best=null,bs=1e12;
+ forEachNear(h.x,h.y,range,u=>{if(!skTgtOK(h,u,d))return;
+  const sc=hyp(u.x-cur.x,u.y-cur.y)-(u.kind==='hero'?30:0)+(u.kind==='camp'?20:0);if(sc<bs){bs=sc;best=u}});
+ return best}
+function aimCursor(A,p,range){
+ if(A.src==='key')return mouseS?s2w(mouseS.x,mouseS.y):null;
+ const dl=hyp(A.dx,A.dy);if(dl<10*HK)return null;
+ const f=Math.min(1.25,dl/(85*HK));
+ return {x:p.x+A.dx/dl*range*f,y:p.y+A.dy/dl*range*f}}
+function computeAim(A){
+ const p=G.player,d=p.skills[A.i].def,range=d.range||p.range;A.range=range;
+ const cur=aimCursor(A,p,range);
+ if(A.mode==='target'){A.tgt=pickTargetNear(p,d,range,cur);A.aim=A.tgt?{x:A.tgt.x,y:A.tgt.y}:null;return}
+ let ax,ay;
+ if(cur){ax=cur.x;ay=cur.y}
+ else{const t=bestSkillTarget(p,range,d.type==='assassinate');
+  if(t){ax=t.x;ay=t.y}else{ax=p.x+Math.cos(p.face)*range*.7;ay=p.y+Math.sin(p.face)*range*.7}}
+ let dx=ax-p.x,dy=ay-p.y,dl=hyp(dx,dy);if(dl<1){dx=Math.cos(p.face);dy=Math.sin(p.face);dl=1}
+ const ang=Math.atan2(dy,dx),len=A.mode==='dir'?range:Math.min(dl,range);
+ A.ang=ang;A.aim={x:p.x+Math.cos(ang)*len,y:p.y+Math.sin(ang)*len};
+}
+function beginSkillPress(i,ptr,src){
+ const p=G.player,s=p.skills[i],d=s.def,mode=AIMMODE[d.type]||'self';
+ if(p.dead)return;
+ if(mode==='self'||s.cd>0||p.mp<d.mana||(d.ult&&s.lvl<1)||p.stunT>0||p.recallT>0||p.dash){castSkill(p,i);return}
+ AIM={i,ptr,src,mode,t:0,dx:0,dy:0,moved:false,cancel:false,aim:null,tgt:null,ang:p.face,range:d.range||p.range};
+ computeAim(AIM);
+}
+function finishAim(){
+ const A=AIM;AIM=null;if(!A||!G||G.over||paused)return;
+ const p=G.player;if(p.dead)return;
+ if(A.cancel){sfx('click');toast('Đã hủy chiêu');return}
+ if(A.t<.2&&!A.moved){castSkill(p,A.i);return}
+ AIM=A;computeAim(A);AIM=null;
+ if(A.mode==='target'){
+  if(!A.tgt){toast('Không có mục tiêu trong tầm');sfx('deny');return}
+  castSkill(p,A.i,{x:A.tgt.x,y:A.tgt.y},A.tgt,true)}
+ else castSkill(p,A.i,A.aim,null,true);
+}
+function drawAim(){
+ const A=AIM,p=G.player;if(!A||p.dead||(A.t<.12&&!A.moved))return;
+ const d=p.skills[A.i].def,col=A.cancel?'#ff4d5e':(d.ult?C.goldL:p.def.colA),range=A.range;
+ ctx.save();ctx.fillStyle=col;ctx.strokeStyle=col;
+ ctx.globalAlpha=.5;ctx.lineWidth=2;ctx.setLineDash([10,8]);ctx.beginPath();ctx.arc(p.x,p.y,range,0,TAU);ctx.stroke();ctx.setLineDash([]);
+ if(A.mode==='dir'&&A.aim){
+  if(d.type==='fan'){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.arc(p.x,p.y,range,A.ang-d.spread/2,A.ang+d.spread/2);ctx.closePath();
+   ctx.globalAlpha=.2;ctx.fill();ctx.globalAlpha=.75;ctx.lineWidth=2;ctx.stroke()}
+  else{const w=d.type==='dash'?120:d.type==='bolt'?28:10;
+   ctx.translate(p.x,p.y);ctx.rotate(A.ang);
+   ctx.globalAlpha=.2;ctx.fillRect(0,-w/2,range,w);ctx.globalAlpha=.75;ctx.lineWidth=2;ctx.strokeRect(0,-w/2,range,w);
+   ctx.globalAlpha=.9;ctx.beginPath();ctx.moveTo(range+16,0);ctx.lineTo(range-4,-11);ctx.lineTo(range-4,11);ctx.closePath();ctx.fill();
+   if(d.type==='blink'){ctx.globalAlpha=.3;ctx.beginPath();ctx.arc(range,0,24,0,TAU);ctx.fill();ctx.globalAlpha=.9;ctx.stroke()}}
+ } else if(A.mode==='point'&&A.aim){
+  ctx.globalAlpha=.3;ctx.setLineDash([4,6]);ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(A.aim.x,A.aim.y);ctx.stroke();ctx.setLineDash([]);
+  ctx.globalAlpha=.22;ctx.beginPath();ctx.arc(A.aim.x,A.aim.y,d.r,0,TAU);ctx.fill();
+  ctx.globalAlpha=.9;ctx.lineWidth=3;ctx.stroke();
+  ctx.beginPath();ctx.arc(A.aim.x,A.aim.y,5,0,TAU);ctx.fill();
+ } else if(A.mode==='target'){
+  ctx.lineWidth=2;
+  forEachNear(p.x,p.y,range,u=>{if(!skTgtOK(p,u,d)||u===A.tgt)return;
+   ctx.globalAlpha=.45;ctx.beginPath();ctx.arc(u.x,u.y,u.r+6,0,TAU);ctx.stroke()});
+  if(A.tgt){const t=A.tgt;
+   ctx.globalAlpha=.35;ctx.setLineDash([4,6]);ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(t.x,t.y);ctx.stroke();ctx.setLineDash([]);
+   ctx.globalAlpha=.25;ctx.beginPath();ctx.arc(t.x,t.y,t.r+12,0,TAU);ctx.fill();
+   ctx.globalAlpha=1;ctx.lineWidth=3.5;ctx.beginPath();ctx.arc(t.x,t.y,t.r+12,G.time*4,G.time*4+TAU*.75);ctx.stroke();
+   ctx.beginPath();ctx.arc(t.x,t.y,t.r+19,-G.time*3,-G.time*3+TAU*.5);ctx.stroke()}
+ }
+ ctx.restore();
+}
+function drawAimHUD(){
+ const A=AIM;if(!A)return;const k=HK;
+ if(A.src==='key'){ctx.save();ctx.font=F(700,12*k);ctx.textAlign='center';ctx.fillStyle=C.goldL;
+  ctx.fillText('Rê chuột để ngắm • Thả phím để tung • Esc / chuột phải: hủy',cw/2,ch*.3);ctx.restore();return}
+ const b=hudBtns.find(x=>x.id==='sk'+A.i);if(!b)return;const max=85*k;
+ ctx.save();
+ ctx.globalAlpha=.35;ctx.strokeStyle=C.cyan;ctx.lineWidth=2;ctx.setLineDash([6,6]);ctx.beginPath();ctx.arc(b.x,b.y,max,0,TAU);ctx.stroke();ctx.setLineDash([]);
+ let dx=A.dx,dy=A.dy;const l=hyp(dx,dy);if(l>max){dx=dx/l*max;dy=dy/l*max}
+ ctx.globalAlpha=.85;ctx.fillStyle=A.cancel?C.red:C.goldL;ctx.beginPath();ctx.arc(b.x+dx,b.y+dy,12*k,0,TAU);ctx.fill();
+ if(A.moved||A.t>.15){
+  ctx.globalAlpha=1;ctx.fillStyle=A.cancel?'rgba(255,77,94,.9)':'rgba(13,26,46,.9)';ctx.beginPath();ctx.arc(cancelB.x,cancelB.y,cancelB.r,0,TAU);ctx.fill();
+  ctx.strokeStyle=A.cancel?'#fff':C.red;ctx.lineWidth=2.5;ctx.stroke();
+  ctx.font=F(900,18*k);ctx.textAlign='center';ctx.fillStyle=A.cancel?'#fff':C.red;ctx.fillText('✕',cancelB.x,cancelB.y+6*k);
+  ctx.font=F(700,8*k);ctx.fillStyle=C.dim;ctx.fillText('KÉO VÀO ĐỂ HỦY',cancelB.x,cancelB.y+cancelB.r+10*k)}
+ ctx.restore();
 }
 
 /* ================= ITEMS / SHOP ================= */
@@ -1615,6 +1884,7 @@ function update(dt){
  if(Math.random()<dt*6){const x=G.cam.x+(Math.random()-.5)*cw/G.cam.z,y=G.cam.y+(Math.random()-.5)*ch/G.cam.z;
   spawnPart(x,y,(Math.random()-.5)*20,-10-Math.random()*15,2+Math.random()*2,1.5+Math.random()*1.5,Math.random()<.5?'#7fe8b0':'#7fd4ff',true)}
  G.hintT-=dt;
+ if(AIM){if(G.player.dead||G.over)AIM=null;else{AIM.t+=dt;computeAim(AIM)}}
  // camera
  const p=G.player;
  G.cam.z=clamp(ch/780,.5,1.15);
@@ -1665,6 +1935,7 @@ function render(){
   if(p.focus&&!p.focus.dead){ctx.strokeStyle=C.goldL;ctx.lineWidth=2.5;ctx.globalAlpha=.85;
    ctx.beginPath();ctx.arc(p.focus.x,p.focus.y,p.focus.r+9,G.time*3,G.time*3+TAU*.8);ctx.stroke();ctx.globalAlpha=1}}
  // structures
+ drawAim();
  for(const s of G.structures)drawStructure(s);
  // camps
  for(const c of G.camps)drawCamp(c);
@@ -1877,7 +2148,7 @@ function drawFx(f){
 function layoutHUD(){
  HK=clamp(ch/640,.85,1.15);MM=clamp(ch*.27,112,170);
  const k=HK,ax=cw-SA.r-88*k,ay=ch-SA.b-90*k,sx=ax-190*k,ty=SA.t+26*k,tr=cw-SA.r;
- MX=SA.l+10;MY=SA.t+8;
+ MX=SA.l+10;MY=SA.t+8;cancelB={x:ax-60*k,y:ay-208*k,r:26*k};
  hudBtns=[
   {id:'atk',x:ax,y:ay,r:46*k},
   {id:'sk0',x:ax-116*k,y:ay+4*k,r:30*k},
@@ -1938,6 +2209,7 @@ function drawHUD(){
  ctx.fillText(`${p.kills}/${p.deaths}/${p.assists}`,cw-SA.r-196*k,40*k);
  // ===== buttons =====
  for(const b of hudBtns)drawBtn(b);
+ drawAimHUD();
  // ===== joystick =====
  if(joy){ctx.globalAlpha=.35;ctx.fillStyle='#0d1a2e';ctx.beginPath();ctx.arc(joy.ox,joy.oy,62*k,0,TAU);ctx.fill();
   ctx.strokeStyle=C.cyan;ctx.lineWidth=2;ctx.stroke();ctx.globalAlpha=.8;
@@ -2006,8 +2278,8 @@ function drawHUD(){
  // hints
  if(G.hintT>0&&!p.dead){ctx.globalAlpha=clamp(G.hintT/2,0,1)*.85;ctx.font=F(700,12*k);ctx.textAlign='center';
   ctx.fillStyle=C.cyan;
-  const msg=lastPtrType==='touch'?'◐ Kéo nửa trái để di chuyển • Giữ ⚔ để đánh • Chạm chiêu để tung (tự ngắm)':
-   'WASD / chuột phải: di chuyển • Space: đánh • 1/2/3: chiêu • F hồi máu • G tốc biến • B biến về • Tab bảng vàng';
+  const msg=lastPtrType==='touch'?'◐ Trái: di chuyển • ⚔: đánh • Chạm nhanh chiêu: tự ngắm • Giữ & kéo chiêu: ngắm hướng / vùng / mục tiêu':
+   'WASD / chuột phải: di chuyển • Space: đánh • 1/2/3: nhấn nhanh = tự ngắm, giữ + rê chuột rồi thả = ngắm tay • F/G/B • Tab';
   ctx.fillText(msg,cx,ch-52*k);ctx.globalAlpha=1}
 }
 function drawBtn(b){
@@ -2068,31 +2340,37 @@ cv.addEventListener('pointerdown',e=>{
  if(SCR!=='game'||!G)return;
  try{cv.setPointerCapture(e.pointerId)}catch(err){}
  const p=ptr(e);
- if(e.button===2){if(!G.player.dead)moveTarget=s2w(p.x,p.y);return}
+ if(e.button===2){if(AIM&&AIM.src==='key'){AIM=null;return}if(!G.player.dead)moveTarget=s2w(p.x,p.y);return}
  if(paused||G.over)return;
  // minimap ping
  if(p.x>=MX&&p.x<=MX+MM&&p.y>=MY&&p.y<=MY+MM){
   const w={x:(p.x-MX)/MM*G.map.S,y:(p.y-MY)/MM*G.map.S};
   G.pings.push({x:w.x,y:w.y,t:0});sfx('ping');return}
  const b=hitBtn(p.x,p.y);
- if(b){btnPtr[e.pointerId]=b.id;pressBtn(b.id);return}
+ if(b){btnPtr[e.pointerId]=b.id;pressBtn(b.id,e.pointerId);return}
  if(shopOpen&&p.x>cw-Math.min(360,cw*.46))return;
  if(p.x<cw*.45&&p.y>60&&!G.player.dead){joy={id:e.pointerId,ox:p.x,oy:p.y,dx:0,dy:0}}
 });
 cv.addEventListener('pointermove',e=>{
+ const p=ptr(e);
+ if(e.pointerType==='mouse')mouseS=p;
+ if(AIM&&AIM.ptr===e.pointerId){const bb=hudBtns.find(x=>x.id==='sk'+AIM.i);
+  if(bb){AIM.dx=p.x-bb.x;AIM.dy=p.y-bb.y;if(hyp(AIM.dx,AIM.dy)>14*HK)AIM.moved=true;
+   AIM.cancel=AIM.moved&&dist2(p.x,p.y,cancelB.x,cancelB.y)<(cancelB.r+10)*(cancelB.r+10)}}
  if(!joy||e.pointerId!==joy.id)return;
- const p=ptr(e);let dx=p.x-joy.ox,dy=p.y-joy.oy;const l=hyp(dx,dy),max=62*HK;
+ let dx=p.x-joy.ox,dy=p.y-joy.oy;const l=hyp(dx,dy),max=62*HK;
  if(l>max){dx=dx/l*max;dy=dy/l*max}
  joy.dx=dx;joy.dy=dy;
 });
 function ptrEnd(e){
  if(joy&&e.pointerId===joy.id)joy=null;
+ if(AIM&&AIM.ptr===e.pointerId)finishAim();
  if(btnPtr[e.pointerId]==='atk')atkHeld=false;
  delete btnPtr[e.pointerId];
 }
-cv.addEventListener('pointerup',ptrEnd);cv.addEventListener('pointercancel',ptrEnd);
+cv.addEventListener('pointerup',ptrEnd);cv.addEventListener('pointercancel',e=>{if(AIM&&AIM.ptr===e.pointerId)AIM=null;ptrEnd(e)});
 cv.addEventListener('contextmenu',e=>e.preventDefault());
-function pressBtn(id){
+function pressBtn(id,pid){
  const p=G.player;
  if(lastPtrType==='touch'&&navigator.vibrate){try{navigator.vibrate(id==='atk'?5:10)}catch(e){}}
  if(id==='atk'){atkHeld=true;return}
@@ -2102,7 +2380,7 @@ function pressBtn(id){
  if(id==='score'){toggleScore();return}
  if(id==='pref'){SAVE.pref=!SAVE.pref;persist();syncToggles();sfx('click');return}
  if(p.dead)return;
- if(id.startsWith('sk'))castSkill(p,+id[2]);
+ if(id.startsWith('sk'))beginSkillPress(+id[2],pid,'touch');
  else if(id==='heal')castSummoner(p,'heal');
  else if(id==='flash')castSummoner(p,'flash');
  else if(id==='recall')castSummoner(p,'recall');
@@ -2111,18 +2389,19 @@ window.addEventListener('keydown',e=>{
  const k=e.key.toLowerCase();
  if(SCR!=='game'||!G)return;
  if(k==='tab'){e.preventDefault();toggleScore();return}
+ if(k==='escape'&&AIM){AIM=null;return}
  if(k==='escape'||k==='p'){if(shopOpen)closeShop();else if(scoreOpen)toggleScore();else paused?closePause():openPause();return}
  if(paused||G.over)return;
  keys[k]=true;
  if(k===' ')atkHeld=true;
- if(k==='1')castSkill(G.player,0);if(k==='2')castSkill(G.player,1);if(k==='3')castSkill(G.player,2);
+ if((k==='1'||k==='2'||k==='3')&&!e.repeat&&!G.player.dead)beginSkillPress(+k-1,null,'key');
  if(k==='f')castSummoner(G.player,'heal');if(k==='g')castSummoner(G.player,'flash');if(k==='b')castSummoner(G.player,'recall');
 });
-window.addEventListener('blur',()=>{keys={};atkHeld=false});
-window.addEventListener('keyup',e=>{const k=e.key.toLowerCase();keys[k]=false;if(k===' ')atkHeld=false});
+window.addEventListener('blur',()=>{keys={};atkHeld=false;AIM=null});
+window.addEventListener('keyup',e=>{const k=e.key.toLowerCase();keys[k]=false;if(k===' ')atkHeld=false;if(AIM&&AIM.src==='key'&&k===String(AIM.i+1))finishAim()});
 
 /* ================= OVERLAYS ================= */
-function openPause(){if(!G||G.over)return;paused=true;$('pauseModal').classList.remove('hidden');syncToggles();sfx('click')}
+function openPause(){if(!G||G.over)return;AIM=null;paused=true;$('pauseModal').classList.remove('hidden');syncToggles();sfx('click')}
 function closePause(){paused=false;$('pauseModal').classList.add('hidden');G.surrenderArm=0;$('surrenderBtn').textContent='🏳 Đầu hàng'}
 function syncToggles(){
  $('autoTgl').textContent=SAVE.auto?'BẬT':'TẮT';$('autoTgl').classList.toggle('on',SAVE.auto);
@@ -2175,15 +2454,14 @@ $('restartBtn').onclick=()=>{closePause();beginLoading(true)};
 $('surrenderBtn').onclick=()=>{
  if(G.surrenderArm&&G.time-G.surrenderArm<4){closePause();endMatch(1)}
  else{G.surrenderArm=G.time;$('surrenderBtn').textContent='⚠ Bấm lần nữa để xác nhận'}};
-$('quitBtn').onclick=()=>{closePause();ambStop();G=null;SCR='lobby';
- $('game').classList.add('hidden');$('lobby').classList.remove('hidden');$('winsBadge').textContent=`🏆 ${SAVE.wins} thắng • ${SAVE.games} trận`};
+function toLobby(){ambStop();G=null;AIM=null;SCR='lobby';clearLoad();$('endScreen').classList.add('hidden');showScr('lobby');updateLobby()}
+$('quitBtn').onclick=()=>{closePause();toLobby()};
 $('closeScore').onclick=toggleScore;
 $('againBtn').onclick=()=>beginLoading(true);
-$('lobbyBtn').onclick=()=>{ambStop();G=null;SCR='lobby';$('endScreen').classList.add('hidden');
- $('game').classList.add('hidden');$('lobby').classList.remove('hidden');$('winsBadge').textContent=`🏆 ${SAVE.wins} thắng • ${SAVE.games} trận`};
+$('lobbyBtn').onclick=toLobby;
 
 /* ================= MATCH FLOW ================= */
-const TIPS=['Kết liễu lính (last-hit) để nhận vàng thưởng — đứng gần để nhận kinh nghiệm.',
+const TIPS=['Chạm nhanh nút chiêu để tự ngắm; giữ & kéo để chọn hướng, vùng hoặc mục tiêu rồi thả tay để tung.','Kết liễu lính (last-hit) để nhận vàng thưởng — đứng gần để nhận kinh nghiệm.',
  'Trụ địch rất đau: hãy để lính phe ta vào trước rồi mới đánh trụ.',
  'Bụi cỏ giúp bạn tàng hình — úp sào kẻ địch từ trong bụi!',
  'Hạ Rồng Hắc Ám để cả đội +4% sát thương vĩnh viễn.',
@@ -2192,29 +2470,31 @@ const TIPS=['Kết liễu lính (last-hit) để nhận vàng thưởng — đ�
  'Mua giày sớm để đi đường nhanh hơn. Cửa hàng mở mọi lúc mọi nơi!',
  'Tà Thần Caesar cho cả đội bùa tăng 15% công và 10% tốc chạy trong 60s.'];
 let currentCfg=null;
-function beginLoading(rematch){
- if(!rematch)currentCfg={mode,diff,heroId:sel,allies:teamCfg.allies.slice(),enemies:teamCfg.enemies.slice()};
- SCR='loading';
- $('lobby').classList.add('hidden');$('game').classList.add('hidden');$('endScreen').classList.add('hidden');
- $('loading').classList.remove('hidden');
- $('loadMap').textContent=currentCfg.map===1?'':'';
- $('loadMap').textContent=(currentCfg.mode===5?'THUNG LŨNG CỔ ĐẠI • 5v5':'ĐỘC ĐẠO TRANH HÙNG • 1v1');
+function clearLoad(){loadTimers.forEach(clearTimeout);loadTimers=[];if(loadTimer){clearInterval(loadTimer);loadTimer=null}}
+function loadCardHTML(id,me){const h=HEROES[id],r=ROLE_BY[h.role];
+ return `<div class="loadcard flip"><img src="${heroImg(h,96)}"><div style="${me?'color:'+C.goldL:''}">${me?'⭐ ':''}${h.name}</div><div class="lrole" style="color:${r.color}">${r.name}</div></div>`}
+function beginLoading(rematch,cfg){
+ clearLoad();if(cfg)currentCfg=cfg;
+ const c=currentCfg;AIM=null;
+ SCR='loading';showScr('loading');$('endScreen').classList.add('hidden');
+ $('loadMap').textContent=(c.mode===5?'THUNG LŨNG CỔ ĐẠI • 5v5':'ĐỘC ĐẠO TRANH HÙNG • 1v1');
  $('loadTip').textContent='💡 '+TIPS[Math.floor(Math.random()*TIPS.length)];
- const card=(id,me)=>{const h=HEROES[id];return `<div class="loadcard"><img src="${heroImg(h,96)}"><div style="${me?'color:'+C.goldL:''}">${me?'⭐ ':''}${h.name}</div></div>`};
- $('loadBlue').innerHTML=card(currentCfg.heroId,true)+currentCfg.allies.map(i=>card(i,false)).join('');
- $('loadRed').innerHTML=currentCfg.enemies.map(i=>card(i,false)).join('');
- [...$('loading').querySelectorAll('.loadcard')].forEach((c,i)=>c.style.animationDelay=(i*.07)+'s');
+ $('loadStatus').textContent=rematch?'CHUẨN BỊ TRẬN ĐẤU':'ĐANG GHÉP TRẬN...';$('loadStatus').classList.remove('ok');
+ $('loadBlue').innerHTML=loadCardHTML(c.heroId,true)+c.allies.map(i=>loadCardHTML(i,false)).join('');
+ $('loadRed').innerHTML=c.enemies.map(id=>rematch?loadCardHTML(id,false):`<div class="loadcard q"><div class="qimg">?</div><div>Đối thủ</div></div>`).join('');
  $('loadBar').style.width='0%';
- let pr=0;clearInterval(loadTimer);
- // build world immediately, bar is cosmetic pacing
- resetGame(currentCfg);
- loadTimer=setInterval(()=>{pr=Math.min(100,pr+8+Math.random()*10);$('loadBar').style.width=pr+'%';
-  if(pr>=100){clearInterval(loadTimer);loadTimer=null;
-   $('loading').classList.add('hidden');$('game').classList.remove('hidden');
-   SCR='game';resize();ambStart();
+ resetGame(c);
+ const rs=rematch?0:1300,st=rematch?0:480;
+ if(!rematch){
+  loadTimers.push(setTimeout(()=>{$('loadStatus').textContent='GHÉP TRẬN THÀNH CÔNG!';$('loadStatus').classList.add('ok');sfx('wave')},rs-250));
+  c.enemies.forEach((id,i)=>loadTimers.push(setTimeout(()=>{const el=$('loadRed').children[i];if(el)el.outerHTML=loadCardHTML(id,false);sfx('click')},rs+i*st)));
+ }
+ const total=rematch?1100:rs+c.enemies.length*st+1400,t0=performance.now();
+ loadTimer=setInterval(()=>{const k=Math.min(1,(performance.now()-t0)/total);$('loadBar').style.width=(k*100)+'%';
+  if(k>=1){clearLoad();showScr('game');SCR='game';resize();ambStart();
    try{if(navigator.wakeLock)navigator.wakeLock.request('screen').catch(()=>{})}catch(e){}
    announce('TRẬN ĐẤU BẮT ĐẦU!',G.map.name,C.goldL,2.4);sfx('wave')}
- },90);
+ },50);
 }
 
 /* ================= RESIZE / LOOP / BOOT ================= */
