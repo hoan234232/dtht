@@ -1308,6 +1308,8 @@ function killUnit(src,tgt){
   const near=[];for(const h of G.heroes)if(!h.dead&&h.team!==tgt.team&&dist2(h.x,h.y,tgt.x,tgt.y)<550*550)near.push(h);
   if(src&&src.kind==='hero'){src.gold+=tgt.gold;if(src.isPlayer){floatText(tgt.x,tgt.y-26,'+'+tgt.gold,C.goldL,12);sfx('gold')}
    if(!near.includes(src))near.push(src)}
+  const half=Math.round(tgt.gold*.5);
+  for(const h of near){if(h===src)continue;h.gold+=half;if(h.isPlayer)floatText(tgt.x,tgt.y-26,'+'+half,C.goldL,10)}
   const share=tgt.xp/Math.max(1,near.length);near.forEach(h=>addXp(h,share));
  }
  else if(tgt.kind==='hero'){
@@ -1323,8 +1325,8 @@ function killUnit(src,tgt){
     announce(mk,killer.def.name,killer.team===0?C.cyan:C.red,2)}
    feed([{t:killer.def.name,c:TEAMC[killer.team]},{t:' ⚔ ',c:C.dim},{t:tgt.def.name,c:TEAMC[tgt.team]}]);
   } else feed([{t:TEAMC[tgt.team]===TEAMC[0]?'Đồng minh':'Kẻ địch',c:TEAMC[tgt.team]},{t:' '+tgt.def.name+' đã bị hạ',c:C.dim}]);
-  for(const h of G.heroes){if(h===killer||h.dead||h.team!==tgt.team)continue;
-   const t=tgt.recent[h.id];if(t&&G.time-t<6){h.assists++;h.gold+=90;addXp(h,80)}}
+  for(const h of G.heroes){if(h===killer||h.team===tgt.team)continue;
+   const t=tgt.recent[h.id];if(t&&G.time-t<6){h.assists++;const ag=Math.round(bounty*.4);h.gold+=ag;addXp(h,80);if(h.isPlayer){floatText(h.x,h.y-40,'+'+ag+' hỗ trợ',C.goldL,12);sfx('gold')}}}
   tgt.recent={};
   if(tgt.isPlayer){announce('BẠN ĐÃ TỬ TRẬN','Hồi sinh sau '+Math.ceil(tgt.respawnT)+'s',C.red,2);sfx('death');G.shake=Math.max(G.shake,9)}
   else if(killer&&killer.isPlayer)announce('HẠ GỤC!','+ '+bounty+' vàng',C.goldL,1.4);
@@ -2282,8 +2284,19 @@ function drawHUD(){
  // camera rect
  ctx.strokeStyle='rgba(255,255,255,.4)';ctx.lineWidth=1;
  ctx.strokeRect(mx+(G.cam.x-cw/G.cam.z/2)*sc,my+(G.cam.y-ch/G.cam.z/2)*sc,cw/G.cam.z*sc,ch/G.cam.z*sc);
- if(atkSel&&atkSel.on&&!p.dead){const q=w2s(p.x,p.y),rg=(p.range+p.r)*G.cam.z;ctx.save();ctx.strokeStyle='rgba(255,224,138,.6)';ctx.lineWidth=2;ctx.setLineDash([4,6]);
-  ctx.beginPath();ctx.arc(q.x,q.y,rg,0,TAU);ctx.stroke();ctx.restore()}
+ if(atkSel&&atkSel.on&&!p.dead){const z=G.cam.z,q=w2s(p.x,p.y),rg=(p.range+p.r)*z;ctx.save();
+  ctx.strokeStyle='rgba(255,224,138,.6)';ctx.lineWidth=2;ctx.setLineDash([4,6]);ctx.beginPath();ctx.arc(q.x,q.y,rg,0,TAU);ctx.stroke();ctx.setLineDash([]);
+  forEachNear(p.x,p.y,p.range+p.r+120,u=>{if(u===p||!isEnemy(p,u)||!visibleTo(u,p.team)||!attackable(u))return;if(hyp(u.x-p.x,u.y-p.y)-u.r-p.r>p.range+30)return;
+   const w=w2s(u.x,u.y);ctx.strokeStyle='rgba(255,255,255,.4)';ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(w.x,w.y,(u.r+6)*z,0,TAU);ctx.stroke()});
+  const l=Math.min(1,hyp(atkSel.dx,atkSel.dy)/(70*HK)),an=Math.atan2(atkSel.dy,atkSel.dx),R=p.range+40,pp=w2s(p.x+Math.cos(an)*R*l,p.y+Math.sin(an)*R*l);
+  ctx.strokeStyle='rgba(255,224,138,.5)';ctx.lineWidth=1.5;ctx.setLineDash([3,5]);ctx.beginPath();ctx.moveTo(q.x,q.y);ctx.lineTo(pp.x,pp.y);ctx.stroke();ctx.setLineDash([]);
+  ctx.beginPath();ctx.arc(pp.x,pp.y,5,0,TAU);ctx.stroke();
+  const L=p.lock;if(L&&!L.dead&&validTarget(p,L,10)){const t=w2s(L.x,L.y),dx=t.x-q.x,dy=t.y-q.y,d=hyp(dx,dy);
+   if(d>1){const ux=dx/d,uy=dy/d,sx=q.x+ux*(p.r+4)*z,sy=q.y+uy*(p.r+4)*z,ex=t.x-ux*(L.r+14)*z,ey=t.y-uy*(L.r+14)*z;
+    if((ex-sx)*ux+(ey-sy)*uy>6){ctx.shadowColor=C.red;ctx.shadowBlur=10;ctx.strokeStyle=C.red;ctx.lineWidth=4;ctx.setLineDash([12,7]);ctx.lineDashOffset=-G.time*40;
+     ctx.beginPath();ctx.moveTo(sx,sy);ctx.lineTo(ex,ey);ctx.stroke();ctx.setLineDash([]);
+     ctx.fillStyle=C.red;ctx.beginPath();ctx.moveTo(ex+ux*12,ey+uy*12);ctx.lineTo(ex-uy*8,ey+ux*8);ctx.lineTo(ex+uy*8,ey-ux*8);ctx.fill()}}}
+  ctx.restore()}
  {const L=p.lock;if(L&&!L.dead&&!p.dead){const q=w2s(L.x,L.y),rad=(L.r+11)*G.cam.z,inR=validTarget(p,L,10);
   ctx.save();ctx.strokeStyle=inR?C.red:C.orange;ctx.globalAlpha=inR?1:.6;ctx.lineWidth=2.5;ctx.setLineDash([7,5]);ctx.lineDashOffset=-G.time*30;
   ctx.beginPath();ctx.arc(q.x,q.y,rad,0,TAU);ctx.stroke();ctx.setLineDash([]);

@@ -131,3 +131,5 @@ Chúc bạn chơi vui. 🏆
 - Lệch ngẫu nhiên giữa tướng cùng vai trò giảm từ ±7% xuống ±3%.
 - Đồ mới: Xuyên giáp/Xuyên kháng phép (trần 50%), Giảm hồi chiêu (trần 40%), Năng lượng. Lên đồ gợi ý theo vai trò không còn lẫn đồ phép/vật lý.
 - Hạ chuỗi tướng địch nhận thêm vàng (đã sửa lỗi nhân 0). Vàng thụ động giảm 1.7 → 1.3/s.
+- Vàng chung: người last hit lính nhận 100% vàng, tướng phe địch đứng gần (trong khoảng ~550) nhận thêm 50%.
+- Hỗ trợ hạ gục: ai đã gây sát thương trong 6 giây trước khi mục tiêu chết nhận vàng bằng 40% tiền thưởng hạ gục và kinh nghiệm (trước đây bị lỗi, không ai được tính).
