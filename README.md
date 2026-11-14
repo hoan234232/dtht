@@ -165,3 +165,19 @@ Chúc bạn chơi vui. 🏆
 - 57 loại chiêu, 120 bộ 3 chiêu không trùng nhau; kit gán theo vai trò và kiểu chơi của từng tướng.
 - 24 passive, tất cả đều có tác dụng trong trận.
 - Chi tiết từng tướng: xem `DESIGN.md`.
+
+---
+## Bản sửa địa hình + AI (v3.1)
+**Địa hình (5v5 và 1v1)**
+- Bố cục tường đá/rừng dày có chủ đích: khối lớn giữa các đường, lối vào rừng rõ ràng, bỏ các cụm đá lẻ.
+- Vẽ lại tường có mặt vách, viền sáng, bóng đổ; thêm bụi cỏ ven đường.
+- Kiểm tra: mọi điểm quan trọng (trụ, trại, bụi, nhà chính) đều đi tới được.
+
+**AI**
+- Chia đường theo độ hợp vai trò (1 đi rừng, 1 trên, 1 giữa, 2 dưới).
+- Tướng bám theo lính phe mình khi đẩy đường, đứng hơi trước lính đầu hàng.
+- Không lao theo địch vào tầm trụ khi thế yếu.
+- Về thủ: đi tới chỗ địch đang đánh trụ để giao chiến (trước đây đứng chờ cạnh trụ, làm trận 1v1 bị kẹt).
+- Cân bằng: kinh nghiệm lên cấp chậm hơn, thưởng hạ tướng bớt "tuyết lăn", trụ và nhà chính trâu hơn.
+
+**Kiểm thử headless:** 6 trận 5v5 và 3 trận 1v1, 0 lỗi, mọi trận đều có kết quả. Một số trận 5v5 vẫn lệch kill do đội hình tướng ngẫu nhiên.

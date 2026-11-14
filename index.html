@@ -1257,14 +1257,21 @@ function buildMapDef(m){
   [{x:620,y:1150,type:'wolf'},{x:1000,y:1500,type:'buffB'},{x:1500,y:2300,type:'golem'}]:
   [{x:560,y:980,type:'wolf'},{x:1420,y:1860,type:'golem'}];
  const allCamps=camps.concat(camps.map(c=>({x:c.y,y:c.x,type:c.type==='buffB'?'buffR':c.type})));
+ /* Địa hình tự thiết kế (nửa xanh, nửa đỏ lấy đối xứng qua sw): phòng trống + lối đi nối đường/sông với rừng */
+ const rooms0=m===5?[]:[{x:1050,y:1500,r:100}];
+ const links0=m===5?[[{x:1000,y:1500},{x:1250,y:1250},76],[{x:1500,y:2300},{x:1180,y:1930},76],[{x:330,y:1850},{x:760,y:1800},76],[{x:760,y:1800},{x:1000,y:1500},76]]:
+  [[{x:560,y:980},{x:330,y:980},76],[{x:560,y:980},{x:1050,y:1500},72],[{x:1050,y:1500},{x:1300,y:1300},72],[{x:1420,y:1860},{x:1050,y:1500},72],[{x:1420,y:1860},{x:1700,y:2150},72]];
+ const rooms=rooms0.concat(rooms0.map(r=>({x:r.y,y:r.x,r:r.r})));
+ const links=links0.concat(links0.map(l=>[sw(l[0]),sw(l[1]),l[2]]));
  const epics=m===5?[{x:2070,y:2070,type:'dragon',at:20},{x:930,y:930,type:'caesar',at:45}]:[];
  const bushes=(m===5?
   [{x:1180,y:1560},{x:450,y:1350},{x:1350,y:2550},{x:1750,y:1870},{x:1150,y:1060}]:
   [{x:760,y:1180},{x:1180,y:1620}]).map(b=>({x:b.x,y:b.y,rx:95,ry:62,rot:Math.atan2(b.y-b.x,b.x)+1.2}));
- const allBush=bushes.concat(bushes.map(b=>({x:b.y,y:b.x,rx:b.rx,ry:b.ry,rot:Math.PI/2-b.rot})));
+ const laneB=m===5?[{x:410,y:1350,rx:92,ry:38,rot:Math.PI/2},{x:410,y:640,rx:92,ry:38,rot:Math.PI/2},{x:1800,y:2590,rx:92,ry:38,rot:0},{x:2260,y:2590,rx:92,ry:38,rot:0}]:[];
+ const allBush=bushes.concat(bushes.map(b=>({x:b.y,y:b.x,rx:b.rx,ry:b.ry,rot:Math.PI/2-b.rot})),laneB,laneB.map(b=>({x:b.y,y:b.x,rx:b.rx,ry:b.ry,rot:Math.PI/2-b.rot})));
  if(m===5)for(const a of[-600,600])for(const l of[-200,200]){const k=Math.SQRT1_2;allBush.push({x:S/2+(a+l)*k,y:S/2+(a-l)*k,rx:80,ry:50,rot:-Math.PI/4})}
  return {S,m,core0,core1:sw(core0),fountain0:{x:core0.x-130,y:core0.y+130,r:185},fountain1:{x:sw(core0).x+130,y:sw(core0).y-130,r:185},
-  lanes,towers,baseTower:m===5?{x:640,y:2360}:null,camps:allCamps,epics,bushes:allBush,sw,
+  lanes,towers,baseTower:m===5?{x:640,y:2360}:null,camps:allCamps,epics,bushes:allBush,sw,rooms,links,
   name:m===5?'THUNG LŨNG CỔ ĐẠI':'ĐỘC ĐẠO TRANH HÙNG'};
 }
 function lanePath(map,team,lane){const p=map.lanes[lane];return team===0?p:p.map(map.sw)}
@@ -1326,7 +1333,7 @@ function makeHero(def,team,lane,jg,isPlayer){
  G.heroes.push(h);G.byId.set(h.id,h);return h;
 }
 function makeStructure(kind,team,x,y,lane,tier){
- const hp=kind==='core'?(G.map.m===5?5200:4200):tier===1?1450:tier===2?1900:2350;
+ const hp=kind==='core'?(G.map.m===5?6500:5200):tier===1?2300:tier===2?2900:3500;
  const s=baseUnit({kind,team,x,y,lane,tier,r:kind==='core'?46:30,hp,maxHp:hp,armor:kind==='core'?40:55,mr:40,
   range:kind==='core'?0:300,ad:kind==='core'?0:135,as:.75,melee:false,shielded:false,rampId:0,rampN:0,threat:null,threatT:0,beamT:0,beamX:0,beamY:0});
  G.structures.push(s);G.byId.set(s.id,s);return s;
@@ -1352,19 +1359,27 @@ function makeCamp(c){
  G.camps.push(u);G.byId.set(u.id,u);return u;
 }
 function assignLanes(list,player){
- const slots={top:[],mid:[],bot:[],jg:[]};if(player)slots.mid.push(player);
- const arr=player?[player].concat(list):list;
- for(const h of arr){if(h===player)continue;const r=h.def.role;
-  if(r==='sat_thu'&&!slots.jg.length)slots.jg.push(h);
-  else if(r==='do_don')slots.top.push(h);
-  else if(r==='dau_si')slots[(slots.jg.length?'top':'jg')].push(h);
-  else if(r==='xa_thu'||r==='ho_tro')slots.bot.push(h);
-  else slots.mid.push(h);}
- if(!slots.jg.length){const src=slots.top.length>1?slots.top:slots.bot.length>1?slots.bot:slots.top;const h=src.pop();if(h)slots.jg.push(h)}
- if(!slots.top.length&&slots.mid.length>1)slots.top.push(slots.mid.pop());
- if(!slots.bot.length&&slots.mid.length>1)slots.bot.push(slots.mid.pop());
- for(const k of ['top','mid','bot'])for(const h of slots[k]){h.lane=k;h.path=lanePath(G.map,h.team,k);h.wp=0}
- for(const h of slots.jg){h.jungler=true;h.lane='mid';h.path=lanePath(G.map,h.team,'mid');h.wp=0}
+ /* Gán đường theo độ hợp vai trò: 1 đi rừng, 1 trên, 1 giữa, 2 dưới (người chơi mặc định ở giữa).
+    Bản cũ dồn hết Xạ Thủ/Hỗ Trợ xuống đường dưới nên đường giữa có thể bỏ trống. */
+ const FIT={jg:{sat_thu:3,dau_si:2,do_don:1,phap_su:.5,xa_thu:0,ho_tro:0},
+  top:{do_don:3,dau_si:3,sat_thu:1.5,phap_su:1.5,ho_tro:1,xa_thu:.5},
+  mid:{phap_su:3,sat_thu:2,xa_thu:1.5,dau_si:1.5,do_don:1,ho_tro:1},
+  bot:{xa_thu:3,ho_tro:2.6,phap_su:1.5,dau_si:1,do_don:1,sat_thu:.5}};
+ const need=player?{jg:1,top:1,mid:0,bot:2}:{jg:1,top:1,mid:1,bot:2};
+ const slotsL=[];for(const k of Object.keys(need))for(let q=0;q<need[k];q++)slotsL.push(k);
+ const hs=list.filter(h=>h!==player);let best=null,bs=-1e9;
+ const used=new Array(hs.length).fill(false),cur=new Array(slotsL.length);
+ (function rec(k,sc){
+  if(k===slotsL.length){let bonus=0;const bots=[];slotsL.forEach((sl,x)=>{if(sl==='bot')bots.push(hs[cur[x]].def.role)});
+   if(bots.length===2&&bots.includes('xa_thu')&&bots.includes('ho_tro'))bonus=1;
+   if(sc+bonus>bs){bs=sc+bonus;best=cur.slice()}return}
+  for(let q=0;q<hs.length;q++){if(used[q])continue;used[q]=true;cur[k]=q;rec(k+1,sc+(FIT[slotsL[k]][hs[q].def.role]||0));used[q]=false}
+ })(0,0);
+ if(player){player.lane='mid';player.jungler=false;player.path=lanePath(G.map,player.team,'mid');player.wp=0}
+ if(!best)return;
+ slotsL.forEach((sl,x)=>{const h=hs[best[x]];
+  if(sl==='jg'){h.jungler=true;h.lane='mid';h.path=lanePath(G.map,h.team,'mid');h.wp=0}
+  else{h.jungler=false;h.lane=sl;h.path=lanePath(G.map,h.team,sl);h.wp=0}});
 }
 function resetGame(cfg){
  G={cfg,map:buildMapDef(cfg.mode),time:0,over:false,winner:-1,overT:0,heroes:[],minions:[],structures:[],camps:[],byId:new Map(),
@@ -1403,6 +1418,7 @@ function updateShields(){
 }
 
 /* ================= ĐỊA HÌNH + ĐIỀU HƯỚNG (kiểu Liên Quân) ================= */
+const PW=76,RIVW=124,LANEW=108,ROOMR=135,EPICR=215;
 function navBuild(map){
  const S=map.S,c=30,n=Math.ceil(S/c),w=new Uint8Array(n*n),p=new Uint8Array(n*n);
  const polys=Object.values(map.lanes).map(l=>[map.core0].concat(l,[map.core1]));
@@ -1411,21 +1427,40 @@ function navBuild(map){
  const skel=(x,y)=>{let best=null,bd=1e9;
   for(const pl of polys)for(let i=0;i<pl.length-1;i++){const q=segP(x,y,pl[i],pl[i+1]),d=hyp(x-q.x,y-q.y);if(d<bd){bd=d;best=q}}
   const t=(x+y)/2;if(hyp(x-t,y-t)<bd)best={x:t,y:t};return best};
+ /* Đường nối (hành lang) giữa các điểm: trại -> đường/sông gần nhất, trại -> trại gần nhất, cộng thêm lối do bản đồ khai báo */
  const caps=[];
- for(const q of pts){caps.push([q,skel(q.x,q.y),100]);let o=null,bd=1150;
-  for(const e of pts){const d=hyp(e.x-q.x,e.y-q.y);if(e!==q&&d<bd){bd=d;o=e}}if(o)caps.push([q,o,90])}
- const nz=(x,y)=>Math.sin(x*.0062+1.3)*Math.sin(y*.0057+.7)+.6*Math.sin((x+y)*.0053+2)*Math.cos((x-y)*.0049)+.4*Math.sin(x*.0171-y*.0149+1);
+ for(const q of pts){caps.push([q,skel(q.x,q.y),PW]);let o=null,bd=1150;
+  for(const e of pts){const d=hyp(e.x-q.x,e.y-q.y);if(e!==q&&d<bd){bd=d;o=e}}if(o)caps.push([q,o,PW-10])}
+ for(const l of (map.links||[]))caps.push([l[0],l[1],l[2]||PW]);
+ const rooms=(map.rooms||[]);
  for(let j=0;j<n;j++)for(let i=0;i<n;i++){
-  const x=(i+.5)*c,y=(j+.5)*c;let open=Math.abs(x-y)*.7071<150,dc=1e9;
+  const x=(i+.5)*c,y=(j+.5)*c;let open=Math.abs(x-y)*.7071<RIVW,dc=1e9;
   for(const k of cores)dc=Math.min(dc,hyp(x-k.x,y-k.y));
   if(dc<330)open=true;
-  if(!open)lp:for(const pl of polys)for(let k=0;k<pl.length-1;k++){const q=segP(x,y,pl[k],pl[k+1]);if(hyp(x-q.x,y-q.y)<135){open=true;break lp}}
-  if(!open)for(const q of pts)if(hyp(x-q.x,y-q.y)<(q.type==='dragon'||q.type==='caesar'?270:195)){open=true;break}
-  if(!open)for(const b of map.bushes)if(hyp(x-b.x,y-b.y)<Math.max(b.rx,b.ry)+25){open=true;break}
+  if(!open)lp:for(const pl of polys)for(let k=0;k<pl.length-1;k++){const q=segP(x,y,pl[k],pl[k+1]);if(hyp(x-q.x,y-q.y)<LANEW){open=true;break lp}}
+  if(!open)for(const q of pts)if(hyp(x-q.x,y-q.y)<(q.type==='dragon'||q.type==='caesar'?EPICR:ROOMR)){open=true;break}
+  if(!open)for(const b of map.bushes){const dx=x-b.x,dy=y-b.y,cs=Math.cos(-b.rot),sn=Math.sin(-b.rot),lx=dx*cs-dy*sn,ly=dx*sn+dy*cs;if(lx*lx/((b.rx+14)*(b.rx+14))+ly*ly/((b.ry+14)*(b.ry+14))<=1){open=true;break}}
+  if(!open)for(const r of rooms)if(hyp(x-r.x,y-r.y)<r.r){open=true;break}
   if(!open)for(const e of caps){const q=segP(x,y,e[0],e[1]);if(hyp(x-q.x,y-q.y)<e[2]){open=true;break}}
-  w[i+j*n]=(!open&&(x<70||y<70||x>S-70||y>S-70||dc<440||nz(x,y)>.3))?1:0}
- const nb=(i,j)=>i<0||j<0||i>=n||j>=n?1:w[i+j*n];
- for(let j=0;j<n;j++)for(let i=0;i<n;i++)if(w[i+j*n]&&nb(i-1,j)+nb(i+1,j)+nb(i,j-1)+nb(i,j+1)<2)w[i+j*n]=0;
+  w[i+j*n]=open?0:1}
+ /* làm tròn: bỏ mảnh tường mỏng, lấp khe hẹp -> mảng tường dày, đường rộng rõ ràng như bản đồ MOBA */
+ const nbw=(a,i,j)=>i<0||j<0||i>=n||j>=n?1:a[i+j*n];
+ const morph=(a,wallWant,r)=>{ /* wallWant=1: giãn tường; 0: co tường */
+  const o=new Uint8Array(a);
+  for(let j=0;j<n;j++)for(let i=0;i<n;i++){let hit=false;
+   for(let b=-r;b<=r&&!hit;b++)for(let d=-r;d<=r;d++){if(d*d+b*b>r*r+1)continue;const v=nbw(a,i+d,j+b);if(wallWant?v===1:v===0){hit=true;break}}
+   o[i+j*n]=wallWant?(hit?1:0):(hit?0:1)}
+  a.set(o)};
+ morph(w,0,1);morph(w,1,1);   /* mở (bỏ tường < 3 ô) rồi đóng (lấp khe < 3 ô) */
+ for(let j=0;j<n;j++)for(let i=0;i<n;i++){const x=(i+.5)*c,y=(j+.5)*c;if(x<65||y<65||x>S-65||y>S-65)w[i+j*n]=1}
+ /* bỏ các cụm tường nhỏ lẻ (trông như khối đá rơi vãi) - chỉ giữ khối tường lớn */
+ {const lab=new Int32Array(n*n);let id=0;
+  for(let k=0;k<n*n;k++){if(!w[k]||lab[k])continue;id++;const st=[k],comp=[k];lab[k]=id;let edge=false;
+   while(st.length){const u=st.pop(),ux=u%n,uy=(u/n)|0;
+    if(ux===0||uy===0||ux===n-1||uy===n-1)edge=true;
+    for(let d=0;d<4;d++){const vx=ux+(d===0?1:d===1?-1:0),vy=uy+(d===2?1:d===3?-1:0);if(vx<0||vy<0||vx>=n||vy>=n)continue;
+     const v=vx+vy*n;if(w[v]&&!lab[v]){lab[v]=id;st.push(v);comp.push(v)}}}
+   if(!edge&&comp.length<22)for(const v of comp)w[v]=0}}
  const make=()=>{for(let j=0;j<n;j++)for(let i=0;i<n;i++){let ok=!w[i+j*n];
   for(let b=-1;b<=1&&ok;b++)for(let a=-1;a<=1;a++){const ii=i+a,jj=j+b;if(ii<0||jj<0||ii>=n||jj>=n||w[ii+jj*n]){ok=false;break}}
   p[i+j*n]=ok?1:0}};
@@ -1436,8 +1471,8 @@ function navBuild(map){
     const v=vx+vy*n;if(!seen[v]&&p[v]){seen[v]=1;st.push(v)}}}return seen};
  const carve=(a,b,hw)=>{for(let j=0;j<n;j++)for(let i=0;i<n;i++){const x=(i+.5)*c,y=(j+.5)*c,q=segP(x,y,a,b);if(hyp(x-q.x,y-q.y)<hw)w[i+j*n]=0}};
  const tg=pts.concat(map.bushes,[map.core1,map.fountain1]);
- for(let it=0;it<5;it++){make();const seen=flood();let bad=0;
-  for(const q of tg)if(!seen[ci(q.x,q.y)]){bad++;carve(q,skel(q.x,q.y),115)}if(!bad)break}
+ for(let it=0;it<6;it++){make();const seen=flood();let bad=0;
+  for(const q of tg)if(!seen[ci(q.x,q.y)]){bad++;carve(q,skel(q.x,q.y),PW+15)}if(!bad)break}
  make();return{c,n,w,p,S}}
 function navCell(x,y){const N=G.nav,n=N.n,c=N.c,i=clamp(Math.floor(x/c),0,n-1),j=clamp(Math.floor(y/c),0,n-1);
  if(N.p[i+j*n])return i+j*n;
@@ -1496,24 +1531,40 @@ function navDir(u,tx,ty){
  for(let k=Math.min(pts.length-1,q.i+3);k>q.i;k--)if(los(u.x,u.y,pts[k].x,pts[k].y)){q.i=k;break}
  const pt=pts[q.i]||{x:tx,y:ty},d=hyp(pt.x-u.x,pt.y-u.y)||1;return[(pt.x-u.x)/d,(pt.y-u.y)/d]}
 function drawTerrain(c,rnd){
- const N=G.nav,cs=N.c,n=N.n,w=N.w,B=(i,j)=>i<0||j<0||i>=n||j>=n||w[i+j*n],cells=[];
- for(let j=0;j<n;j++)for(let i=0;i<n;i++)if(w[i+j*n])cells.push([i*cs+cs/2,j*cs+cs/2,i,j]);
- c.fillStyle='#030a07';for(const q of cells){c.beginPath();c.arc(q[0],q[1]+11,cs*.9,0,TAU);c.fill()}
- c.fillStyle='#22352c';for(const q of cells){c.beginPath();c.arc(q[0],q[1]+3,cs*.84,0,TAU);c.fill()}
- const tops=['#2f4b38','#35563f','#2a4433'];
- for(const q of cells){c.fillStyle=tops[(q[2]*7+q[3]*3)%3];c.beginPath();c.arc(q[0],q[1]-4,cs*.68,0,TAU);c.fill()}
- c.fillStyle='rgba(190,235,200,.16)';
- for(const q of cells)if(!B(q[2],q[3]-1)){c.beginPath();c.ellipse(q[0],q[1]-cs*.5,cs*.6,5,0,0,TAU);c.fill()}
- for(const q of cells){const r=rnd(),x=q[0]+rnd()*14-7,y=q[1]+rnd()*12-8,s=10+rnd()*9;
-  if(r<.42){c.fillStyle='rgba(0,0,0,.3)';c.beginPath();c.ellipse(x+3,y+s*.7,s*.9,s*.4,0,0,TAU);c.fill();
+ /* Tường đá/rừng rậm kiểu MOBA: khối dày, có mặt vách đứng, viền sáng phía trên, bóng đổ xuống nền rừng */
+ const N=G.nav,cs=N.c,n=N.n,w=N.w,B=(i,j)=>i<0||j<0||i>=n||j>=n||w[i+j*n];
+ const W=[];for(let j=0;j<n;j++)for(let i=0;i<n;i++)if(w[i+j*n])W.push([i,j]);
+ // 1) bóng đổ trên nền, phía chân vách
+ c.fillStyle='rgba(2,10,6,.34)';
+ for(const[i,j]of W){if(!B(i,j+1))c.fillRect(i*cs-4,(j+1)*cs,cs+8,16);if(!B(i+1,j))c.fillRect((i+1)*cs,j*cs+6,9,cs);if(!B(i-1,j))c.fillRect(i*cs-9,j*cs+6,9,cs)}
+ c.fillStyle='rgba(2,10,6,.22)';
+ for(const[i,j]of W){if(!B(i,j+1))c.fillRect(i*cs-6,(j+1)*cs+14,cs+12,12)}
+ // 2) thân khối (mặt vách tối)
+ c.fillStyle='#16241d';for(const[i,j]of W)c.fillRect(i*cs-1,j*cs-1,cs+2,cs+2);
+ // 3) mặt vách đứng ở cạnh phía nam (đá lộ ra)
+ for(const[i,j]of W){if(B(i,j+1))continue;const x=i*cs,y=j*cs+cs-12;
+  const g=c.createLinearGradient(0,y,0,y+12);g.addColorStop(0,'#4a5560');g.addColorStop(1,'#222b33');c.fillStyle=g;c.fillRect(x-1,y,cs+2,13);
+  if(((i*5+j*3)&3)===0){c.strokeStyle='rgba(10,14,18,.55)';c.lineWidth=2;c.beginPath();c.moveTo(x+cs*.4,y+1);c.lineTo(x+cs*.3,y+12);c.stroke()}}
+ // 4) mặt trên (rừng rậm), nhích lên để có chiều cao
+ const tops=['#2e4d39','#335540','#2a4533'];
+ for(const[i,j]of W){const up=!B(i,j+1)?12:0;c.fillStyle=tops[(i*7+j*3)%3];rr(c,i*cs-2,j*cs-2-4,cs+4,cs+4-up+4,6);c.fill()}
+ // 5) viền sáng ở mép trên/trái, tối ở mép dưới
+ for(const[i,j]of W){const x=i*cs,y=j*cs-4;
+  if(!B(i,j-1)){c.fillStyle='rgba(205,245,215,.24)';c.fillRect(x-2,y-2,cs+4,4)}
+  if(!B(i-1,j)){c.fillStyle='rgba(205,245,215,.12)';c.fillRect(x-2,y,3,cs-8)}
+  if(!B(i+1,j)){c.fillStyle='rgba(0,0,0,.22)';c.fillRect(x+cs-1,y,3,cs-8)}}
+ // 6) cây và đá trang trí: cây to ở lõi khối, đá nhỏ ở mép
+ for(const[i,j]of W){
+  let inner=true;for(let b=-1;b<=1&&inner;b++)for(let a=-1;a<=1;a++)if(!B(i+a,j+b)){inner=false;break}
+  const r=rnd(),x=i*cs+cs/2+rnd()*12-6,y=j*cs+cs/2+rnd()*10-9,s=11+rnd()*9;
+  if(inner&&r<.5){c.fillStyle='rgba(0,0,0,.28)';c.beginPath();c.ellipse(x+3,y+s*.75,s*.95,s*.38,0,0,TAU);c.fill();
    c.fillStyle='#4a3724';c.fillRect(x-2,y,4,s*.7);
-   c.fillStyle='#1c5a38';c.beginPath();c.arc(x,y-s*.3,s,0,TAU);c.fill();
-   c.fillStyle='#2a7a4a';c.beginPath();c.arc(x-s*.25,y-s*.55,s*.62,0,TAU);c.fill();
-   c.fillStyle='rgba(170,240,160,.35)';c.beginPath();c.arc(x-s*.3,y-s*.7,s*.28,0,TAU);c.fill()}
-  else if(r<.52){c.fillStyle='#5b6670';c.beginPath();c.moveTo(x-s,y+s*.4);c.lineTo(x-s*.5,y-s*.6);c.lineTo(x+s*.4,y-s*.7);c.lineTo(x+s,y+s*.3);c.closePath();c.fill();
-   c.fillStyle='rgba(255,255,255,.2)';c.beginPath();c.moveTo(x-s*.5,y-s*.6);c.lineTo(x+s*.4,y-s*.7);c.lineTo(x,y-s*.1);c.closePath();c.fill()}}
+   c.fillStyle='#17482e';c.beginPath();c.arc(x,y-s*.3,s,0,TAU);c.fill();
+   c.fillStyle='#23683f';c.beginPath();c.arc(x-s*.25,y-s*.55,s*.62,0,TAU);c.fill();
+   c.fillStyle='rgba(170,240,160,.3)';c.beginPath();c.arc(x-s*.3,y-s*.7,s*.28,0,TAU);c.fill()}
+  else if(!inner&&r<.22){c.fillStyle='#66727c';c.beginPath();c.moveTo(x-s*.8,y+s*.35);c.lineTo(x-s*.4,y-s*.5);c.lineTo(x+s*.35,y-s*.6);c.lineTo(x+s*.8,y+s*.25);c.closePath();c.fill();
+   c.fillStyle='rgba(255,255,255,.22)';c.beginPath();c.moveTo(x-s*.4,y-s*.5);c.lineTo(x+s*.35,y-s*.6);c.lineTo(x,y-s*.05);c.closePath();c.fill()}}
 }
-
 /* ================= MAP PRERENDER ================= */
 function prerenderMap(){
  const S=G.map.S,sc=.75;mapCv.width=mapCv.height=Math.round(S*sc);
@@ -1629,7 +1680,7 @@ function effAp(h){let v=h.ap*(1+buffSum(h,'stance','ap'))*teamMult(h);if(h.kind=
 function effMs(h){let v=h.ms*(1+buffSum(h,'haste','ms')+buffSum(h,'rage','ms'));if(hasBuff(h,'caesar'))v*=1.1;if(h.kind==='hero'&&h.hp/h.maxHp<.4)v*=1+passiveVal(h,'low_hp_ms');if(h.kind==='hero')v*=1+auraSum(h,'ms_aura');if(h.kind==='hero')v=Math.min(330,v);if(h.slowT>0)v*=(1-h.slowV);return Math.max(60,v)}
 function effAs(h){return Math.min(2.4,h.as*(1+buffSum(h,'haste','as')+buffSum(h,'stance','as')+passiveVal(h,'as_bonus')))}
 function statVal(h,s){return s==='ad'?effAd(h):s==='ap'?effAp(h):h.maxHp}
-function xpNeed(l){return 70+l*55}
+function xpNeed(l){return 100+l*65}
 function addXp(h,x){if(h.level>=15)return;h.xp+=x;
  while(h.level<15&&h.xp>=xpNeed(h.level)){h.xp-=xpNeed(h.level);h.level++;const oh=h.maxHp;recalc(h);
   fx('ring',h.x,h.y,{r:60,color:C.goldL,dur:.6});floatText(h.x,h.y-40,'CẤP '+h.level,C.goldL,15);
@@ -1692,7 +1743,7 @@ function killUnit(src,tgt){
   const killer=src&&src.kind==='hero'?src:null;
   let bounty=200+tgt.level*8;
   if(killer){killer.kills++;killer.streak++;killer.multi++;killer.multiT=4;
-   bounty+=Math.min(5,ks)*40;killer.gold+=bounty;addXp(killer,150+tgt.level*20);   if(hasPassive(killer,'heal_on_kill'))healUnit(killer,killer.maxHp*passiveVal(killer,'heal_on_kill'));   if(hasPassive(killer,'extra_gold')){killer.gold+=passiveVal(killer,'extra_gold')}   if(hasPassive(killer,'reset_on_kill')&&Math.random()<passiveVal(killer,'reset_on_kill')){killer.skills[0].cd=0;killer.skills[1].cd=0}
+   bounty+=Math.min(5,ks)*40;killer.gold+=bounty;addXp(killer,55+tgt.level*8);   if(hasPassive(killer,'heal_on_kill'))healUnit(killer,killer.maxHp*passiveVal(killer,'heal_on_kill'));   if(hasPassive(killer,'extra_gold')){killer.gold+=passiveVal(killer,'extra_gold')}   if(hasPassive(killer,'reset_on_kill')&&Math.random()<passiveVal(killer,'reset_on_kill')){killer.skills[0].cd=0;killer.skills[1].cd=0}
    G.kills[killer.team]++;
    if(killer.isPlayer){sfx('kill');G.shake=Math.max(G.shake,4)}
    if(!G.firstBlood){G.firstBlood=true;announce('CHIẾN CÔNG ĐẦU!',killer.def.name+' mở tỉ số',C.goldL,2.4)}
@@ -1701,7 +1752,7 @@ function killUnit(src,tgt){
    feed([{t:killer.def.name,c:TEAMC[killer.team]},{t:' ⚔ ',c:C.dim},{t:tgt.def.name,c:TEAMC[tgt.team]}]);
   } else feed([{t:TEAMC[tgt.team]===TEAMC[0]?'Đồng minh':'Kẻ địch',c:TEAMC[tgt.team]},{t:' '+tgt.def.name+' đã bị hạ',c:C.dim}]);
   for(const h of G.heroes){if(h===killer||h.team===tgt.team)continue;
-   const t=tgt.recent[h.id];if(t&&G.time-t<6){h.assists++;const ag=Math.round(bounty*.4);h.gold+=ag;addXp(h,80);if(hasPassive(h,'assist_heal'))healUnit(h,h.maxHp*passiveVal(h,'assist_heal'));if(h.isPlayer){floatText(h.x,h.y-40,'+'+ag+' hỗ trợ',C.goldL,12);sfx('gold')}}}
+   const t=tgt.recent[h.id];if(t&&G.time-t<6){h.assists++;const ag=Math.round(bounty*.4);h.gold+=ag;addXp(h,30);if(hasPassive(h,'assist_heal'))healUnit(h,h.maxHp*passiveVal(h,'assist_heal'));if(h.isPlayer){floatText(h.x,h.y-40,'+'+ag+' hỗ trợ',C.goldL,12);sfx('gold')}}}
   tgt.recent={};
   if(tgt.isPlayer){announce('BẠN ĐÃ TỬ TRẬN','Hồi sinh sau '+Math.ceil(tgt.respawnT)+'s',C.red,2);sfx('death');G.shake=Math.max(G.shake,9)}
   else if(killer&&killer.isPlayer)announce('HẠ GỤC!','+ '+bounty+' vàng',C.goldL,1.4);
@@ -2152,11 +2203,12 @@ function aiThink(h){
    if(h.hp<h.maxHp*.22&&h.spFlashCd<=0&&dist2(h.x,h.y,foe.x,foe.y)<280*280)castSummoner(h,'flash')}
   return}
  let ratio=9;
- if(foe){ratio=grp(h,720)/(grp(foe,720)+(tw?3:0)+.01)+D.aggro;
+ const twF=tw||underEnemyTower(h,foe?foe.x:h.x,foe?foe.y:h.y);
+ if(foe){ratio=grp(h,720)/(grp(foe,720)+(twF?3:0)+.01)+D.aggro;
   if(h.hp<h.maxHp*.5&&ratio<.8){h.aiState='retreat';h.focus=null;return}}
  if(h.hp<h.maxHp*D.retreat||(h.mp<h.maxMp*.07&&!foe)){h.aiState='retreat';h.focus=null;return}
  if(foe){
-  if(ratio>1.05||(foe.hp<foe.maxHp*.3&&!tw)||(h.aiState==='fight'&&ratio>.75)){h.aiState='fight';h.focus=foe}
+  if(ratio>1.05||(foe.hp<foe.maxHp*.3&&!twF)||(h.aiState==='fight'&&ratio>.75)){h.aiState='fight';h.focus=foe}
   else{h.aiState='push';h.focus=null}
  }else if(h.aiState==='fight'&&!(h.gankT>G.time&&h.focus&&!h.focus.dead)){h.aiState='push';h.focus=null}
  if(h.aiState==='fight'){
@@ -2191,6 +2243,19 @@ function aiThink(h){
  if(mine&&mine.kind==='minion'&&Math.random()<.4&&h.mp>h.maxMp*.45){const s=h.skills[0];
   if(s.cd<=0&&!s.def.ult&&!NOCAMP[s.def.type]&&h.mp>s.def.mana&&(!s.def.targeted||dist2(h.x,h.y,mine.x,mine.y)<s.def.range*s.def.range))castSkill(h,0,{x:mine.x,y:mine.y},s.def.targeted?mine:null)}
 }
+/* Điểm tướng AI nên đứng khi đẩy đường: bám theo lính phe mình ở đúng đường (không chạy lên trước lính);
+   chưa có lính thì đợi ở trụ ngoài cùng còn sống. */
+function laneFollow(h){
+ const core=h.team===0?G.map.core0:G.map.core1;let fm=null,fs=-1e9;
+ for(const m of G.minions){if(m.dead||m.team!==h.team||m.lane!==h.lane)continue;
+  const wp=m.path[Math.min(m.wp,m.path.length-1)],sc=m.wp*10000-hyp(wp.x-m.x,wp.y-m.y);if(sc>fs){fs=sc;fm=m}}
+ if(fm){const wp=fm.path[Math.min(fm.wp,fm.path.length-1)],d=hyp(wp.x-fm.x,wp.y-fm.y)||1;
+  /* đứng hơi trước lính đầu hàng để còn đánh được lính địch/trụ, không đứng chờ phía sau */
+  return{x:fm.x+(wp.x-fm.x)/d*110,y:fm.y+(wp.y-fm.y)/d*110,stop:40}}
+ let own=null;for(const t of G.structures){if(t.dead||t.team!==h.team||t.kind!=='tower'||(t.lane!==h.lane&&t.lane!=='base'))continue;if(!own||t.tier<own.tier)own=t}
+ if(own){const k=hyp(core.x-own.x,core.y-own.y)||1;return{x:own.x+(core.x-own.x)/k*140,y:own.y+(core.y-own.y)/k*140,stop:90}}
+ return{x:core.x,y:core.y,stop:220}
+}
 function aiControl(h,dt){
  h.thinkT-=dt;if(h.thinkT<=0){aiThink(h);h.thinkT=aiDiff(h).think*(.8+Math.random()*.4)}
  const D=aiDiff(h),f=h.team===0?G.map.fountain0:G.map.fountain1;let mx=0,my=0,want=false;
@@ -2208,16 +2273,22 @@ function aiControl(h,dt){
    else{const s=Math.sin(G.time*1.7+h.id);mx=Math.cos(a+Math.PI/2)*s*.6;my=Math.sin(a+Math.PI/2)*s*.6;want=true}}
   if(underEnemyTower(h)&&h.hp<h.maxHp*.4)toward(f.x,f.y,f.r*.6)}
  else if(h.aiState==='defend'&&h.dtgt&&!h.dtgt.dead){
-  toward(h.dtgt.x,h.dtgt.y,180);
-  if(!h.focus||h.focus.dead)h.focus=acquire(h,h.range+60,true,false)}
+  /* về thủ: đi tới chỗ kẻ địch đang đánh trụ (tướng trước, rồi lính) để đánh, không đứng chờ cạnh trụ */
+  if(!h.focus||h.focus.dead||dist2(h.focus.x,h.focus.y,h.dtgt.x,h.dtgt.y)>760*760){
+   h.focus=null;let bt=null,bs=1e12;
+   forEachNear(h.dtgt.x,h.dtgt.y,700,u=>{if(!isEnemy(h,u)||!visibleTo(u,h.team)||u.dead||u.unspawned||u.kind==='tower'||u.kind==='core'||u.kind==='camp')return;
+    const sc=hyp(u.x-h.x,u.y-h.y)-(u.kind==='hero'?250:0);if(sc<bs){bs=sc;bt=u}});
+   h.focus=bt}
+  const ft=h.focus;
+  if(ft&&!ft.dead){const rng=h.range+ft.r;if(hyp(ft.x-h.x,ft.y-h.y)>rng*.9)toward(ft.x,ft.y,rng*.8)}
+  else toward(h.dtgt.x,h.dtgt.y,180)}
  else if(h.aiState==='camp'&&h.focus&&!h.focus.dead){
   const t=h.focus,rng=h.range+t.r;if(hyp(t.x-h.x,t.y-h.y)>rng*.9)toward(t.x,t.y,rng*.8)}
  else{
   const t=h.focus;
   if(h.holdPoint&&t&&!t.dead&&dist2(h.x,h.y,t.x,t.y)<600*600)toward(h.holdPoint.x,h.holdPoint.y,40);
   else if(t&&!t.dead&&dist2(h.x,h.y,t.x,t.y)<520*520){const rng=h.range+t.r;if(hyp(t.x-h.x,t.y-h.y)>rng*.9)toward(t.x,t.y,rng*.8)}
-  else{const wp=h.path[Math.min(h.wp,h.path.length-1)];
-   if(hyp(wp.x-h.x,wp.y-h.y)<95&&h.wp<h.path.length-1)h.wp++;toward(wp.x,wp.y,30)}
+  else{const fl=laneFollow(h);toward(fl.x,fl.y,fl.stop)}
  }
  // né chiêu: tránh đạn thẳng và vùng nổ của địch
  if(D.dodge&&h.dodgeT>0){mx=h.dgx;my=h.dgy;want=true;h.dodgeT-=dt}
