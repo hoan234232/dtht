@@ -102,7 +102,7 @@ Mỗi tướng có **3 chiêu**: 2 chiêu thường và 1 **chiêu cuối** (m�
 - **Rồng Hắc Ám:** cả đội +4% sát thương vĩnh viễn mỗi lần hạ.
 - **Tà Thần Caesar:** cả đội nhận bùa 60 giây (+15% công, +10% tốc chạy).
 - **Bụi cỏ:** đứng trong bụi để tàng hình trước kẻ địch ở xa.
-- **Cửa hàng:** 12 trang bị, tối đa 6 ô, mở được mọi lúc; nút "Mua trang bị gợi ý" theo vai trò.
+- **Cửa hàng:** 17 trang bị (có Xuyên giáp, Giảm hồi chiêu tối đa 40%), tối đa 6 ô, mở được mọi lúc; nút "Mua trang bị gợi ý" theo vai trò.
 - **Hồi sinh:** thời gian chết tăng theo cấp; khi hồi sinh có khiên ngắn.
 - **Thông báo:** chiến công đầu, đúp, ăn ba, ăn tư, quét sạch.
 - **Kết thúc:** bảng tổng kết kèm MVP.
@@ -118,3 +118,13 @@ Mỗi tướng có **3 chiêu**: 2 chiêu thường và 1 **chiêu cuối** (m�
 - Trên điện thoại, game tự tạm dừng khi bạn chuyển sang ứng dụng khác.
 
 Chúc bạn chơi vui. 🏆
+
+---
+
+## Cân bằng (bản chỉnh)
+
+- Tầm đánh: Xạ Thủ 345 > Pháp Sư 310 > Hỗ Trợ 280; cận chiến ~100.
+- Tốc chạy gốc: Sát Thủ 242 > Đấu Sĩ 228 > Xạ Thủ/Hỗ Trợ 224 > Pháp Sư 218 > Đỡ Đòn 214. Trần tốc chạy 330, trần tốc đánh 2.0.
+- Lệch ngẫu nhiên giữa tướng cùng vai trò giảm từ ±7% xuống ±3%.
+- Đồ mới: Xuyên giáp/Xuyên kháng phép (trần 50%), Giảm hồi chiêu (trần 40%), Năng lượng. Lên đồ gợi ý theo vai trò không còn lẫn đồ phép/vật lý.
+- Hạ chuỗi tướng địch nhận thêm vàng (đã sửa lỗi nhân 0). Vàng thụ động giảm 1.7 → 1.3/s.

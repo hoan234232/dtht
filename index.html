@@ -525,12 +525,12 @@ const ROLES=[
 ];
 const ROLE_BY={};ROLES.forEach(r=>ROLE_BY[r.id]=r);
 const BASE={
- dau_si:{hp:1060,ad:68,ap:0,range:95,ms:226,as:.9,armor:22,mr:14,mana:300,crit:0,r:21},
- phap_su:{hp:880,ad:52,ap:76,range:305,ms:216,as:.76,armor:14,mr:18,mana:430,crit:0,r:20},
- xa_thu:{hp:860,ad:74,ap:0,range:330,ms:221,as:1.0,armor:13,mr:11,mana:310,crit:.1,r:19},
- sat_thu:{hp:930,ad:78,ap:0,range:100,ms:240,as:.95,armor:16,mr:13,mana:300,crit:.05,r:19},
- do_don:{hp:1320,ad:58,ap:0,range:100,ms:211,as:.76,armor:30,mr:20,mana:290,crit:0,r:23},
- ho_tro:{hp:1010,ad:54,ap:60,range:285,ms:222,as:.8,armor:18,mr:16,mana:390,crit:0,r:20}
+ dau_si:{hp:1100,ad:70,ap:0,range:100,ms:228,as:.9,armor:24,mr:16,mana:300,crit:0,r:21},
+ phap_su:{hp:860,ad:52,ap:80,range:310,ms:218,as:.76,armor:13,mr:18,mana:430,crit:0,r:20},
+ xa_thu:{hp:840,ad:76,ap:0,range:345,ms:224,as:1.0,armor:12,mr:10,mana:310,crit:.1,r:19},
+ sat_thu:{hp:930,ad:78,ap:0,range:100,ms:242,as:.95,armor:16,mr:13,mana:300,crit:.05,r:19},
+ do_don:{hp:1380,ad:56,ap:0,range:100,ms:214,as:.76,armor:32,mr:22,mana:290,crit:0,r:23},
+ ho_tro:{hp:1000,ad:54,ap:62,range:280,ms:224,as:.8,armor:18,mr:16,mana:390,crit:0,r:20}
 };
 const PRE=['Lạc','Phong','Vân','Hắc','Bạch','Thanh','Xích','Huyền','Kim','Lôi','Tạ','Âu','Dạ','Sương','Liệt','Cẩm','Hàn','Mộ','Tử','Nguyệt','Kael','Ryu','Vex','Nyx','Ori','Lyra','Sera','Kira','Roh','Zan','Thane','Ely','Dra','Fen','Iri','Jax','Auri','Cor','Hex','Sol'];
 const SUF=['Long','Hổ','Kiếm','Ảnh','Linh','Dạ','Tuyệt','Vũ','Diệm','Lan','thos','rina','dor','vyn','mond','zeth','luna','rik','sha','wyn'];
@@ -640,10 +640,10 @@ const HEROES=[];
   const rnd=mulberry32(1000+i*77);let name;
   do{name=PRE[Math.floor(rnd()*PRE.length)]+SUF[Math.floor(rnd()*SUF.length)]}while(used.has(name));used.add(name);
   const role=ROLES[i%6],v=Math.floor(i/6)%3,b=BASE[role.id];
-  const j=()=> .93+rnd()*.14;
+  const j=()=> .97+rnd()*.06;
   const def={id:i,name,role:role.id,v,title:TITLES[role.id][Math.floor(rnd()*6)],
    hue:(role.hue+(rnd()*36-18)+360)%360,
-   hp:Math.round(b.hp*j()),ad:Math.round(b.ad*j()),ap:Math.round(b.ap*j()),range:b.range,ms:Math.round(b.ms*j()),
+   hp:Math.round(b.hp*j()),ad:Math.round(b.ad*j()),ap:Math.round(b.ap*j()),range:b.range,ms:Math.round(b.ms*(.985+rnd()*.03)),
    as:+(b.as*j()).toFixed(2),armor:Math.round(b.armor*j()),mr:Math.round(b.mr*j()),mana:Math.round(b.mana*j()),crit:b.crit,r:b.r,
    lore:LORE[role.id][Math.floor(rnd()*3)].replace('{n}',name)};
   def.colA=`hsl(${def.hue},78%,60%)`;def.colB=`hsl(${(def.hue+28)%360},70%,38%)`;def.colD=`hsl(${def.hue},60%,20%)`;
@@ -667,11 +667,16 @@ const ITEMS=[
  {id:8,name:'Cung Bão Nguyệt',cost:950,icon:'bow',st:{as:.45,crit:.15},d:'+45% Tốc đánh, +15% Chí mạng'},
  {id:9,name:'Huyết Kiếm',cost:980,icon:'blood',st:{ad:55,ls:.15},d:'+55 Công, +15% Hút máu'},
  {id:10,name:'Tim Giáp Bất Diệt',cost:920,icon:'heart',st:{hp:520,armor:20},d:'+520 Máu, +20 Giáp'},
- {id:11,name:'Trượng Hút Hồn',cost:1040,icon:'tome',st:{ap:80,ls:.18},d:'+80 Công phép, +18% Hút máu'}
+ {id:11,name:'Trượng Hút Hồn',cost:1040,icon:'tome',st:{ap:80,ls:.18},d:'+80 Công phép, +18% Hút máu'},
+ {id:12,name:'Rìu Xuyên Giáp',cost:1020,icon:'gsword',st:{ad:55,pen:.25},d:'+55 Công, +25% Xuyên giáp'},
+ {id:13,name:'Trượng Hư Vô',cost:1100,icon:'staff',st:{ap:95,pen:.25},d:'+95 Công phép, +25% Xuyên kháng phép'},
+ {id:14,name:'Khiên Hộ Mệnh',cost:900,icon:'armor',st:{hp:380,armor:35,cdr:.1},d:'+380 Máu, +35 Giáp, +10% Giảm hồi chiêu'},
+ {id:15,name:'Giáp Phản Phép',cost:900,icon:'cloak',st:{hp:380,mr:40,cdr:.1},d:'+380 Máu, +40 Kháng phép, +10% Giảm hồi chiêu'},
+ {id:16,name:'Ngọc Thanh Tâm',cost:860,icon:'hat',st:{ap:45,mana:350,cdr:.15},d:'+45 Công phép, +350 Năng lượng, +15% Giảm hồi chiêu'}
 ];
 const BUILDS={
- dau_si:[0,1,5,2,10,9],phap_su:[0,3,4,11,6,10],xa_thu:[0,1,8,2,9,5],
- sat_thu:[0,1,2,9,7,5],do_don:[0,5,10,6,1,3],ho_tro:[0,3,10,6,4,11]
+ dau_si:[0,1,2,9,5,14],phap_su:[0,3,16,4,13,6],xa_thu:[0,1,8,2,12,9],
+ sat_thu:[0,1,2,12,9,5],do_don:[0,5,14,10,6,15],ho_tro:[0,16,14,15,3,10]
 };
 
 /* ================= ICON / PORTRAIT ART ================= */
@@ -825,13 +830,15 @@ function renderSkillUI(){
  <div class="skchips">${chips.map(c=>`<span class="skchip">${c}</span>`).join('')}</div>
  <div class="skd">${sk.desc}</div><div class="skhow">${aimLabel(sk)}</div></div>`;
 }
+function statChips(h){const mg=h.ap>h.ad,c=[`❤ ${h.hp}`,mg?`🔮 ${h.ap}`:`🗡 ${h.ad}`,`🏹 Tầm ${h.range}`,`👟 ${h.ms}`,`⚡ ${h.as}/s`,`🛡 ${h.armor} / ${h.mr}`];
+ return `<div class="skchips" style="margin-bottom:8px">${c.map(x=>`<span class="skchip">${x}</span>`).join('')}</div>`}
 function renderDetail(){
  const h=HEROES[sel],r=ROLE_BY[h.role];
  $('hdImg').src=heroImg(h,148);$('hdName').textContent=h.name;$('hdTitle').textContent='« '+h.title+' »';
  $('hdRole').innerHTML=`<img src="${roleImg(h.role,24,'#0b1220')}">${r.name}`;$('hdRole').style.background=r.color;$('hdRole').style.color='#0b1220';
  $('hdLore').textContent=h.lore;
  const bars=[['Sát thương',clamp((h.ad+h.ap)/170,0,1)],['Chống chịu',clamp((h.hp/1400+h.armor/45)/2,0,1)],['Cơ động',clamp((h.ms-190)/70,0,1)],['Độ khó',clamp(h.complexity/4,0,1)]];
- $('hdStats').innerHTML=bars.map(b=>`<div class="statrow"><b>${b[0]}</b><div class="sbar"><i style="width:${Math.round(b[1]*100)}%"></i></div></div>`).join('');
+ $('hdStats').innerHTML=statChips(h)+bars.map(b=>`<div class="statrow"><b>${b[0]}</b><div class="sbar"><i style="width:${Math.round(b[1]*100)}%"></i></div></div>`).join('');
  renderSkillUI();
 }
 function selectHero(i){
@@ -1145,12 +1152,12 @@ function isEnemy(a,b){return a.team!==b.team&&(b.team!==2||a.kind==='hero'||a.ki
 function recalc(h){
  const d=h.def,l=h.level-1,oldMax=h.maxHp,oldMp=h.maxMp;
  h.maxHp=Math.round(d.hp*(1+.088*l)+h.itemSt.hp);
- h.maxMp=Math.round(d.mana+30*l);
+ h.maxMp=Math.round(d.mana+30*l+(h.itemSt.mana||0));
  h.ad=Math.round(d.ad*(1+.07*l)+h.itemSt.ad);
  h.ap=Math.round(d.ap*(1+.075*l)+h.itemSt.ap);
  h.armor=Math.round(d.armor+3.2*l+h.itemSt.armor);
  h.mr=Math.round(d.mr+2.2*l+h.itemSt.mr);
- h.ms=d.ms+h.itemSt.ms;h.as=Math.min(2.5,d.as*(1+.03*l)+h.itemSt.as);
+ h.ms=d.ms+h.itemSt.ms;h.as=Math.min(2.0,d.as*(1+.03*l)+h.itemSt.as);h.cdr=Math.min(.4,h.itemSt.cdr||0);h.pen=Math.min(.5,h.itemSt.pen||0);
  h.crit=Math.min(.6,d.crit+h.itemSt.crit);h.ls=Math.min(.45,h.itemSt.ls);
  if(oldMax>0){h.hp=Math.min(h.maxHp,h.hp+(h.maxHp-oldMax));h.mp=Math.min(h.maxMp,h.mp+(h.maxMp-oldMp))}
  h.skills[0].lvl=clamp(1+Math.floor(l/3),1,5);h.skills[1].lvl=clamp(1+Math.floor(l/3),1,5);
@@ -1162,8 +1169,8 @@ function addBuff(h,b){const e=h.buffs.find(x=>x.k===b.k);if(e)Object.assign(e,b)
 function teamMult(h){return (1+.04*(G.dragon[h.team]||0))*(hasBuff(h,'caesar')?1.15:1)}
 function effAd(h){return h.ad*(1+buffSum(h,'rage','ad'))*teamMult(h)}
 function effAp(h){return h.ap*teamMult(h)}
-function effMs(h){let v=h.ms*(1+buffSum(h,'haste','ms')+buffSum(h,'rage','ms'));if(h.slowT>0)v*=(1-h.slowV);if(hasBuff(h,'caesar'))v*=1.1;return Math.max(60,v)}
-function effAs(h){return Math.min(2.8,h.as*(1+buffSum(h,'haste','as')))}
+function effMs(h){let v=h.ms*(1+buffSum(h,'haste','ms')+buffSum(h,'rage','ms'));if(hasBuff(h,'caesar'))v*=1.1;if(h.kind==='hero')v=Math.min(330,v);if(h.slowT>0)v*=(1-h.slowV);return Math.max(60,v)}
+function effAs(h){return Math.min(2.4,h.as*(1+buffSum(h,'haste','as')))}
 function statVal(h,s){return s==='ad'?effAd(h):s==='ap'?effAp(h):h.maxHp}
 function xpNeed(l){return 70+l*55}
 function addXp(h,x){if(h.level>=15)return;h.xp+=x;
@@ -1181,7 +1188,7 @@ function dealDamage(src,tgt,amt,type,opt){
  if(src&&src.kind==='hero'&&src.team!==0)amt*=DIFF[G.cfg.diff].dmg;
  else if(src&&src.kind==='hero'&&src.team===0&&!src.isPlayer)amt*=.95;
  if(type==='phys'&&opt.canCrit&&src&&src.crit&&Math.random()<src.crit){amt*=1.8;opt.crit=true}
- const def=type==='phys'?tgt.armor:type==='magic'?tgt.mr:0;
+ let def=type==='phys'?tgt.armor:type==='magic'?tgt.mr:0;if(src&&src.pen&&def>0)def*=1-src.pen;
  let d=amt*100/(100+Math.max(0,def));
  if(tgt.shieldT>0&&tgt.shield>0){const ab=Math.min(tgt.shield,d);tgt.shield-=ab;d-=ab;if(tgt.shield<=0)tgt.shieldT=0}
  if(d<=0)return 0;
@@ -1222,11 +1229,11 @@ function killUnit(src,tgt){
   const share=tgt.xp/Math.max(1,near.length);near.forEach(h=>addXp(h,share));
  }
  else if(tgt.kind==='hero'){
-  tgt.deaths++;tgt.streak=0;tgt.respawnT=Math.min(32,6+tgt.level*1.8);tgt.deadAge=0;tgt.shieldT=0;tgt.shield=0;tgt.buffs=[];tgt.recallT=0;
+  const ks=tgt.streak;tgt.deaths++;tgt.streak=0;tgt.respawnT=Math.min(32,6+tgt.level*1.8);tgt.deadAge=0;tgt.shieldT=0;tgt.shield=0;tgt.buffs=[];tgt.recallT=0;
   const killer=src&&src.kind==='hero'?src:null;
   let bounty=200+tgt.level*8;
   if(killer){killer.kills++;killer.streak++;killer.multi++;killer.multiT=4;
-   bounty+=Math.min(5,tgt.streak)*0;killer.gold+=bounty;addXp(killer,150+tgt.level*20);
+   bounty+=Math.min(5,ks)*40;killer.gold+=bounty;addXp(killer,150+tgt.level*20);
    G.kills[killer.team]++;
    if(killer.isPlayer){sfx('kill');G.shake=Math.max(G.shake,4)}
    if(!G.firstBlood){G.firstBlood=true;announce('CHIẾN CÔNG ĐẦU!',killer.def.name+' mở tỉ số',C.goldL,2.4)}
@@ -1339,7 +1346,7 @@ function castSkill(h,i,aim,tgt,manual){
  sfxMute=!(h.isPlayer||dist2(h.x,h.y,G.player.x,G.player.y)<700*700);
  const ok=execSkill(h,d,aim,tgt,mult);sfxMute=false;
  if(!ok)return deny(h);
- const cdr=hasBuff(h,'cdr')?.15:0;
+ const cdr=Math.min(.4,(hasBuff(h,'cdr')?.15:0)+(h.cdr||0));
  s.cd=d.cd*(1-.04*(Math.max(1,s.lvl)-1))*(1-cdr);
  h.mp-=d.mana;h.revealT=1.2;h.recallT=0;
  
@@ -1731,7 +1738,7 @@ function updateHero(h,dt){
  h.regenT+=dt;const ooc=G.time-(h.lastHitT||0)>4;
  h.hp=Math.min(h.maxHp,h.hp+h.maxHp*(ooc?.02:.008)*dt);
  h.mp=Math.min(h.maxMp,h.mp+h.maxMp*(hasBuff(h,'cdr')?.03:.014)*dt);
- h.gold+=(1.7*(h.team===1?DIFF[G.cfg.diff].gold:1))*dt;
+ h.gold+=(1.3*(h.team===1?DIFF[G.cfg.diff].gold:1))*dt;
  addXp(h,2.4*dt);
  // recall
  if(h.recallT>0){h.recallT-=dt;
