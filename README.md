@@ -157,3 +157,11 @@ Chúc bạn chơi vui. 🏆
 - **Tập trung hỏa lực** vào tướng địch yếu nhất trong tầm.
 - **Né chiêu** (độ khó Thường và Khó): tránh đạn thẳng và vùng nổ.
 - Sửa lỗi: tướng AI từng dùng Tốc biến *lao vào* kẻ địch khi sắp chết, và bắn kỹ năng cận chiến từ quá xa.
+
+---
+
+## Bộ kỹ năng 120 tướng (v3)
+
+- 57 loại chiêu, 120 bộ 3 chiêu không trùng nhau; kit gán theo vai trò và kiểu chơi của từng tướng.
+- 24 passive, tất cả đều có tác dụng trong trận.
+- Chi tiết từng tướng: xem `DESIGN.md`.

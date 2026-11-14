@@ -607,7 +607,26 @@ const SKN={
  slow:['Băng Địa','Trói Ảnh','Đầm Lầy'],stun:['Choáng Kích','Địa Chấn','Trấn Hồn'],chain:['Liên Hoàn Kích','Dây Sét','Xích Diệt'],
  execute:['Kết Liễu','Đoạn Mệnh Đao','Tử Hình'],drain:['Hút Sinh Lực','Phệ Hồn','Huyết Tế'],
  barrage:['Thiên Thạch Vũ','Mưa Diệt Thế','Vực Sao Rơi'],rage:['Cuồng Nộ Chiến Thần','Thức Tỉnh Huyết Mạch','Nộ Hỏa Toàn Thân'],
- assassinate:['Ám Sát Tuyệt Mệnh','Ảnh Sát','Tử Ảnh Kích'],sanctuary:['Thánh Vực Hộ Mệnh','Kết Giới Hoàng Kim','Phúc Trạch Quang Hoàn']
+ assassinate:['Ám Sát Tuyệt Mệnh','Ảnh Sát','Tử Ảnh Kích'],sanctuary:['Thánh Vực Hộ Mệnh','Kết Giới Hoàng Kim','Phúc Trạch Quang Hoàn'],pierce:['Xuyên Tâm','Liên Hoàn Tiễn','Phá Không'],bounce:['Bật Tung','Tán Xạ Đạn','Ngũ Hành Đạn'],
+split:['Phân Liệt','Bách Hoa Đạn','Vỡ Mảnh'],boomerang:['Đào Viên','Kỷ Tiểu','Hồi Xuân'],
+homing:['Truy Hồn','Bắt Bóng','Tỏa Tiễn'],snipe:['Thần Tiễn','Bách Bất Trung','Xuyên Vân Tiễn'],
+backstep:['Thoái Bộ Kích','Lùi Quyền','Nghịch Bộ'],roll:['Lăn Xuyên','Lộn Diệt','Cánh Long'],
+global:['Toàn Cực Phá','Thiên La Vực','Tứ Hải Nhất Tiễn'],leap:['Nhảy Trảm','Bình Địa Phá','Sát Thiên'],
+grapple:['Móc Tuyệt','Kìm Bóng','Xích Vực'],pull:['Kéo Hồn','Hút Mạch','Trói Diệt'],
+root:['Trói Địa','Cát Tóng','Băng Trói'],silence:['Cấm Ngôn','Phong Ấn','Vô Sóng'],
+knockup:['Đánh Bay','Phá Không Kích','Trấn Địa'],fear:['Kinh Hoảng','Tẫn Hồn','Uy Nhu'],
+taunt:['Giục Chiến','Hạo Kỳ','Bất Khuất'],truedmg:['Chân Ngộ','Vô Hình Tiễn','Phá Vạn Giáp'],
+manaburn:['Đốt Mạch','Hút Linh','Phá Nguyên'],shred:['Xé Giáp','Phá Vệ','Hủy Kháng'],
+poison:['Độc Truyền','Trùng Cốt','Mãng Xà'],mark:['Đánh Dấu','Báo Hồn','Hủy Dấu'],
+channel:['Hướng Ngộ','Thiên Lôi Diệt','Cực Tọa'],zonedot:['Địa Ngục','Lửa Trù','Độc Trầm'],
+trap:['Bẫy Ảnh','Tàng Kích','Bẫy Long'],storm:['Bão Tối','Cuồng Luân','Huyền Vực'],
+orb:['Cầu Linh','Tinh Vệ','Huyền Châu'],reflect:['Phản Ngộ','Khiên Đảo','Bất Kích'],
+cleanse:['Tịnh Tâm','Giải Trói','Thanh Sạch'],immune:['Bất Tử','Vô Thượng Hộ','Kim Thân'],
+stealth:['Ẩn Thân','Vô Ảnh','Tàng Hình'],reset:['Hồi Nguyên','Tái Khởi','Cực Hồi'],
+empower:['Cường Hóa','Phá Thế','Bách Trảm'],stance:['Kiếm Thái','Thất Thất','Hóa Vũ'],
+regen:['Hồi Xuân','Sinh Mạch','Tĩnh Dưỡng'],spellvamp:['Hút Phép','Linh Hút','Ma Huyết'],
+spawn:['Triệu Hồi','Linh Binh','Hồn Thú'],bond:['Đồng Mạch','Kết Nghĩa','Song Sinh'],
+wall:['Tường Địa','Thạch Tường','Băng Thành']
 };
 const PLAN={
  dau_si:{s1:['strike','dash','bolt'],s2:['shield','haste','nova'],u:['rage','execute','stun']},
@@ -617,8 +636,8 @@ const PLAN={
  do_don:{s1:['nova','stun','slow'],s2:['shield','heal','dash'],u:['stun','sanctuary','rage']},
  ho_tro:{s1:['bolt','slow','chain'],s2:['heal','shield','haste'],u:['sanctuary','heal','barrage']}
 };
-const TARGETED={strike:1,execute:1,drain:1,chain:1,assassinate:1};
-const AIMMODE={bolt:'dir',fan:'dir',dash:'dir',blink:'dir',slow:'point',barrage:'point',strike:'target',execute:'target',drain:'target',chain:'target',assassinate:'target'};
+const TARGETED={strike:1,execute:1,drain:1,chain:1,assassinate:1,homing:1,pull:1,truedmg:1,manaburn:1,shred:1,poison:1,mark:1};
+const AIMMODE={bolt:'dir',fan:'dir',dash:'dir',blink:'dir',slow:'point',barrage:'point',strike:'target',execute:'target',drain:'target',chain:'target',assassinate:'target',pierce:'dir',bounce:'dir',split:'dir',boomerang:'dir',snipe:'dir',backstep:'dir',roll:'dir',global:'dir',leap:'point',grapple:'point',root:'point',silence:'point',knockup:'point',fear:'point',channel:'point',zonedot:'point',trap:'point',wall:'point',homing:'target',pull:'target',truedmg:'target',manaburn:'target',shred:'target',poison:'target',mark:'target'};
 function rangeText(d){const m=AIMMODE[d.type]||'self';
  if(m==='self')return d.range?'Bán kính '+d.range:'Bản thân';
  if(m==='point')return 'Tầm '+d.range+' • Vùng '+d.r;
@@ -653,6 +672,45 @@ function mkSkill(type,role,v,ult){
   case 'rage':Object.assign(d,{cd:34,mana:110,range:225,base:155,ratio:R*.7,adPct:.35,msPct:.25,dur:5});break;
   case 'assassinate':Object.assign(d,{cd:32,mana:115,range:430,base:245,ratio:R*1.3,stun:.4});break;
   case 'sanctuary':Object.assign(d,{cd:38,mana:130,range:420,base:265,ratio:R*.95,shield:180,sratio:magic&&stat==='ap'?.6:.08,haste:.25,dur:3,stat:(stat==='ap'?'ap':'hp')});break;
+  case 'pierce':Object.assign(d,{cd:7-v,mana:48,range:520,base:110+v*20,ratio:R*.7,speed:820,pierces:3,slow:v===2?.25:0});break;
+  case 'bounce':Object.assign(d,{cd:8-v,mana:50,range:480,base:95+v*18,ratio:R*.62,speed:760,bounces:4,falloff:.85});break;
+  case 'split':Object.assign(d,{cd:9-v,mana:52,range:460,base:80+v*16,ratio:R*.55,speed:740,n:5,spread:.7});break;
+  case 'boomerang':Object.assign(d,{cd:9,mana:54,range:440,base:100+v*18,ratio:R*.65,speed:700,turnDist:300});break;
+  case 'homing':Object.assign(d,{cd:8-v,mana:50,range:560,base:120+v*22,ratio:R*.72,speed:640,turnRate:4});break;
+  case 'snipe':Object.assign(d,{cd:11-v,mana:58,range:1100,base:150+v*28,ratio:R*.85,speed:1500});break;
+  case 'backstep':Object.assign(d,{cd:9-v,mana:50,range:200,base:105+v*20,ratio:R*.65,speed:800});break;
+  case 'roll':Object.assign(d,{cd:8-v,mana:46,range:230,base:60,ratio:R*.4,bonus:.6});break;
+  case 'global':Object.assign(d,{cd:60,mana:150,range:9999,base:320,ratio:R*1.4,speed:1700,pierces:99});break;
+  case 'leap':Object.assign(d,ult?{cd:36,mana:120,range:650,base:240,ratio:R*1.2,r:210,stun:1.1,delay:.35}:{cd:12,mana:60,range:520,base:130,ratio:R*.75,r:170,stun:.7,delay:.35});break;
+  case 'grapple':Object.assign(d,{cd:10-v,mana:50,range:480,base:80,ratio:R*.5});break;
+  case 'pull':Object.assign(d,{cd:10,mana:55,range:420,base:110+v*20,ratio:R*.65,pullDist:220});break;
+  case 'root':Object.assign(d,{cd:10,mana:55,range:420,base:90+v*16,ratio:R*.55,r:170,dur:1.8});break;
+  case 'silence':Object.assign(d,{cd:11,mana:55,range:430,base:70+v*12,ratio:R*.45,r:180,dur:2});break;
+  case 'knockup':Object.assign(d,{cd:12,mana:60,range:400,base:120+v*22,ratio:R*.7,r:180,stun:1});break;
+  case 'fear':Object.assign(d,{cd:13,mana:60,range:400,base:80+v*14,ratio:R*.5,r:200,dur:1.6});break;
+  case 'taunt':Object.assign(d,{cd:14,mana:60,range:260,base:60,ratio:R*.4,dur:2.5,dmgRed:.3});break;
+  case 'truedmg':Object.assign(d,{cd:9-v,mana:52,range:440,base:130+v*24,ratio:R*.75});break;
+  case 'manaburn':Object.assign(d,{cd:10,mana:50,range:420,base:80+v*14,ratio:R*.5,burnPct:.25});break;
+  case 'shred':Object.assign(d,{cd:10,mana:50,range:420,base:80+v*14,ratio:R*.5,shredPct:.35,dur:3});break;
+  case 'poison':Object.assign(d,{cd:9,mana:50,range:420,base:60+v*10,ratio:R*.4,dps:40+v*12,dur:4});break;
+  case 'mark':Object.assign(d,{cd:11,mana:55,range:480,base:180+v*30,ratio:R*.95,delay:2.5});break;
+  case 'channel':Object.assign(d,ult?{cd:40,mana:130,range:620,base:300,ratio:R*1.35,r:260,stun:1.4,delay:1.2}:{cd:14,mana:70,range:560,base:160,ratio:R*.85,r:200,stun:.9,delay:1.2});break;
+  case 'zonedot':Object.assign(d,{cd:12,mana:60,range:520,base:0,ratio:0,r:170,dps:60+v*18,dur:4,slow:.3});break;
+  case 'trap':Object.assign(d,{cd:14,mana:60,range:550,base:160+v*28,ratio:R*.85,r:140,stun:1.2,life:30});break;
+  case 'storm':Object.assign(d,ult?{cd:36,mana:120,range:200,base:0,ratio:0,dps:90+v*20,dur:6}:{cd:14,mana:65,range:180,base:0,ratio:0,dps:50+v*14,dur:4});break;
+  case 'orb':Object.assign(d,{cd:13,mana:60,range:0,base:0,ratio:0,n:3,dps:45+v*12,dur:5});break;
+  case 'reflect':Object.assign(d,{cd:16,mana:60,range:0,base:0,ratio:0,dur:3});break;
+  case 'cleanse':Object.assign(d,{cd:14,mana:55,range:0,base:0,ratio:0,ccimmune:1.5});break;
+  case 'immune':Object.assign(d,{cd:60,mana:140,range:0,base:0,ratio:0,dur:2.5});break;
+  case 'stealth':Object.assign(d,{cd:16,mana:60,range:0,base:0,ratio:0,dur:4,ms:.25});break;
+  case 'reset':Object.assign(d,{cd:50,mana:100,range:0,base:0,ratio:0});break;
+  case 'empower':Object.assign(d,{cd:12,mana:55,range:0,base:0,ratio:0,charges:3,bonus:.5,slow:.3});break;
+  case 'stance':Object.assign(d,ult?{cd:40,mana:120,range:0,base:0,ratio:0,adPct:.4,asPct:.35,dur:8}:{cd:16,mana:65,range:0,base:0,ratio:0,adPct:.25,asPct:.2,dur:5});break;
+  case 'regen':Object.assign(d,{cd:14,mana:60,range:400,base:0,ratio:0,hps:60+v*16,dur:5});break;
+  case 'spellvamp':Object.assign(d,{cd:14,mana:55,range:0,base:0,ratio:0,pct:.3,dur:5});break;
+  case 'spawn':Object.assign(d,ult?{cd:44,mana:130,range:0,base:0,ratio:0,n:2,hp:420,ad:55,dur:14}:{cd:18,mana:70,range:0,base:0,ratio:0,n:1,hp:280,ad:40,dur:10});break;
+  case 'bond':Object.assign(d,{cd:16,mana:60,range:600,base:0,ratio:0,dur:6,share:.2,ms:.15});break;
+  case 'wall':Object.assign(d,ult?{cd:40,mana:120,range:600,base:0,ratio:0,n:5,dur:6}:{cd:16,mana:65,range:550,base:0,ratio:0,n:3,dur:4});break;
  }
  if(d.type==='strike'||d.type==='execute'){d.range=BASE[role].range>200?390:170}
  d.desc=skillDesc(d);return d;
@@ -680,6 +738,45 @@ function skillDesc(d){
   case 'rage':return `Cuồng nộ ${d.dur}s: +35% công, +25% tốc chạy, nổ năng lượng gây ${dmg} sát thương quanh thân.`;
   case 'assassinate':return `Áp sát mục tiêu trong ${d.range}, gây ${dmg} sát thương và choáng 0.4s.`;
   case 'sanctuary':return `Kết giới hộ mệnh: hồi ${dmg} máu, thêm lá chắn và +25% tốc chạy cho đồng đội trong vùng.`;
+  case 'pierce':return `Phóng đạn xuyên qua tối đa ${d.pierces} mục tiêu, mỗi mục tiêu chịu ${dmg} sát thương${d.slow?' kèm làm chậm':''}.`;
+  case 'bounce':return `Đạn bật tung giữa ${d.bounces} kẻ địch gần nhất, sát thương giảm ${Math.round((1-d.falloff)*100)}% mỗi lần bật. Mỗi lần ${dmg}.`;
+  case 'split':return `Đạn chính nảy ra ${d.n} mảnh hình quạt khi hết tầm hoặc trúng mục tiêu, mỗi mảnh gây ${Math.round(d.base*.6)} (+${Math.round(d.ratio*60)}%) sát thương.`;
+  case 'boomerang':return `Đạn bay tới rồi quay về vị trí caster, gây ${dmg} sát thương cả đi lẫn về.`;
+  case 'homing':return `Phóng đạn đuổi theo mục tiêu đã chọn, tự điều hướng, gây ${dmg} sát thương.`;
+  case 'snipe':return `Bắn từ tầm cực xa (${d.range}), tốc độ cao, gây ${dmg} sát thương và tăng gấp đôi nếu trúng tướng.`;
+  case 'backstep':return `Lùi ngược ${d.range} đơn vị đồng thời bắn đạn về phía trước gây ${dmg} sát thương.`;
+  case 'roll':return `Lăn ${d.range} đơn vị, đòn đánh cơ bản tiếp theo tăng ${Math.round(d.bonus*100)}% sát thương.`;
+  case 'global':return `Chiêu cuối: bắn đạn xuyên toàn bản đồ, xuyên qua mọi mục tiêu, gây ${dmg} sát thương.`;
+  case 'leap':return `Nhảy tới vùng chọn sau ${d.delay}s, khi đáp gây ${dmg} sát thương diện rộng và choáng ${d.stun}s.`;
+  case 'grapple':return `Móc tới điểm chọn, kéo bản thân tới đó nhanh (dash), va chạm gây ${dmg} sát thương.`;
+  case 'pull':return `Kéo mục tiêu về phía caster ${d.pullDist} đơn vị, gây ${dmg} sát thương.`;
+  case 'root':return `Vùng trói chân (bán kính ${d.r}): địch bị trói ${d.dur}s (không di chuyển) và chịu ${dmg} sát thương.`;
+  case 'silence':return `Vùng cấm chiêu (bán kính ${d.r}): địch bị cấm hỏi chiêu ${d.dur}s, chịu ${dmg} sát thương.`;
+  case 'knockup':return `Đánh bay kẻ địch trong vùng (bán kính ${d.r}), choáng ${d.stun}s và gây ${dmg} sát thương.`;
+  case 'fear':return `Gây sợ hãi diện rộng (bán kính ${d.r}): địch bỏ chạy khỏi tâm vùng, không đánh được trong ${d.dur}s và chịu ${dmg} sát thương.`;
+  case 'taunt':return `Giục chiến: địch quanh thân bị làm chậm và giảm ${Math.round(d.dmgRed*100)}% sát thương gây ra trong ${d.dur}s.`;
+  case 'truedmg':return `Gây ${dmg} sát thương CHÂN THỰC (bỏ qua giáp & kháng phép) lên mục tiêu.`;
+  case 'manaburn':return `Đốt ${Math.round(d.burnPct*100)}% năng lượng tối đa mục tiêu, gây sát thương bằng năng lượng đã đốt.`;
+  case 'shred':return `Xé toang mục tiêu: giảm ${Math.round(d.shredPct*100)}% giáp & kháng phép trong ${d.dur}s, kèm ${dmg} sát thương.`;
+  case 'poison':return `Gây độc: ${Math.round(d.dps)} sát thương/giây trong ${d.dur}s cho mục tiêu, kèm ${dmg} ban đầu.`;
+  case 'mark':return `Đánh dấu mục tiêu; sau ${d.delay}s nổ gây ${dmg} sát thương lớn.`;
+  case 'channel':return `Hướng dẫn ${d.delay}s rồi gây ${dmg} sát thương diện rộng cực lớn + choáng ${d.stun}s tại vùng. Caster bị chậm trong lúc hướng dẫn.`;
+  case 'zonedot':return `Tạo vùng tồn tại ${d.dur}s (bán kính ${d.r}), gây ${Math.round(d.dps)} sát thương/0.5s và làm chậm kẻ địch đứng trong đó.`;
+  case 'trap':return `Đặt bẫy vô hình tại điểm (tồn tại ${d.life}s); khi địch bước vào nổ gây ${dmg} sát thương + choáng ${d.stun}s.`;
+  case 'storm':return `Bão xoáy đi theo caster ${d.dur}s: mỗi 0.5s gây ${Math.round(d.dps)} sát thương quanh thân.`;
+  case 'orb':return `Tạo ${d.n} cầu năng lượng quay quanh thân ${d.dur}s, gây ${Math.round(d.dps)} sát thương khi chạm địch.`;
+  case 'reflect':return `Khiên phản đạn ${d.dur}s: đạn địch trúng sẽ bị bật ngược lại kẻ bắn.`;
+  case 'cleanse':return `Giải trừ mọi choáng/làm chậm/trói/cấm chiêu/độc + miễn nhiễm khống chế ${d.ccimmune}s.`;
+  case 'immune':return `Chiêu cuối: bất tử ${d.dur}s (máu không thể giảm xuống dưới 1).`;
+  case 'stealth':return `Tàng hình ${d.dur}s (+${Math.round(d.ms*100)}% tốc chạy); tấn công hoặc hỏi chiêu sẽ phá vỡ.`;
+  case 'reset':return `Chiêu cuối: reset hồi chiêu 2 kỹ năng thường + hồi 30% năng lượng.`;
+  case 'empower':return `${d.charges} đòn đánh cơ bản tiếp theo tăng ${Math.round(d.bonus*100)}% sát thương và kèm làm chậm.`;
+  case 'stance':return `Kiếm thái ${d.dur}s: +${Math.round(d.adPct*100)}% công, +${Math.round(d.asPct*100)}% tốc đánh.`;
+  case 'regen':return `Hồi ${Math.round(d.hps)} máu/giây trong ${d.dur}s cho bản thân & đồng đội quanh vùng (${d.range}).`;
+  case 'spellvamp':return `Buff hút phép ${d.dur}s: ${Math.round(d.pct*100)}% sát thương phép gây ra hồi thành máu.`;
+  case 'spawn':return `Triệu hồi ${d.n} linh binh (${d.hp} máu, ${d.ad} công) tồn tại ${d.dur}s, tự tấn công địch gần.`;
+  case 'bond':return `Liên kết với đồng đội gần nhất ${d.dur}s: cả hai +${Math.round(d.ms*100)}% tốc chạy và chia sẻ ${Math.round(d.share*100)}% sát thương nhận.`;
+  case 'wall':return `Tạo bức tường ${d.n} điểm chặn tồn tại ${d.dur}s tại vùng chọn, cản trở di chuyển.`;
  }
  return '';
 }
@@ -691,28 +788,154 @@ const NAMES=(function(){const A=[
  'Granthor,Thiết Sơn,Magnar,Kim Cang,Durnak,Bàn Thạch,Torgun,Trấn Quan,Hakon,Cự Linh,Brakka,Huyền Vũ,Valdor,Địa Long,Garrak,Hộ Pháp,Oskar,Thạch Tôn,Brum,Kiên Thành',
  'Elowen,Từ Tâm,Sylphine,Ngọc Lan,Aurelle,Thanh Liên,Maelis,Phúc Duyên,Lirael,Tuệ Minh,Faelan,Bạch Hạc,Ondine,An Nhiên,Seraphel,Hoa Tiên,Idris,Cam Thảo,Nimue,Linh Đan'].map(x=>x.split(','));
  return Array.from({length:120},(_,i)=>A[i%6][Math.floor(i/6)])})();
-const HEROES=[];
-(function(){
- const used=new Set();
- for(let i=0;i<120;i++){
-  const rnd=mulberry32(1000+i*77);let name;
-  do{name=PRE[Math.floor(rnd()*PRE.length)]+SUF[Math.floor(rnd()*SUF.length)]}while(used.has(name));used.add(name);name=NAMES[i];
-  const role=ROLES[i%6],v=Math.floor(i/6)%3,b=BASE[role.id];
-  const j=()=> .97+rnd()*.06;
-  const def={id:i,name,role:role.id,v,title:TITLES[role.id][Math.floor(rnd()*6)],
-   hue:(role.hue+(rnd()*36-18)+360)%360,
-   hp:Math.round(b.hp*j()),ad:Math.round(b.ad*j()),ap:Math.round(b.ap*j()),range:b.range,ms:Math.round(b.ms*(.985+rnd()*.03)),
-   as:+(b.as*j()).toFixed(2),armor:Math.round(b.armor*j()),mr:Math.round(b.mr*j()),mana:Math.round(b.mana*j()),crit:b.crit,r:b.r,
-   lore:LORE[role.id][Math.floor(rnd()*3)].replace('{n}',name)};
-  def.colA=`hsl(${def.hue},78%,60%)`;def.colB=`hsl(${(def.hue+28)%360},70%,38%)`;def.colD=`hsl(${def.hue},60%,20%)`;
-  const p=PLAN[role.id];
-  def.skills=[mkSkill(p.s1[v],role.id,v,false),mkSkill(p.s2[v],role.id,v,false),mkSkill(p.u[v],role.id,v,true)];
-  def.complexity=1+v+(role.id==='sat_thu'||role.id==='phap_su'?1:0);
-  HEROES.push(def);
- }
-})();
-
-/* ================= ITEMS ================= */
+const KIT_PHRASE={"bolt":"bắn tia xa","fan":"xả đạn hình quạt","nova":"nổ vòng quanh thân","dash":"lao tới chém","blink":"tốc biến","strike":"đòn đánh cường hóa","shield":"dựng khiên","heal":"hồi máu","haste":"tăng tốc","slow":"làm chậm vùng","stun":"choáng diện rộng","chain":"sét xích","execute":"kết liễu","drain":"hút máu","barrage":"mưa đạn","rage":"cuồng nộ","assassinate":"ám sát","sanctuary":"thánh địa","pierce":"đạn xuyên","bounce":"đạn bật","split":"đạn nảy mảnh","boomerang":"phi tiêu quay về","homing":"đạn đuổi","snipe":"bắn tỉa tầm xa","backstep":"lùi bắn","roll":"lăn né","global":"bắn xuyên bản đồ","leap":"nhảy đập","grapple":"móc kéo mình","pull":"kéo địch","root":"trói chân","silence":"cấm chiêu","knockup":"hất tung","fear":"gây sợ hãi","taunt":"chế nhạo","truedmg":"sát thương chuẩn","manaburn":"đốt năng lượng","shred":"xé giáp","poison":"tẩm độc","mark":"đánh dấu rồi nổ","channel":"chiêu hướng dẫn diện rộng","zonedot":"vùng lửa thiêu đốt","trap":"đặt bẫy","storm":"bão quanh người","orb":"cầu năng lượng bảo hộ","reflect":"phản đạn","cleanse":"giải khống chế","immune":"bất tử ngắn","stealth":"tàng hình","reset":"làm mới chiêu","empower":"cường hóa đòn đánh","stance":"đổi kiếm thái","regen":"hồi máu theo thời gian","spellvamp":"hút máu từ chiêu","spawn":"triệu hồi","bond":"liên kết đồng đội","wall":"dựng tường"};
+const NATIVE_ULT={fan:1,nova:1,heal:1,stun:1,chain:1,execute:1,barrage:1,rage:1,assassinate:1,sanctuary:1,leap:1,channel:1,storm:1,stance:1,spawn:1,wall:1,global:1,immune:1,reset:1};
+function ultBoost(d){
+ if(NATIVE_ULT[d.type])return;
+ for(const k of ['base','dps','hps','shield'])if(d[k])d[k]=Math.round(d[k]*1.9);
+ if(d.ratio)d.ratio=+(d.ratio*1.5).toFixed(3);
+ for(const k of ['dur','stun','r','pullDist','ccimmune'])if(d[k])d[k]=+(d[k]*1.4).toFixed(2);
+ for(const k of ['n','pierces','bounces','charges'])if(d[k])d[k]=Math.max(d[k]+1,Math.round(d[k]*1.5));
+ d.cd=Math.max(30,Math.round(d.cd*2.4));d.mana=Math.round(d.mana*1.8);
+}
+/* Mỗi tướng = 1 bộ 3 chiêu (kit) duy nhất: chiêu 1, chiêu 2, chiêu cuối. Số liệu lấy từ mkSkill() nên cùng thang đo cho mọi tướng. */
+const HERO_DATA=[
+{"name":"Bạo Chúa","role":"dau_si","title":"Vua Cuồng Nộ","hue":20,"hp":1050,"ad":75,"ap":0,"range":100,"ms":230,"as":0.92,"armor":23,"mr":15,"mana":290,"crit":0,"r":21,"passive":{"key":"lifesteal","name":"Hút Máu Cuồng","desc":"Đòn đánh cơ bản hồi 15% sát thương vật lý thành máu.","val":0.15},"kit":["strike","dash","rage"],"idx":0,"complexity":1},
+{"name":"Hộ Vệ","role":"dau_si","title":"Khiên Bất Tử","hue":28,"hp":1200,"ad":64,"ap":0,"range":100,"ms":225,"as":0.85,"armor":26,"mr":17,"mana":310,"crit":0,"r":22,"passive":{"key":"shield_on_ult","name":"Khiên Cuối Cùng","desc":"Khi hỏi chiêu cuối, được khiên bằng 20% máu tối đa.","val":0.2},"kit":["strike","shield","sanctuary"],"idx":1,"complexity":1},
+{"name":"Kiếm Sát","role":"dau_si","title":"Kiếm Khách Tốc Sát","hue":12,"hp":1000,"ad":77,"ap":0,"range":100,"ms":235,"as":0.95,"armor":22,"mr":15,"mana":280,"crit":0,"r":20,"passive":{"key":"reset_on_kill","name":"Tái Sinh Sát","desc":"Hạ gục ngay lập tức reset hồi chiêu của hai skill thường.","val":1},"kit":["dash","execute","assassinate"],"idx":2,"complexity":1},
+{"name":"Thạch Bì","role":"dau_si","title":"Người Núi Sắt","hue":35,"hp":1180,"ad":65,"ap":0,"range":100,"ms":222,"as":0.84,"armor":26,"mr":17,"mana":320,"crit":0,"r":23,"passive":{"key":"tenacity","name":"Da Đá","desc":"Giảm 30% thời gian bị choáng, làm chậm, trói chân.","val":0.3},"kit":["pull","stun","leap"],"idx":3,"complexity":2},
+{"name":"Bão Đấm","role":"dau_si","title":"Đấm Gió Sấm","hue":18,"hp":1080,"ad":72,"ap":0,"range":100,"ms":230,"as":0.95,"armor":23,"mr":16,"mana":300,"crit":0,"r":21,"passive":{"key":"cd_on_hit","name":"Nhịp Đấm","desc":"Mỗi lần trúng đòn giảm 0.5 giây hồi chiêu skill thường.","val":0.5},"kit":["grapple","knockup","storm"],"idx":4,"complexity":2},
+{"name":"Cuồng Rìu","role":"dau_si","title":"Rìu Cuồng Chiến","hue":40,"hp":1100,"ad":70,"ap":0,"range":100,"ms":228,"as":0.99,"armor":24,"mr":16,"mana":300,"crit":0,"r":21,"passive":{"key":"as_bonus","name":"Cơn Cuồng","desc":"Tăng 25% tốc đánh thường trực.","val":0.25},"kit":["empower","slow","nova"],"idx":5,"complexity":1},
+{"name":"Ma Hút Máu","role":"dau_si","title":"Kẻ Nuốt Sinh Lực","hue":8,"hp":1050,"ad":68,"ap":0,"range":100,"ms":226,"as":0.88,"armor":23,"mr":17,"mana":330,"crit":0,"r":20,"passive":{"key":"lifesteal","name":"Hút Phép Ma","desc":"Đòn đánh cơ bản hồi 12% sát thương vật lý thành máu.","val":0.12},"kit":["drain","spellvamp","immune"],"idx":6,"complexity":1},
+{"name":"Thành Địa","role":"dau_si","title":"Tường Thành Sống","hue":30,"hp":1210,"ad":63,"ap":0,"range":100,"ms":220,"as":0.82,"armor":26,"mr":17,"mana":300,"crit":0,"r":23,"passive":{"key":"armor_aura","name":"Hào Quang Giáp","desc":"Đồng đội gần tăng 8 giáp thường trực.","val":8},"kit":["taunt","strike","wall"],"idx":7,"complexity":2},
+{"name":"Võ Quyền","role":"dau_si","title":"Quyền Thủ Tối Thượng","hue":15,"hp":1080,"ad":74,"ap":0,"range":100,"ms":232,"as":0.98,"armor":23,"mr":15,"mana":290,"crit":0,"r":21,"passive":{"key":"low_hp_dmg","name":"Quyền Cuồng","desc":"Khi máu dưới 50%, tăng 20% sát thương gây ra.","val":0.2},"kit":["knockup","dash","stance"],"idx":8,"complexity":2},
+{"name":"Độc Kiếm","role":"dau_si","title":"Lưỡi Độc Tâm","hue":42,"hp":1060,"ad":71,"ap":0,"range":100,"ms":228,"as":0.9,"armor":24,"mr":16,"mana":310,"crit":0,"r":21,"passive":{"key":"poison_blade","name":"Đao Độc","desc":"Đòn cơ bản gây thêm 15 sát thương độc mỗi giây trong 3 giây.","val":15},"kit":["poison","shred","execute"],"idx":9,"complexity":1},
+{"name":"Phong Bước","role":"dau_si","title":"Bước Nhẹ Gió","hue":22,"hp":1020,"ad":70,"ap":0,"range":100,"ms":250,"as":0.92,"armor":22,"mr":15,"mana":290,"crit":0,"r":20,"passive":{"key":"low_hp_ms","name":"Tốc Sinh Tử","desc":"Khi máu dưới 40%, tăng 25% tốc chạy.","val":0.25},"kit":["dash","haste","reset"],"idx":10,"complexity":2},
+{"name":"Khiên Phản","role":"dau_si","title":"Khiên Phản Kích","hue":38,"hp":1180,"ad":66,"ap":0,"range":100,"ms":224,"as":0.85,"armor":26,"mr":17,"mana":300,"crit":0,"r":22,"passive":{"key":"shield_bash","name":"Nổ Khiên","desc":"Khi khiên bị phá vỡ, gây choáng 1 giây quanh thân.","val":1},"kit":["reflect","strike","immune"],"idx":11,"complexity":1},
+{"name":"Linh Gọi","role":"dau_si","title":"Gọi Hồn Chiến","hue":10,"hp":1070,"ad":69,"ap":0,"range":100,"ms":228,"as":0.9,"armor":24,"mr":16,"mana":320,"crit":0,"r":21,"passive":{"key":"cd_on_hit","name":"Hồn Hỗ Trợ","desc":"Mỗi lần trúng đòn giảm 0.4 giây hồi chiêu.","val":0.4},"kit":["orb","dash","spawn"],"idx":12,"complexity":3},
+{"name":"Sấm Dây","role":"dau_si","title":"Sấm Xích Trừng","hue":26,"hp":1090,"ad":72,"ap":0,"range":100,"ms":228,"as":0.91,"armor":24,"mr":16,"mana":310,"crit":0,"r":21,"passive":{"key":"slow_blade","name":"Đòn Chậm","desc":"Đòn cơ bản làm chậm 20% trong 1.5 giây.","val":0.2},"kit":["chain","slow","nova"],"idx":13,"complexity":1},
+{"name":"Đao Bóng","role":"dau_si","title":"Lưỡi Dao Bóng","hue":5,"hp":990,"ad":77,"ap":0,"range":100,"ms":236,"as":0.96,"armor":22,"mr":15,"mana":280,"crit":0,"r":19,"passive":{"key":"crit_bonus","name":"Đòn Chí Mạng","desc":"Tăng 30% sát thương chí mạng.","val":0.3},"kit":["mark","blink","assassinate"],"idx":14,"complexity":2},
+{"name":"Chí Quyền","role":"dau_si","title":"Đấm Chí Tôn","hue":32,"hp":1060,"ad":76,"ap":0,"range":100,"ms":230,"as":0.93,"armor":23,"mr":15,"mana":300,"crit":0,"r":21,"passive":{"key":"move_dmg","name":"Đà Lực","desc":"Sau khi di chuyển 300 đơn vị, đòn đánh tiếp theo tăng 30% sát thương.","val":0.3},"kit":["truedmg","empower","rage"],"idx":15,"complexity":1},
+{"name":"Lửa Ngục","role":"dau_si","title":"Ngọn Lửa Địa Ngục","hue":44,"hp":1100,"ad":70,"ap":0,"range":100,"ms":226,"as":0.88,"armor":24,"mr":17,"mana":320,"crit":0,"r":21,"passive":{"key":"regen_p","name":"Huyết Ngục","desc":"Hồi 12 máu mỗi 5 giây thường trực.","val":12},"kit":["zonedot","root","channel"],"idx":16,"complexity":2},
+{"name":"Dạ Săn","role":"dau_si","title":"Kẻ Săn Đêm","hue":16,"hp":1010,"ad":75,"ap":0,"range":100,"ms":238,"as":0.94,"armor":22,"mr":15,"mana":290,"crit":0,"r":20,"passive":{"key":"heal_on_kill","name":"Hút Sinh Mệnh","desc":"Hạ gục hồi 15% máu tối đa.","val":0.15},"kit":["stealth","strike","assassinate"],"idx":17,"complexity":2},
+{"name":"Thánh Sĩ","role":"dau_si","title":"Chiến Binh Thánh Quang","hue":24,"hp":1120,"ad":67,"ap":0,"range":100,"ms":226,"as":0.86,"armor":25,"mr":17,"mana":330,"crit":0,"r":22,"passive":{"key":"assist_heal","name":"Ánh Sáng Đồng Đội","desc":"Khi đồng đội gần hạ gục, bản thân hồi 10% máu.","val":0.1},"kit":["strike","regen","sanctuary"],"idx":18,"complexity":1},
+{"name":"Cấm Thuật","role":"dau_si","title":"Kẻ Cấm Phép","hue":6,"hp":1080,"ad":70,"ap":0,"range":100,"ms":228,"as":0.9,"armor":24,"mr":16,"mana":320,"crit":0,"r":21,"passive":{"key":"cdr_ult","name":"Năng Lực Cấm","desc":"Giảm 20% hồi chiêu của chiêu cuối.","val":0.2},"kit":["manaburn","silence","channel"],"idx":19,"complexity":2},
+{"name":"Lôi Pháp Sư","role":"phap_su","title":"Sấm Chấn Cửu Trời","hue":260,"hp":850,"ad":52,"ap":82,"range":310,"ms":220,"as":0.78,"armor":13,"mr":18,"mana":430,"crit":0,"r":20,"passive":{"key":"spell_weave","name":"Dệt Sấm","desc":"Sau khi hỏi chiêu, đòn cơ bản tiếp theo gây thêm 40% AP sát thương phép.","val":0.4},"kit":["bolt","stun","nova"],"idx":0,"complexity":1},
+{"name":"Hỏa Vũ","role":"phap_su","title":"Mưa Lửa Rơi","hue":280,"hp":820,"ad":50,"ap":85,"range":320,"ms":218,"as":0.76,"armor":12,"mr":17,"mana":460,"crit":0,"r":20,"passive":{"key":"manaflow","name":"Nguồn Lửa","desc":"Tăng 50% tốc độ hồi mana.","val":0.5},"kit":["fan","slow","barrage"],"idx":1,"complexity":1},
+{"name":"Tà Thần","role":"phap_su","title":"Tà Nhãn Toàn Cầu","hue":250,"hp":840,"ad":51,"ap":84,"range":330,"ms":216,"as":0.75,"armor":13,"mr":18,"mana":440,"crit":0,"r":20,"passive":{"key":"extra_gold","name":"Của Tà","desc":"Mỗi lần hạ gục thêm 25 vàng.","val":25},"kit":["pierce","chain","global"],"idx":2,"complexity":2},
+{"name":"Huyễn Thuật","role":"phap_su","title":"Ảo Thuật Bão","hue":270,"hp":830,"ad":50,"ap":86,"range":310,"ms":222,"as":0.77,"armor":12,"mr":18,"mana":450,"crit":0,"r":20,"passive":{"key":"spellvamp_p","name":"Hút Ảo","desc":"15% sát thương phép gây ra hồi thành máu.","val":0.15},"kit":["bounce","homing","storm"],"idx":3,"complexity":3},
+{"name":"Băng Tâm","role":"phap_su","title":"Trái Tim Băng Giá","hue":248,"hp":800,"ad":53,"ap":88,"range":300,"ms":224,"as":0.8,"armor":12,"mr":17,"mana":420,"crit":0,"r":19,"passive":{"key":"low_hp_dmg","name":"Lạnh Căng","desc":"Khi máu dưới 50%, tăng 25% sát thương phép.","val":0.25},"kit":["split","mark","execute"],"idx":4,"complexity":3},
+{"name":"Thổ Pháp","role":"phap_su","title":"Núi Đất Dựng","hue":288,"hp":900,"ad":48,"ap":75,"range":300,"ms":214,"as":0.72,"armor":14,"mr":19,"mana":420,"crit":0,"r":21,"passive":{"key":"ms_aura","name":"Hào Quang Đất","desc":"Đồng đội gần tăng 8% tốc chạy.","val":0.08},"kit":["boomerang","root","wall"],"idx":5,"complexity":3},
+{"name":"Cung Tinh","role":"phap_su","title":"Cung Tinh Vạn Lý","hue":265,"hp":810,"ad":54,"ap":84,"range":340,"ms":226,"as":0.79,"armor":12,"mr":17,"mana":430,"crit":0,"r":19,"passive":{"key":"reset_on_kill","name":"Tinh Tái Sinh","desc":"Hạ gục reset hồi chiêu của hai skill thường.","val":1},"kit":["snipe","blink","channel"],"idx":6,"complexity":2},
+{"name":"Băng Hà","role":"phap_su","title":"Sông Băng Đông Kết","hue":255,"hp":880,"ad":49,"ap":78,"range":310,"ms":216,"as":0.74,"armor":14,"mr":19,"mana":440,"crit":0,"r":21,"passive":{"key":"shield_on_ult","name":"Khiên Băng","desc":"Hỏi chiêu cuối được khiên bằng 15% máu tối đa.","val":0.15},"kit":["zonedot","slow","storm"],"idx":7,"complexity":1},
+{"name":"Mị Sĩ","role":"phap_su","title":"Bẫy Mỵ Săn","hue":275,"hp":870,"ad":50,"ap":80,"range":310,"ms":218,"as":0.76,"armor":13,"mr":18,"mana":430,"crit":0,"r":20,"passive":{"key":"thorns","name":"Gai Bẫy","desc":"Phản 15% sát thương vật lý nhận lại kẻ tấn công.","val":0.15},"kit":["trap","pull","barrage"],"idx":8,"complexity":2},
+{"name":"Cổ Độc","role":"phap_su","title":"Cổ Độc Truyền Thuyết","hue":250,"hp":840,"ad":51,"ap":85,"range":310,"ms":218,"as":0.76,"armor":13,"mr":18,"mana":450,"crit":0,"r":20,"passive":{"key":"spellvamp_p","name":"Hút Độc","desc":"18% sát thương phép gây ra hồi thành máu.","val":0.18},"kit":["poison","drain","nova"],"idx":9,"complexity":1},
+{"name":"Hủy Diệt","role":"phap_su","title":"Ngọn Lửa Hủy Diệt","hue":285,"hp":830,"ad":52,"ap":86,"range":320,"ms":220,"as":0.78,"armor":12,"mr":17,"mana":440,"crit":0,"r":20,"passive":{"key":"heal_on_kill","name":"Hút Sinh Hủy","desc":"Hạ gục hồi 12% máu tối đa.","val":0.12},"kit":["manaburn","shred","execute"],"idx":10,"complexity":1},
+{"name":"Quang Vinh","role":"phap_su","title":"Ánh Sáng Tối Thượng","hue":268,"hp":820,"ad":53,"ap":82,"range":310,"ms":235,"as":0.8,"armor":12,"mr":17,"mana":420,"crit":0,"r":19,"passive":{"key":"low_hp_ms","name":"Ánh Sáng Tốc","desc":"Khi máu dưới 40%, tăng 20% tốc chạy.","val":0.2},"kit":["truedmg","blink","global"],"idx":11,"complexity":2},
+{"name":"Nguyệt Quỹ","role":"phap_su","title":"Vầng Nguyệt Bảo Vệ","hue":258,"hp":860,"ad":50,"ap":80,"range":310,"ms":218,"as":0.76,"armor":13,"mr":19,"mana":440,"crit":0,"r":20,"passive":{"key":"tenacity","name":"Ý Nguyệt","desc":"Giảm 25% thời gian bị choáng, làm chậm, trói chân, cấm chiêu.","val":0.25},"kit":["orb","heal","immune"],"idx":12,"complexity":2},
+{"name":"Khiên Pháp","role":"phap_su","title":"Khiên Pháp Phản Kích","hue":278,"hp":890,"ad":48,"ap":76,"range":300,"ms":216,"as":0.73,"armor":14,"mr":19,"mana":450,"crit":0,"r":21,"passive":{"key":"manaflow","name":"Nguồn Pháp","desc":"Tăng 40% tốc độ hồi mana.","val":0.4},"kit":["reflect","bolt","stance"],"idx":13,"complexity":2},
+{"name":"Triệu Sư","role":"phap_su","title":"Kẻ Gọi Linh Vật","hue":252,"hp":850,"ad":50,"ap":82,"range":310,"ms":218,"as":0.76,"armor":13,"mr":18,"mana":460,"crit":0,"r":20,"passive":{"key":"assist_heal","name":"Linh Hồi","desc":"Khi đồng đội gần hạ gục, bản thân hồi 8% máu.","val":0.08},"kit":["bolt","regen","spawn"],"idx":14,"complexity":2},
+{"name":"Hỗn Loạn","role":"phap_su","title":"Nguồn Hỗn Loạn","hue":282,"hp":840,"ad":51,"ap":83,"range":310,"ms":218,"as":0.77,"armor":13,"mr":18,"mana":430,"crit":0,"r":20,"passive":{"key":"cdr_ult","name":"Hỗn Cuối","desc":"Giảm 15% hồi chiêu của chiêu cuối.","val":0.15},"kit":["knockup","fear","stun"],"idx":15,"complexity":1},
+{"name":"Thần Hành","role":"phap_su","title":"Bước Nhẹ Thần","hue":262,"hp":810,"ad":52,"ap":80,"range":310,"ms":238,"as":0.78,"armor":12,"mr":17,"mana":420,"crit":0,"r":19,"passive":{"key":"move_dmg","name":"Đà Thần","desc":"Sau khi di chuyển 300 đơn vị, đòn đánh tiếp theo tăng 25% sát thương.","val":0.25},"kit":["bolt","dash","reset"],"idx":16,"complexity":2},
+{"name":"Cung Tiên","role":"phap_su","title":"Cung Tiên Mãn Nguyệt","hue":272,"hp":830,"ad":55,"ap":78,"range":330,"ms":222,"as":0.82,"armor":12,"mr":17,"mana":430,"crit":0,"r":20,"passive":{"key":"regen_p","name":"Tiên Hồi","desc":"Hồi 10 máu mỗi 5 giây thường trực.","val":10},"kit":["backstep","slow","chain"],"idx":17,"complexity":1},
+{"name":"Chiến Pháp","role":"phap_su","title":"Pháp Sư Chiến Đấu","hue":256,"hp":840,"ad":56,"ap":74,"range":280,"ms":224,"as":0.83,"armor":13,"mr":18,"mana":420,"crit":0,"r":20,"passive":{"key":"as_bonus","name":"Nhịp Pháp","desc":"Tăng 20% tốc đánh thường trực.","val":0.2},"kit":["empower","blink","nova"],"idx":18,"complexity":1},
+{"name":"Ám Sát","role":"phap_su","title":"Kẻ Ám Sát Phép","hue":249,"hp":800,"ad":54,"ap":86,"range":320,"ms":228,"as":0.8,"armor":12,"mr":17,"mana":430,"crit":0,"r":19,"passive":{"key":"poison_blade","name":"Dao Phép Độc","desc":"Đòn cơ bản gây thêm 12 sát thương độc mỗi giây trong 3 giây.","val":12},"kit":["stealth","mark","assassinate"],"idx":19,"complexity":3},
+{"name":"Lôi Báo","role":"xa_thu","title":"Cung Thủ Sấm Sét","hue":190,"hp":820,"ad":78,"ap":0,"range":340,"ms":225,"as":1.08,"armor":12,"mr":10,"mana":300,"crit":0.1,"r":19,"passive":{"key":"as_bonus","name":"Máu Sấm","desc":"Tăng 12% tốc đánh.","val":0.12},"kit":["bolt","haste","barrage"],"idx":0,"complexity":1},
+{"name":"Nhạn Ngũ","role":"xa_thu","title":"Bách Phát Bách Trúng","hue":195,"hp":800,"ad":82,"ap":0,"range":360,"ms":220,"as":0.95,"armor":11,"mr":10,"mana":320,"crit":0.11,"r":18,"passive":{"key":"crit_bonus","name":"Nhắm Chính Yếu Điểm","desc":"Tăng 20% sát thương chí mạng.","val":0.2},"kit":["pierce","snipe","global"],"idx":1,"complexity":2},
+{"name":"Độc Cô","role":"xa_thu","title":"Nữ Nhẫn Giả Độc","hue":175,"hp":860,"ad":72,"ap":0,"range":330,"ms":228,"as":1.02,"armor":13,"mr":11,"mana":290,"crit":0.09,"r":20,"passive":{"key":"poison_blade","name":"Nhẫn Độc","desc":"Đòn cơ bản gây thêm 12 sát thương độc/giây trong 3 giây.","val":12},"kit":["trap","poison","nova"],"idx":2,"complexity":2},
+{"name":"Điện Ảnh","role":"xa_thu","title":"Cung Thủ Dây Sét","hue":200,"hp":810,"ad":77,"ap":0,"range":345,"ms":224,"as":1.05,"armor":12,"mr":10,"mana":310,"crit":0.1,"r":19,"passive":{"key":"cd_on_hit","name":"Sét Truyền Dẫn","desc":"Mỗi lần trúng mục tiêu giảm 0.6 giây hồi chiêu skill thường.","val":0.6},"kit":["bounce","chain","fan"],"idx":3,"complexity":2},
+{"name":"Hồi Tiêu","role":"xa_thu","title":"Đệ Tử Phi Tiêu","hue":185,"hp":830,"ad":75,"ap":0,"range":350,"ms":222,"as":1,"armor":12,"mr":9,"mana":300,"crit":0.1,"r":19,"passive":{"key":"slow_blade","name":"Phi Tiêu Làm Chậm","desc":"Đòn cơ bản làm chậm 25% trong 1.5 giây.","val":0.25},"kit":["boomerang","slow","pierce"],"idx":4,"complexity":2},
+{"name":"Trảm Yêu","role":"xa_thu","title":"Cung Thủ Truy Nã","hue":205,"hp":790,"ad":80,"ap":0,"range":355,"ms":226,"as":0.98,"armor":11,"mr":10,"mana":330,"crit":0.1,"r":18,"passive":{"key":"cd_on_hit","name":"Dấu Săn Đuổi","desc":"Mỗi lần trúng đòn giảm 0.5 giây hồi chiêu skill thường.","val":0.5},"kit":["homing","mark","execute"],"idx":5,"complexity":3},
+{"name":"Tán Sát","role":"xa_thu","title":"Cung Thủ Tán Đạn","hue":180,"hp":840,"ad":76,"ap":0,"range":340,"ms":230,"as":1.03,"armor":12,"mr":10,"mana":300,"crit":0.1,"r":19,"passive":{"key":"move_dmg","name":"Động Lực Tán Đạn","desc":"Sau khi di chuyển 300 đơn vị, đòn đánh tiếp theo +25% sát thương.","val":0.25},"kit":["split","dash","leap"],"idx":6,"complexity":3},
+{"name":"Du Nhược","role":"xa_thu","title":"Lướt Như Bóng","hue":192,"hp":780,"ad":74,"ap":0,"range":335,"ms":240,"as":1.06,"armor":11,"mr":9,"mana":280,"crit":0.09,"r":18,"passive":{"key":"low_hp_ms","name":"Bóng Lướt Sinh Tồn","desc":"Khi HP dưới 40%, tăng 20% tốc chạy.","val":0.2},"kit":["backstep","roll","empower"],"idx":7,"complexity":1},
+{"name":"Bão Nữ","role":"xa_thu","title":"Nữ Thần Bão Tố","hue":208,"hp":870,"ad":73,"ap":0,"range":325,"ms":220,"as":0.92,"armor":13,"mr":11,"mana":340,"crit":0.09,"r":20,"passive":{"key":"cdr_ult","name":"Tim Bão","desc":"Giảm 15% hồi chiêu chiêu cuối.","val":0.15},"kit":["zonedot","root","storm"],"idx":8,"complexity":1},
+{"name":"Phá Pháp","role":"xa_thu","title":"Cung Thủ Phá Ản","hue":172,"hp":800,"ad":79,"ap":0,"range":345,"ms":224,"as":1,"armor":12,"mr":10,"mana":310,"crit":0.1,"r":19,"passive":{"key":"manaflow","name":"Nguyên Tế Mana","desc":"Tăng 40% hồi mana.","val":0.4},"kit":["silence","shred","channel"],"idx":9,"complexity":2},
+{"name":"Tử Mệnh","role":"xa_thu","title":"Cung Thủ Thu Hồn","hue":198,"hp":810,"ad":81,"ap":0,"range":350,"ms":223,"as":0.97,"armor":12,"mr":10,"mana":300,"crit":0.11,"r":19,"passive":{"key":"reset_on_kill","name":"Hồn Thu Được","desc":"Hạ gục mục tiêu reset hồi chiêu skill thường.","val":1},"kit":["execute","drain","reset"],"idx":10,"complexity":2},
+{"name":"Hút Linh","role":"xa_thu","title":"Cung Thủ Hút Mana","hue":188,"hp":820,"ad":76,"ap":0,"range":340,"ms":225,"as":1,"armor":12,"mr":10,"mana":320,"crit":0.1,"r":19,"passive":{"key":"lifesteal","name":"Hút Linh Phép","desc":"Đòn đánh cơ bản hồi 12% sát thương vật lý thành máu.","val":0.12},"kit":["manaburn","truedmg","barrage"],"idx":11,"complexity":1},
+{"name":"Quỹ Đạo","role":"xa_thu","title":"Cung Thủ Hành Tinh","hue":202,"hp":850,"ad":74,"ap":0,"range":330,"ms":222,"as":0.94,"armor":13,"mr":11,"mana":310,"crit":0.09,"r":20,"passive":{"key":"shield_on_ult","name":"Khiên Hành Tinh","desc":"Khi hỏi chiêu cuối, được khiên bằng 18% HP tối đa.","val":0.18},"kit":["orb","blink","storm"],"idx":12,"complexity":2},
+{"name":"Móc Hồn","role":"xa_thu","title":"Cung Thủ Móc Sét","hue":178,"hp":830,"ad":78,"ap":0,"range":345,"ms":226,"as":1.04,"armor":12,"mr":10,"mana":290,"crit":0.1,"r":19,"passive":{"key":"lifesteal","name":"Hút Huyết Móc","desc":"Hồi 12% sát thương vật lý thành máu.","val":0.12},"kit":["grapple","pull","stance"],"idx":13,"complexity":3},
+{"name":"Địa Sấm","role":"xa_thu","title":"Sấm Động Địa","hue":210,"hp":880,"ad":80,"ap":0,"range":320,"ms":218,"as":0.93,"armor":13,"mr":11,"mana":300,"crit":0.09,"r":20,"passive":{"key":"tenacity","name":"Rễ Địa","desc":"Giảm 30% thời gian khống chế.","val":0.3},"kit":["knockup","fear","channel"],"idx":14,"complexity":2},
+{"name":"Ẩn Giáp","role":"xa_thu","title":"Xạ Thủ Ẩn Sương","hue":182,"hp":860,"ad":72,"ap":0,"range":335,"ms":224,"as":0.96,"armor":13,"mr":11,"mana":310,"crit":0.09,"r":20,"passive":{"key":"shield_bash","name":"Giáp Vỡ Choáng","desc":"Khi khiên bị phá vỡ, gây choáng 1.2 giây quanh thân.","val":1.2},"kit":["stealth","bolt","fan"],"idx":15,"complexity":2},
+{"name":"Phản Tiễn","role":"xa_thu","title":"Cung Thủ Phản Đạn","hue":196,"hp":810,"ad":77,"ap":0,"range":340,"ms":225,"as":1,"armor":12,"mr":10,"mana":300,"crit":0.1,"r":19,"passive":{"key":"thorns","name":"Giáp Phản Sát","desc":"Phản 20% sát thương vật lý nhận lại kẻ tấn công.","val":0.2},"kit":["reflect","cleanse","barrage"],"idx":16,"complexity":1},
+{"name":"Tái Sinh","role":"xa_thu","title":"Cung Thủ Sinh Mệnh","hue":170,"hp":870,"ad":70,"ap":0,"range":325,"ms":220,"as":0.9,"armor":13,"mr":11,"mana":330,"crit":0.09,"r":20,"passive":{"key":"regen_p","name":"Hơi Sinh Mệnh","desc":"Hồi thêm 12 HP mỗi 5 giây.","val":12},"kit":["bolt","regen","heal"],"idx":17,"complexity":1},
+{"name":"Thú Săn","role":"xa_thu","title":"Thú Đồng Hành","hue":206,"hp":840,"ad":75,"ap":0,"range":340,"ms":224,"as":1,"armor":12,"mr":10,"mana":320,"crit":0.1,"r":19,"passive":{"key":"extra_gold","name":"Thú Săn Mồi","desc":"Mỗi hạ gục được thêm 15 vàng.","val":15},"kit":["pierce","trap","spawn"],"idx":18,"complexity":3},
+{"name":"Huyết Pháp","role":"xa_thu","title":"Cung Thủ Hút Huyết","hue":184,"hp":800,"ad":79,"ap":0,"range":350,"ms":226,"as":1.02,"armor":11,"mr":10,"mana":340,"crit":0.1,"r":18,"passive":{"key":"low_hp_dmg","name":"Huyết Cuồng","desc":"Khi HP dưới 50%, tăng 20% sát thương.","val":0.2},"kit":["spellvamp","bolt","rage"],"idx":19,"complexity":1},
+{"name":"Kiếm Vong","role":"sat_thu","title":"Kẻ Sát Nhân Bóng Đêm","hue":348,"hp":920,"ad":80,"ap":0,"range":100,"ms":245,"as":0.98,"armor":16,"mr":13,"mana":290,"crit":0.05,"r":19,"passive":{"key":"reset_on_kill","name":"Vong Kiếm Tái","desc":"Hạ gục mục tiêu reset hồi chiêu skill thường.","val":1},"kit":["dash","strike","assassinate"],"idx":0,"complexity":1},
+{"name":"Vô Ảnh","role":"sat_thu","title":"Bóng Ma Vô Hình","hue":340,"hp":900,"ad":78,"ap":0,"range":95,"ms":255,"as":0.95,"armor":15,"mr":12,"mana":280,"crit":0.05,"r":18,"passive":{"key":"low_hp_ms","name":"Bóng Đêm Lướt","desc":"Khi HP dưới 40%, tăng 22% tốc chạy.","val":0.22},"kit":["stealth","strike","reset"],"idx":1,"complexity":3},
+{"name":"Điểm Hồn","role":"sat_thu","title":"Đánh Dấu Tử Thần","hue":355,"hp":910,"ad":82,"ap":0,"range":100,"ms":248,"as":0.96,"armor":16,"mr":13,"mana":300,"crit":0.05,"r":19,"passive":{"key":"cd_on_hit","name":"Hồn Điểm Truyền","desc":"Mỗi lần trúng mục tiêu giảm 0.7 giây hồi chiêu skill thường.","val":0.7},"kit":["pull","mark","execute"],"idx":2,"complexity":2},
+{"name":"Cốt Độc","role":"sat_thu","title":"Độc Dược Cuồng","hue":330,"hp":940,"ad":74,"ap":0,"range":105,"ms":240,"as":0.92,"armor":17,"mr":14,"mana":310,"crit":0.05,"r":20,"passive":{"key":"poison_blade","name":"Kiếm Độc","desc":"Đòn cơ bản gây thêm 15 sát thương độc/giây trong 3 giây.","val":15},"kit":["poison","drain","storm"],"idx":3,"complexity":1},
+{"name":"Tấn Nhược","role":"sat_thu","title":"Tấn Công Rút Lui","hue":350,"hp":890,"ad":79,"ap":0,"range":100,"ms":258,"as":1,"armor":15,"mr":12,"mana":270,"crit":0.05,"r":18,"passive":{"key":"move_dmg","name":"Động Lực Tấn Công","desc":"Sau khi di chuyển 300 đơn vị, đòn đánh tiếp theo +25% sát thương.","val":0.25},"kit":["backstep","roll","leap"],"idx":4,"complexity":2},
+{"name":"Hắc Móc","role":"sat_thu","title":"Móc Tối Cấm Chiêu","hue":360,"hp":920,"ad":81,"ap":0,"range":100,"ms":244,"as":0.94,"armor":16,"mr":13,"mana":300,"crit":0.05,"r":19,"passive":{"key":"tenacity","name":"Ý Chí Tối","desc":"Giảm 25% thời gian khống chế.","val":0.25},"kit":["grapple","silence","execute"],"idx":5,"complexity":2},
+{"name":"Xuyên Giáp","role":"sat_thu","title":"Sát Thương Thật","hue":345,"hp":900,"ad":84,"ap":0,"range":95,"ms":250,"as":0.97,"armor":15,"mr":12,"mana":290,"crit":0.055,"r":18,"passive":{"key":"low_hp_dmg","name":"Cuồng Kỵ Yếu","desc":"Khi HP dưới 50%, tăng 22% sát thương.","val":0.22},"kit":["truedmg","shred","assassinate"],"idx":6,"complexity":1},
+{"name":"Hỏa Ngục","role":"sat_thu","title":"Đốt Linh Hồn","hue":335,"hp":930,"ad":76,"ap":0,"range":100,"ms":242,"as":0.93,"armor":17,"mr":14,"mana":320,"crit":0.05,"r":20,"passive":{"key":"manaflow","name":"Ngọn Lửa Mana","desc":"Tăng 35% hồi mana.","val":0.35},"kit":["manaburn","chain","channel"],"idx":7,"complexity":2},
+{"name":"Bẫy Vong","role":"sat_thu","title":"Đặt Bẫy Chết","hue":365,"hp":910,"ad":77,"ap":0,"range":100,"ms":246,"as":0.95,"armor":16,"mr":13,"mana":300,"crit":0.05,"r":19,"passive":{"key":"slow_blade","name":"Dao Bẫy Chậm","desc":"Đòn cơ bản làm chậm 22% trong 1.5 giây.","val":0.22},"kit":["trap","root","nova"],"idx":8,"complexity":2},
+{"name":"Hành Tinh","role":"sat_thu","title":"Kiếm Quỹ Đạo","hue":348,"hp":920,"ad":78,"ap":0,"range":100,"ms":243,"as":1.02,"armor":16,"mr":13,"mana":300,"crit":0.05,"r":19,"passive":{"key":"as_bonus","name":"Quỹ Đạo Nhanh","desc":"Tăng 10% tốc đánh.","val":0.1},"kit":["orb","haste","stance"],"idx":9,"complexity":3},
+{"name":"Phi Đao","role":"sat_thu","title":"Phi Đao Bật Tung","hue":352,"hp":890,"ad":80,"ap":0,"range":105,"ms":250,"as":0.99,"armor":15,"mr":12,"mana":280,"crit":0.055,"r":18,"passive":{"key":"crit_bonus","name":"Dao Nhắm Yếu Điểm","desc":"Tăng 18% sát thương chí mạng.","val":0.18},"kit":["slow","bounce","fan"],"idx":10,"complexity":2},
+{"name":"Bất Tử","role":"sat_thu","title":"Sát Thủ Giáp Sắt","hue":328,"hp":1000,"ad":72,"ap":0,"range":110,"ms":230,"as":0.88,"armor":17,"mr":14,"mana":300,"crit":0.045,"r":20,"passive":{"key":"shield_bash","name":"Giáp Sắt Vỡ","desc":"Khi khiên bị phá vỡ, gây choáng 1.5 giây quanh thân.","val":1.5},"kit":["knockup","strike","immune"],"idx":11,"complexity":1},
+{"name":"Khiếp Hồn","role":"sat_thu","title":"Ác Mộng Khiếp Sợ","hue":358,"hp":930,"ad":77,"ap":0,"range":100,"ms":242,"as":0.94,"armor":17,"mr":13,"mana":310,"crit":0.05,"r":20,"passive":{"key":"armor_aura","name":"Hào Quang Giáp","desc":"Đồng đội gần +6 giáp.","val":6},"kit":["fear","stun","nova"],"idx":12,"complexity":1},
+{"name":"Vùng Chết","role":"sat_thu","title":"Kẻ Mở Cổng Địa Ngục","hue":342,"hp":910,"ad":79,"ap":0,"range":100,"ms":245,"as":0.96,"armor":16,"mr":13,"mana":300,"crit":0.05,"r":19,"passive":{"key":"cd_on_hit","name":"Ngọn Lửa Địa Ngục","desc":"Mỗi lần trúng đòn giảm 0.5 giây hồi chiêu skill thường.","val":0.5},"kit":["zonedot","dash","mark"],"idx":13,"complexity":2},
+{"name":"Truy Nã","role":"sat_thu","title":"Thợ Săn Truy Nã","hue":362,"hp":880,"ad":83,"ap":0,"range":95,"ms":252,"as":0.98,"armor":15,"mr":12,"mana":290,"crit":0.055,"r":18,"passive":{"key":"lifesteal","name":"Hút Huyết Săn","desc":"Hồi 14% sát thương vật lý thành máu.","val":0.14},"kit":["homing","dash","execute"],"idx":14,"complexity":2},
+{"name":"Phản Kích","role":"sat_thu","title":"Khiên Phản Sát","hue":332,"hp":950,"ad":75,"ap":0,"range":100,"ms":238,"as":0.9,"armor":17,"mr":14,"mana":300,"crit":0.045,"r":20,"passive":{"key":"thorns","name":"Giáp Gai Phản","desc":"Phản 25% sát thương vật lý nhận lại kẻ tấn công.","val":0.25},"kit":["reflect","strike","rage"],"idx":15,"complexity":1},
+{"name":"Thanh Tịnh","role":"sat_thu","title":"Sát Thủ Thanh Tẩy","hue":348,"hp":900,"ad":76,"ap":0,"range":100,"ms":250,"as":0.97,"armor":16,"mr":13,"mana":310,"crit":0.05,"r":19,"passive":{"key":"ms_aura","name":"Hào Quang Tốc Độ","desc":"Đồng đội gần +8% tốc chạy.","val":0.08},"kit":["cleanse","strike","assassinate"],"idx":16,"complexity":1},
+{"name":"Bức Tường","role":"sat_thu","title":"Kẻ Dựng Tường Chặn","hue":356,"hp":920,"ad":80,"ap":0,"range":100,"ms":244,"as":0.95,"armor":16,"mr":13,"mana":320,"crit":0.05,"r":19,"passive":{"key":"cdr_ult","name":"Tường Giảm Hồi","desc":"Giảm 12% hồi chiêu chiêu cuối.","val":0.12},"kit":["wall","dash","execute"],"idx":17,"complexity":2},
+{"name":"Huyết Đồng","role":"sat_thu","title":"Hút Huyết Triệu Hồi","hue":338,"hp":930,"ad":77,"ap":0,"range":100,"ms":242,"as":0.93,"armor":17,"mr":14,"mana":330,"crit":0.05,"r":20,"passive":{"key":"lifesteal","name":"Hút Huyết Đồng","desc":"Đòn đánh cơ bản hồi 12% sát thương vật lý thành máu.","val":0.12},"kit":["spellvamp","strike","spawn"],"idx":18,"complexity":2},
+{"name":"Nhắm Chết","role":"sat_thu","title":"Kẻ Hạ Gục Chớp Nhoáng","hue":346,"hp":890,"ad":82,"ap":0,"range":95,"ms":254,"as":0.99,"armor":15,"mr":12,"mana":280,"crit":0.055,"r":18,"passive":{"key":"heal_on_kill","name":"Hồi Máu Sau Săn","desc":"Hạ gục hồi 20% HP tối đa.","val":0.2},"kit":["dash","mark","assassinate"],"idx":19,"complexity":2},
+{"name":"Hắc Lôi","role":"do_don","title":"Người Nhảy Đón","hue":145,"hp":1408,"ad":59,"ap":0,"range":100,"ms":214,"as":0.74,"armor":34,"mr":22,"mana":276,"crit":0,"r":23,"passive":{"key":"low_hp_ms","name":"Bước Tốc Huyết","desc":"Khi máu dưới 40%, tăng 25% tốc chạy.","val":25},"kit":["strike","shield","leap"],"idx":0,"complexity":2},
+{"name":"Thạch Nộ","role":"do_don","title":"Bão Núi Lửa","hue":155,"hp":1463,"ad":55,"ap":0,"range":100,"ms":208,"as":0.78,"armor":35,"mr":23,"mana":267,"crit":0,"r":23,"passive":{"key":"thorns","name":"Da Núi Lửa","desc":"Phản 25% sát thương vật lý nhận lại kẻ tấn công.","val":25},"kit":["nova","taunt","storm"],"idx":1,"complexity":1},
+{"name":"Bảo Long","role":"do_don","title":"Tường Sống Bất Tử","hue":140,"hp":1490,"ad":53,"ap":0,"range":100,"ms":210,"as":0.73,"armor":35,"mr":24,"mana":261,"crit":0,"r":23,"passive":{"key":"shield_bash","name":"Vỡ Khiên Chấn","desc":"Khi khiên bị phá vỡ, choáng 1s mọi kẻ địch quanh thân.","val":1},"kit":["dash","knockup","sanctuary"],"idx":2,"complexity":1},
+{"name":"Xích Ngục","role":"do_don","title":"Kẻ Nhốt Địa Ngục","hue":160,"hp":1380,"ad":56,"ap":0,"range":100,"ms":212,"as":0.76,"armor":33,"mr":22,"mana":290,"crit":0,"r":23,"passive":{"key":"tenacity","name":"Ý Chí Ngục","desc":"Giảm 30% thời gian choáng/làm chậm/trói/cấm chiêu.","val":30},"kit":["root","silence","wall"],"idx":3,"complexity":2},
+{"name":"Xuân Sinh","role":"do_don","title":"Suối Sống Vĩnh Cửu","hue":135,"hp":1435,"ad":52,"ap":0,"range":100,"ms":214,"as":0.72,"armor":32,"mr":24,"mana":305,"crit":0,"r":23,"passive":{"key":"regen_p","name":"Hơi Xuân","desc":"Hồi 18 máu mỗi 5 giây.","val":18},"kit":["heal","drain","regen"],"idx":4,"complexity":1},
+{"name":"Móc Huyết","role":"do_don","title":"Kẻ Móc Xích","hue":150,"hp":1352,"ad":60,"ap":0,"range":100,"ms":218,"as":0.78,"armor":30,"mr":21,"mana":290,"crit":0,"r":23,"passive":{"key":"heal_on_kill","name":"Huyết Tế","desc":"Hồi 15% máu tối đa khi hạ gục.","val":15},"kit":["pull","grapple","execute"],"idx":5,"complexity":2},
+{"name":"Hồn Vong","role":"do_don","title":"Bóng Đêm Bất Tử","hue":165,"hp":1380,"ad":53,"ap":0,"range":100,"ms":220,"as":0.76,"armor":31,"mr":23,"mana":284,"crit":0,"r":23,"passive":{"key":"tenacity","name":"Vong Bất Tiễn","desc":"Giảm 25% thời gian khống chế.","val":25},"kit":["fear","slow","immune"],"idx":6,"complexity":1},
+{"name":"Độc Cổ","role":"do_don","title":"Thần Độc Cổ Đại","hue":130,"hp":1408,"ad":56,"ap":0,"range":100,"ms":210,"as":0.76,"armor":32,"mr":22,"mana":296,"crit":0,"r":23,"passive":{"key":"poison_blade","name":"Đao Độc","desc":"Đòn cơ bản gây thêm 20 sát thương độc mỗi giây trong 3s.","val":20},"kit":["poison","shred","channel"],"idx":7,"complexity":2},
+{"name":"Triệu Linh","role":"do_don","title":"Người Gọi Hồn Đá","hue":158,"hp":1449,"ad":50,"ap":0,"range":100,"ms":212,"as":0.71,"armor":34,"mr":23,"mana":290,"crit":0,"r":23,"passive":{"key":"armor_aura","name":"Hồn Đá Hộ Vệ","desc":"Đồng đội gần được +15 giáp.","val":15},"kit":["orb","bond","spawn"],"idx":8,"complexity":3},
+{"name":"Khiên Bạc","role":"do_don","title":"Gương Phản Đạn","hue":148,"hp":1380,"ad":56,"ap":0,"range":100,"ms":216,"as":0.74,"armor":35,"mr":22,"mana":276,"crit":0,"r":23,"passive":{"key":"thorns","name":"Gương Bạc","desc":"Phản 20% sát thương vật lý nhận lại kẻ tấn công.","val":20},"kit":["strike","reflect","immune"],"idx":9,"complexity":1},
+{"name":"Cuồng Lôi","role":"do_don","title":"Chiến Thần Cuồng Nộ","hue":152,"hp":1325,"ad":62,"ap":0,"range":100,"ms":223,"as":0.8,"armor":29,"mr":20,"mana":305,"crit":0,"r":23,"passive":{"key":"low_hp_dmg","name":"Nộ Huyết","desc":"Khi máu dưới 50%, tăng 20% sát thương.","val":20},"kit":["empower","strike","rage"],"idx":10,"complexity":1},
+{"name":"Thái A","role":"do_don","title":"Kiếm Thái Vô Song","hue":142,"hp":1352,"ad":59,"ap":0,"range":100,"ms":218,"as":0.79,"armor":30,"mr":21,"mana":290,"crit":0,"r":23,"passive":{"key":"as_bonus","name":"Tốc Thái","desc":"Tăng 20% tốc đánh.","val":20},"kit":["truedmg","mark","stance"],"idx":11,"complexity":3},
+{"name":"Sét Xuyên","role":"do_don","title":"Sét Xuyên Vạn Lớp","hue":162,"hp":1380,"ad":57,"ap":0,"range":100,"ms":214,"as":0.76,"armor":32,"mr":22,"mana":290,"crit":0,"r":23,"passive":{"key":"cd_on_hit","name":"Sét Dẫn","desc":"Mỗi lần trúng mục tiêu giảm 0.5s hồi chiêu skill thường.","val":0.5},"kit":["chain","shred","nova"],"idx":12,"complexity":1},
+{"name":"Lăn Đá","role":"do_don","title":"Kẻ Lăn Trấn","hue":138,"hp":1463,"ad":55,"ap":0,"range":100,"ms":214,"as":0.73,"armor":34,"mr":22,"mana":267,"crit":0,"r":23,"passive":{"key":"move_dmg","name":"Đà Lăn","desc":"Sau khi di chuyển 300 đơn vị, đòn đánh tiếp theo +40% sát thương.","val":40},"kit":["roll","taunt","stun"],"idx":13,"complexity":1},
+{"name":"Bẫy Mộc","role":"do_don","title":"Kẻ Săn Rừng Sâu","hue":156,"hp":1352,"ad":58,"ap":0,"range":100,"ms":216,"as":0.76,"armor":31,"mr":22,"mana":296,"crit":0,"r":23,"passive":{"key":"extra_gold","name":"Thợ Săn Khéo","desc":"+8 vàng mỗi lần hạ gục.","val":8},"kit":["trap","zonedot","wall"],"idx":14,"complexity":3},
+{"name":"Huyền Mộ","role":"do_don","title":"Hút Mộ Huyền Sư","hue":168,"hp":1408,"ad":54,"ap":0,"range":100,"ms":212,"as":0.74,"armor":33,"mr":23,"mana":305,"crit":0,"r":23,"passive":{"key":"manaflow","name":"Mộ Hí","desc":"Tăng 50% hồi mana.","val":50},"kit":["manaburn","fear","channel"],"idx":15,"complexity":2},
+{"name":"Tiêu Dao","role":"do_don","title":"Vua Tiêu Dao","hue":132,"hp":1325,"ad":60,"ap":0,"range":100,"ms":220,"as":0.78,"armor":30,"mr":21,"mana":290,"crit":0,"r":23,"passive":{"key":"lifesteal","name":"Huyết Tiêu","desc":"Hút 15% sát thương vật lý thành máu.","val":15},"kit":["boomerang","dash","execute"],"idx":16,"complexity":2},
+{"name":"Ảnh Đòn","role":"do_don","title":"Bóng Đòn Ám Sát","hue":146,"hp":1297,"ad":62,"ap":0,"range":100,"ms":225,"as":0.81,"armor":29,"mr":20,"mana":305,"crit":0,"r":23,"passive":{"key":"reset_on_kill","name":"Ảnh Tiệt","desc":"Hạ gục reset hồi chiêu skill thường.","val":1},"kit":["blink","strike","leap"],"idx":17,"complexity":2},
+{"name":"Tán Thạch","role":"do_don","title":"Kẻ Tán Kích","hue":154,"hp":1380,"ad":57,"ap":0,"range":100,"ms":214,"as":0.76,"armor":32,"mr":22,"mana":290,"crit":0,"r":23,"passive":{"key":"crit_bonus","name":"Đá Nứt","desc":"+30% sát thương chí mạng.","val":30},"kit":["split","knockup","nova"],"idx":18,"complexity":2},
+{"name":"Hút Phép","role":"do_don","title":"Hút Phép Thần","hue":164,"hp":1435,"ad":53,"ap":0,"range":100,"ms":210,"as":0.73,"armor":33,"mr":24,"mana":296,"crit":0,"r":23,"passive":{"key":"spellvamp_p","name":"Hút Linh Phép","desc":"Hút 18% sát thương phép thành máu.","val":18},"kit":["spellvamp","bolt","sanctuary"],"idx":19,"complexity":1},
+{"name":"Thánh Y","role":"ho_tro","title":"Thánh Quang Sứ","hue":40,"hp":1020,"ad":51,"ap":65,"range":280,"ms":224,"as":0.78,"armor":18,"mr":17,"mana":410,"crit":0,"r":20,"passive":{"key":"assist_heal","name":"Ánh Sáng Chia Sẻ","desc":"Khi đồng đội gần hạ gục, hồi 12% máu.","val":12},"kit":["heal","bolt","sanctuary"],"idx":0,"complexity":1},
+{"name":"Dẫn Đường","role":"ho_tro","title":"Người Dẫn Đường Gió","hue":50,"hp":980,"ad":54,"ap":62,"range":280,"ms":235,"as":0.82,"armor":18,"mr":16,"mana":390,"crit":0,"r":20,"passive":{"key":"ms_aura","name":"Gió Dẫn Đường","desc":"Đồng đội gần +8% tốc chạy.","val":8},"kit":["bond","slow","regen"],"idx":1,"complexity":2},
+{"name":"Băng Nữ","role":"ho_tro","title":"Nữ Thần Băng","hue":30,"hp":1000,"ad":53,"ap":65,"range":280,"ms":220,"as":0.8,"armor":18,"mr":17,"mana":398,"crit":0,"r":20,"passive":{"key":"cdr_ult","name":"Trái Tim Băng","desc":"Giảm 20% hồi chiêu chiêu cuối.","val":20},"kit":["slow","root","stun"],"idx":2,"complexity":1},
+{"name":"Câm Yếm","role":"ho_tro","title":"Bức Tường Câm Lặng","hue":58,"hp":1040,"ad":51,"ap":62,"range":280,"ms":222,"as":0.77,"armor":19,"mr":17,"mana":390,"crit":0,"r":20,"passive":{"key":"armor_aura","name":"Tường Câm","desc":"Đồng đội gần +12 giáp.","val":12},"kit":["silence","fear","wall"],"idx":3,"complexity":2},
+{"name":"Săn Bẫy","role":"ho_tro","title":"Nữ Săn Bẫy Rừng","hue":45,"hp":960,"ad":57,"ap":61,"range":280,"ms":231,"as":0.82,"armor":17,"mr":15,"mana":398,"crit":0,"r":20,"passive":{"key":"extra_gold","name":"Thợ Săn Khéo","desc":"+6 vàng mỗi lần hạ gục.","val":6},"kit":["trap","zonedot","spawn"],"idx":4,"complexity":3},
+{"name":"Sét Bật","role":"ho_tro","title":"Nữ Sét Dây","hue":35,"hp":980,"ad":54,"ap":67,"range":280,"ms":224,"as":0.8,"armor":18,"mr":16,"mana":410,"crit":0,"r":20,"passive":{"key":"spell_weave","name":"Dệt Sét","desc":"Sau khi hỏi chiêu, đòn cơ bản tiếp theo gây thêm 40% AP sát thương phép.","val":40},"kit":["chain","bounce","nova"],"idx":5,"complexity":2},
+{"name":"Tiễn Xa","role":"ho_tro","title":"Xạ Thủ Cứu Trợ","hue":55,"hp":950,"ad":58,"ap":59,"range":280,"ms":233,"as":0.84,"armor":17,"mr":15,"mana":390,"crit":0,"r":20,"passive":{"key":"manaflow","name":"Tiễn Hí","desc":"Tăng 40% hồi mana.","val":40},"kit":["pierce","homing","global"],"idx":6,"complexity":3},
+{"name":"Hút Hồn","role":"ho_tro","title":"Hút Hồn Ma Sư","hue":28,"hp":1000,"ad":52,"ap":66,"range":280,"ms":220,"as":0.78,"armor":18,"mr":17,"mana":421,"crit":0,"r":20,"passive":{"key":"manaflow","name":"Hồn Hí","desc":"Tăng 45% hồi mana.","val":45},"kit":["manaburn","drain","channel"],"idx":7,"complexity":2},
+{"name":"Độc Nhân","role":"ho_tro","title":"Người Độc Câm","hue":60,"hp":980,"ad":54,"ap":65,"range":280,"ms":224,"as":0.8,"armor":18,"mr":16,"mana":398,"crit":0,"r":20,"passive":{"key":"spell_weave","name":"Dệt Độc","desc":"Sau khi hỏi chiêu, đòn cơ bản tiếp theo gây thêm 35% AP sát thương phép.","val":35},"kit":["poison","mark","storm"],"idx":8,"complexity":2},
+{"name":"Phá Giáp","role":"ho_tro","title":"Kẻ Phá Vỡ Giáp","hue":48,"hp":1000,"ad":57,"ap":59,"range":280,"ms":224,"as":0.82,"armor":18,"mr":15,"mana":382,"crit":0,"r":20,"passive":{"key":"armor_aura","name":"Khí Phá Giáp","desc":"Đồng đội gần +10 giáp.","val":10},"kit":["shred","truedmg","execute"],"idx":9,"complexity":1},
+{"name":"Buff Sát","role":"ho_tro","title":"Người Truyền Sát Khí","hue":52,"hp":960,"ad":58,"ap":57,"range":280,"ms":235,"as":0.86,"armor":17,"mr":15,"mana":390,"crit":0,"r":20,"passive":{"key":"as_bonus","name":"Tốc Sát","desc":"Tăng 15% tốc đánh.","val":15},"kit":["empower","haste","rage"],"idx":10,"complexity":1},
+{"name":"Ảnh Hỗ","role":"ho_tro","title":"Bóng Hỗ Trợ","hue":38,"hp":940,"ad":54,"ap":62,"range":280,"ms":237,"as":0.83,"armor":17,"mr":15,"mana":410,"crit":0,"r":20,"passive":{"key":"reset_on_kill","name":"Ảnh Tái Sinh","desc":"Hạ gục có 50% reset hồi chiêu skill thường.","val":0.5},"kit":["stealth","mark","reset"],"idx":11,"complexity":3},
+{"name":"Ném Tiêu","role":"ho_tro","title":"Công Chúa Ném Tiêu","hue":42,"hp":980,"ad":56,"ap":62,"range":280,"ms":228,"as":0.8,"armor":18,"mr":16,"mana":390,"crit":0,"r":20,"passive":{"key":"cd_on_hit","name":"Tiêu Dẫn","desc":"Mỗi lần trúng mục tiêu giảm 0.4s hồi chiêu skill thường.","val":0.4},"kit":["boomerang","fan","barrage"],"idx":12,"complexity":2},
+{"name":"Xạ Cứu","role":"ho_tro","title":"Xạ Thủ Cứu Thương","hue":56,"hp":950,"ad":59,"ap":56,"range":280,"ms":235,"as":0.85,"armor":17,"mr":15,"mana":390,"crit":0,"r":20,"passive":{"key":"move_dmg","name":"Bước Xạ","desc":"Sau khi di chuyển 250 đơn vị, đòn đánh tiếp theo +30% sát thương.","val":30},"kit":["snipe","backstep","heal"],"idx":13,"complexity":1},
+{"name":"Móc Kéo","role":"ho_tro","title":"Kẻ Móc Kéo Địch","hue":32,"hp":1040,"ad":53,"ap":59,"range":280,"ms":220,"as":0.77,"armor":19,"mr":17,"mana":371,"crit":0,"r":20,"passive":{"key":"tenacity","name":"Sắt Móc","desc":"Giảm 20% thời gian khống chế.","val":20},"kit":["pull","grapple","taunt"],"idx":14,"complexity":2},
+{"name":"Đẩy Lùi","role":"ho_tro","title":"Người Đẩy Giao Tranh","hue":62,"hp":1060,"ad":51,"ap":62,"range":280,"ms":222,"as":0.76,"armor":19,"mr":17,"mana":382,"crit":0,"r":20,"passive":{"key":"thorns","name":"Gai Bão","desc":"Phận 15% sát thương vật lý nhận lại kẻ tấn công.","val":15},"kit":["knockup","dash","storm"],"idx":15,"complexity":1},
+{"name":"Khiên Cầu","role":"ho_tro","title":"Nữ Thần Khiên","hue":44,"hp":1020,"ad":50,"ap":65,"range":280,"ms":220,"as":0.77,"armor":19,"mr":17,"mana":410,"crit":0,"r":20,"passive":{"key":"shield_on_ult","name":"Khiên Cuối Cùng","desc":"Khi hỏi chiêu cuối, được khiên bằng 15% máu tối đa.","val":15},"kit":["orb","reflect","immune"],"idx":16,"complexity":2},
+{"name":"Liên Kết","role":"ho_tro","title":"Người Dệt Liên Kết","hue":50,"hp":1000,"ad":54,"ap":67,"range":280,"ms":224,"as":0.8,"armor":18,"mr":16,"mana":421,"crit":0,"r":20,"passive":{"key":"assist_heal","name":"Sinh Tử Đồng Cùng","desc":"Khi đồng đội gần hạ gục, hồi 10% máu.","val":10},"kit":["split","bond","sanctuary"],"idx":17,"complexity":3},
+{"name":"Hỗ Tấn","role":"ho_tro","title":"Hỗ Trợ Tấn Công","hue":36,"hp":940,"ad":59,"ap":56,"range":280,"ms":237,"as":0.86,"armor":16,"mr":14,"mana":390,"crit":0,"r":20,"passive":{"key":"low_hp_dmg","name":"Nộ Cuối Cùng","desc":"Khi máu dưới 50%, tăng 15% sát thương.","val":15},"kit":["roll","strike","rage"],"idx":18,"complexity":1},
+{"name":"Thái Hút","role":"ho_tro","title":"Kiếm Thái Hút Phép","hue":46,"hp":1000,"ad":53,"ap":68,"range":280,"ms":224,"as":0.8,"armor":18,"mr":17,"mana":429,"crit":0,"r":20,"passive":{"key":"spellvamp_p","name":"Hút Linh Thái","desc":"Hút 15% sát thương phép thành máu.","val":15},"kit":["stance","drain","heal"],"idx":19,"complexity":2}
+];
+function buildHero(hdef,i){
+ const v=hdef.idx%3,role=hdef.role;
+ const def={id:i,name:hdef.name,role,v,title:hdef.title,hue:hdef.hue,
+  hp:hdef.hp,ad:hdef.ad,ap:hdef.ap,range:hdef.range,ms:hdef.ms,as:hdef.as,
+  armor:hdef.armor,mr:hdef.mr,mana:hdef.mana,crit:hdef.crit,r:hdef.r,
+  passive:hdef.passive,complexity:hdef.complexity};
+ def.lore=LORE[role][hdef.idx%3].replace('{n}',hdef.name)+' Sở trường: '+hdef.kit.map(t=>KIT_PHRASE[t]).join(', ')+'.';
+ def.colA=`hsl(${def.hue},78%,60%)`;def.colB=`hsl(${(def.hue+28)%360},70%,38%)`;def.colD=`hsl(${def.hue},60%,20%)`;
+ def.skills=hdef.kit.map((t,si)=>{
+  const ult=si===2,d=mkSkill(t,role,v,ult);
+  d.name=SKN[t][(v+si)%3];d.ult=ult;if(ult)ultBoost(d);
+  d.targeted=!!TARGETED[t];d.desc=skillDesc(d);return d});
+ return def;
+}
+const HEROES=HERO_DATA.map(buildHero);/* ================= ITEMS ================= */
 const ITEMS=[
  {id:0,name:'Giày Thần Tốc',cost:300,icon:'boot',st:{ms:42},d:'+42 Tốc chạy'},
  {id:1,name:'Kiếm Dài',cost:320,icon:'sword',st:{ad:30},d:'+30 Công vật lý'},
@@ -775,6 +998,40 @@ function drawSkillIcon(c,type,x,y,s,col){
   case 'rage':P();c.moveTo(0,-10);c.quadraticCurveTo(7,-3,4,3);c.quadraticCurveTo(8,2,7,-2);c.quadraticCurveTo(11,6,3,10);c.quadraticCurveTo(-6,12,-7,3);c.quadraticCurveTo(-8,-3,0,-10);c.fill();break;
   case 'assassinate':P();c.moveTo(-8,8);c.lineTo(4,-4);c.lineTo(9,-9);c.lineTo(6,-1);c.lineTo(-5,8);c.closePath();c.fill();P();c.moveTo(-7,1);c.lineTo(-1,7);c.stroke();break;
   case 'sanctuary':P();c.arc(0,0,5,0,TAU);c.fill();P();for(let i=0;i<8;i++){const a=i*TAU/8;c.moveTo(Math.cos(a)*7.5,Math.sin(a)*7.5);c.lineTo(Math.cos(a)*11,Math.sin(a)*11)}c.stroke();break;
+  case 'pierce':case 'snipe':case 'global':P();c.moveTo(-9,0);c.lineTo(7,0);c.moveTo(3,-4);c.lineTo(9,0);c.lineTo(3,4);c.moveTo(-5,-3);c.lineTo(-5,3);c.stroke();break;
+  case 'bounce':P();c.moveTo(-8,-6);c.quadraticCurveTo(0,-8,4,0);c.quadraticCurveTo(8,6,0,8);c.stroke();P();c.arc(-8,-6,1.6,0,TAU);c.arc(4,0,1.6,0,TAU);c.fill();break;
+  case 'split':P();c.moveTo(-8,0);c.lineTo(2,0);c.moveTo(2,0);c.lineTo(8,-6);c.moveTo(2,0);c.lineTo(8,0);c.moveTo(2,0);c.lineTo(8,6);c.stroke();break;
+  case 'boomerang':P();c.moveTo(-7,-5);c.quadraticCurveTo(8,-2,5,7);c.quadraticCurveTo(2,3,-2,4);c.quadraticCurveTo(-6,5,-7,-5);c.stroke();break;
+  case 'homing':P();c.moveTo(-8,6);c.quadraticCurveTo(-2,-6,6,-2);c.quadraticCurveTo(9,0,6,3);c.stroke();P();c.arc(6,0,2,0,TAU);c.fill();break;
+  case 'backstep':P();c.moveTo(6,-5);c.lineTo(-2,0);c.lineTo(6,5);c.moveTo(-2,-5);c.lineTo(-8,0);c.lineTo(-2,5);c.stroke();break;
+  case 'roll':P();c.arc(-2,0,6,Math.PI*.4,Math.PI*1.6);c.stroke();P();c.moveTo(2,-4);c.lineTo(8,0);c.lineTo(2,4);c.fill();break;
+  case 'leap':case 'grapple':P();c.moveTo(-8,7);c.quadraticCurveTo(0,-9,8,7);c.stroke();P();c.arc(8,7,2,0,TAU);c.fill();break;
+  case 'pull':P();c.moveTo(8,-5);c.lineTo(2,0);c.lineTo(8,5);c.moveTo(-8,0);c.lineTo(2,0);c.stroke();break;
+  case 'root':P();c.arc(0,0,8,0,TAU);c.stroke();P();for(let i=0;i<4;i++){const a=i*Math.PI/2;c.moveTo(Math.cos(a)*4,Math.sin(a)*4);c.lineTo(Math.cos(a)*9,Math.sin(a)*9)}c.stroke();break;
+  case 'silence':P();c.arc(0,0,8,0,TAU);c.stroke();P();c.moveTo(-5,-5);c.lineTo(5,5);c.moveTo(5,-5);c.lineTo(-5,5);c.stroke();break;
+  case 'knockup':P();c.moveTo(-6,6);c.lineTo(0,-2);c.lineTo(6,6);c.moveTo(0,-2);c.lineTo(0,-9);c.moveTo(-3,-6);c.lineTo(0,-9);c.lineTo(3,-6);c.stroke();break;
+  case 'fear':P();c.moveTo(-7,-6);c.lineTo(-2,0);c.lineTo(-7,6);c.moveTo(7,-6);c.lineTo(2,0);c.lineTo(7,6);c.moveTo(-1,3);c.lineTo(1,3);c.stroke();break;
+  case 'taunt':P();c.moveTo(0,-9);c.lineTo(8,-5);c.lineTo(8,2);c.quadraticCurveTo(8,8,0,11);c.quadraticCurveTo(-8,8,-8,2);c.lineTo(-8,-5);c.closePath();c.stroke();P();c.moveTo(-3,-1);c.lineTo(3,-1);c.moveTo(-3,3);c.lineTo(3,3);c.stroke();break;
+  case 'truedmg':P();c.moveTo(0,-10);c.lineTo(3,-3);c.lineTo(10,0);c.lineTo(3,3);c.lineTo(0,10);c.lineTo(-3,3);c.lineTo(-10,0);c.lineTo(-3,-3);c.closePath();c.fill();break;
+  case 'manaburn':P();c.moveTo(2,-10);c.lineTo(-5,1);c.lineTo(0,1);c.lineTo(-3,10);c.lineTo(5,-2);c.lineTo(1,-2);c.closePath();c.fill();P();c.arc(-6,-6,2,0,TAU);c.stroke();break;
+  case 'shred':P();c.moveTo(-8,8);c.lineTo(8,-8);c.moveTo(8,8);c.lineTo(-8,-8);c.moveTo(-4,-8);c.lineTo(-8,-4);c.moveTo(4,8);c.lineTo(8,4);c.stroke();break;
+  case 'poison':P();c.moveTo(0,-9);c.quadraticCurveTo(7,-2,5,6);c.quadraticCurveTo(3,10,0,10);c.quadraticCurveTo(-3,10,-5,6);c.quadraticCurveTo(-7,-2,0,-9);c.fill();break;
+  case 'mark':P();c.arc(0,0,8,0,TAU);c.stroke();P();c.arc(0,0,3.5,0,TAU);c.fill();P();c.moveTo(0,-11);c.lineTo(0,-7);c.moveTo(0,7);c.lineTo(0,11);c.moveTo(-11,0);c.lineTo(-7,0);c.moveTo(7,0);c.lineTo(11,0);c.stroke();break;
+  case 'channel':P();c.arc(0,2,7,0,TAU);c.stroke();P();c.moveTo(0,-9);c.lineTo(0,-3);c.moveTo(-6,-6);c.lineTo(-3,-3);c.moveTo(6,-6);c.lineTo(3,-3);c.stroke();break;
+  case 'zonedot':case 'trap':P();c.arc(0,0,9,0,TAU);c.stroke();P();c.arc(0,0,4.5,0,TAU);c.fill();break;
+  case 'storm':P();for(let i=0;i<3;i++){const a=i*Math.PI*2/3;c.moveTo(Math.cos(a)*2,Math.sin(a)*2);c.quadraticCurveTo(Math.cos(a+1)*6,Math.sin(a+1)*6,Math.cos(a+2)*8,Math.sin(a+2)*8)}c.stroke();break;
+  case 'orb':P();c.arc(0,0,3,0,TAU);c.fill();P();c.arc(7,0,2.5,0,TAU);c.arc(-3.5,6,2.5,0,TAU);c.arc(-3.5,-6,2.5,0,TAU);c.fill();break;
+  case 'reflect':P();c.moveTo(0,-9);c.lineTo(8,-5);c.lineTo(8,2);c.quadraticCurveTo(8,8,0,11);c.quadraticCurveTo(-8,8,-8,2);c.lineTo(-8,-5);c.closePath();c.stroke();P();c.moveTo(-4,2);c.lineTo(4,-4);c.moveTo(4,2);c.lineTo(-4,-4);c.stroke();break;
+  case 'cleanse':P();c.arc(0,0,9,0,TAU);c.stroke();P();c.moveTo(-5,0);c.lineTo(-1,4);c.lineTo(6,-5);c.stroke();break;
+  case 'immune':P();c.arc(0,0,9,0,TAU);c.stroke();P();c.arc(0,0,5,0,TAU);c.stroke();P();c.moveTo(0,-2);c.lineTo(0,2);c.moveTo(-2,0);c.lineTo(2,0);c.stroke();break;
+  case 'stealth':P();c.arc(0,0,9,0,TAU);c.globalAlpha=.4;c.fill();c.globalAlpha=1;P();c.moveTo(-5,-2);c.lineTo(5,-2);c.stroke();break;
+  case 'reset':P();c.arc(0,0,8,-.6,Math.PI*1.4);c.stroke();P();c.moveTo(6,-6);c.lineTo(9,-2);c.lineTo(4,-1);c.fill();break;
+  case 'empower':P();c.moveTo(0,-10);c.lineTo(3,-3);c.lineTo(10,-1);c.lineTo(5,4);c.lineTo(6,10);c.lineTo(0,7);c.lineTo(-6,10);c.lineTo(-5,4);c.lineTo(-10,-1);c.lineTo(-3,-3);c.closePath();c.fill();break;
+  case 'stance':P();c.moveTo(0,-9);c.lineTo(7,7);c.lineTo(-7,7);c.closePath();c.stroke();P();c.moveTo(-3,2);c.lineTo(3,2);c.stroke();break;
+  case 'regen':case 'spellvamp':P();c.arc(0,0,9.5,0,TAU);c.stroke();P();c.moveTo(0,-5);c.lineTo(0,5);c.moveTo(-5,0);c.lineTo(5,0);c.stroke();break;
+  case 'spawn':P();c.arc(-4,2,4,0,TAU);c.arc(5,3,4,0,TAU);c.stroke();P();c.moveTo(-4,-2);c.lineTo(-4,-8);c.moveTo(5,-1);c.lineTo(5,-7);c.stroke();break;
+  case 'bond':P();c.moveTo(-8,0);c.lineTo(-3,0);c.moveTo(8,0);c.lineTo(3,0);c.moveTo(-3,-4);c.lineTo(3,4);c.moveTo(3,-4);c.lineTo(-3,4);c.stroke();break;
+  case 'wall':P();c.rect(-8,-4,16,8);c.stroke();P();c.moveTo(-8,-4);c.lineTo(-4,4);c.moveTo(0,-4);c.lineTo(4,4);c.stroke();break;
  }
  c.restore();
 }
@@ -1054,7 +1311,7 @@ let hudBtns=[],loadTimer=null,endShown=false,AIM=null,mouseS=null,cancelB={x:0,y
 function newId(){return G.nextId++}
 function baseUnit(o){return Object.assign({id:newId(),x:0,y:0,vx:0,vy:0,r:14,hp:100,maxHp:100,team:0,dead:false,flash:0,face:0,
  atkCd:0,atkAnim:0,stopT:0,acqT:Math.random()*.25,focus:null,shield:0,shieldT:0,stunT:0,slowT:0,slowV:0,buffs:[],revealT:0,
- hidden:false,inBush:false,recallT:0,bob:Math.random()*TAU,recent:{},msgT:0},o)}
+ hidden:false,inBush:false,recallT:0,bob:Math.random()*TAU,recent:{},msgT:0,rootT:0,silenceT:0},o)}
 function makeHero(def,team,lane,jg,isPlayer){
  const h=baseUnit({kind:'hero',def,team,lane,jungler:jg,isPlayer:!!isPlayer,r:def.r,x:0,y:0,
   level:1,xp:0,gold:300,kills:0,deaths:0,assists:0,dmgDealt:0,towerKills:0,streak:0,multi:0,multiT:0,
@@ -1062,7 +1319,7 @@ function makeHero(def,team,lane,jg,isPlayer){
   range:def.range,melee:def.range<200,items:[],itemSt:{ad:0,ap:0,hp:0,armor:0,mr:0,ms:0,as:0,crit:0,ls:0},
   skills:def.skills.map((d,i)=>({def:d,cd:0,lvl:i===2?0:1})),
   aiState:'push',thinkT:Math.random()*.3,wp:0,respawnT:0,deadAge:0,regenT:0,path:lanePath(G.map,team,lane),
-  autoType:(def.role==='phap_su'||def.role==='ho_tro')?'magic':'phys'});
+  autoType:(def.role==='phap_su'||def.role==='ho_tro')?'magic':'phys',passive:def.passive,rootT:0,silenceT:0,poisonT:0,poisonDps:0,poisonSrc:null,stealthT:0,empower:0,empowerBonus:0,empowerSlow:0,weaveT:0,moveDist:0,moveReady:false,cdHitT:0,stormT:0,stormDps:0,stormR:0,stormTick:0,stormType:'magic',orbT:0,orbDps:0,orbN:0,orbTick:0,orbAng:0,orbType:'magic',bondPartner:0,marks:[]});
  recalc(h);h.hp=h.maxHp;h.mp=h.maxMp;
  const f=team===0?G.map.fountain0:G.map.fountain1;const a=Math.random()*TAU;
  h.x=f.x+Math.cos(a)*60;h.y=f.y+Math.sin(a)*60;h.face=team===0?-Math.PI/4:Math.PI*3/4;
@@ -1111,7 +1368,7 @@ function assignLanes(list,player){
 }
 function resetGame(cfg){
  G={cfg,map:buildMapDef(cfg.mode),time:0,over:false,winner:-1,overT:0,heroes:[],minions:[],structures:[],camps:[],byId:new Map(),
-  proj:[],zones:[],fx:[],texts:[],textI:0,parts:[],partI:0,ann:null,feed:[],pings:[],waveT:4,waveN:0,spawnQ:[],kills:[0,0],
+  proj:[],zones:[],zonesEx:[],walls:[],fx:[],texts:[],textI:0,parts:[],partI:0,ann:null,feed:[],pings:[],waveT:4,waveN:0,spawnQ:[],kills:[0,0],
   nextId:1,shake:0,cam:{x:0,y:0,z:1},dragon:[0,0],grid:{cell:240,cols:0,buckets:[]},hintT:9,surrenderArm:0,coreMsgT:0};
  for(let i=0;i<600;i++)G.parts.push({on:false});
  for(let i=0;i<90;i++)G.texts.push({on:false});
@@ -1341,7 +1598,11 @@ function forEachNear(x,y,r,fn){
  for(let cy=y0;cy<=y1;cy++)for(let cx=x0;cx<=x1;cx++){const b=g.buckets[cx+cy*cols];
   for(let i=0;i<b.length;i++){const u=b[i];if(u.dead)continue;const rr2=r+u.r;if(dist2(x,y,u.x,u.y)<=rr2*rr2)fn(u)}}
 }
-function visibleTo(u,team){return !u.hidden||u.team===team||u.team===2}
+
+function hasPassive(h,k){return h&&h.passive&&h.passive.key===k}
+function passiveVal(h,k){return hasPassive(h,k)?(h.passive.val||0):0}
+function auraSum(h,k){let v=0;for(const a of G.heroes){if(a.dead||a.team!==h.team||!hasPassive(a,k))continue;if(a===h||dist2(a.x,a.y,h.x,h.y)<520*520)v+=a.passive.val||0}return v}
+function visibleTo(u,team){if((u.stealthT||0)>0&&u.team!==team&&u.team!==2)return false;return !u.hidden||u.team===team||u.team===2}
 function isEnemy(a,b){return a.team!==b.team&&(b.team!==2||a.kind==='hero'||a.kind==='minion')}
 
 /* ================= STATS / BUFFS ================= */
@@ -1363,10 +1624,10 @@ function buffSum(h,k,f){let s=0;for(const b of h.buffs)if(b.k===k)s+=(b[f]||0);r
 function hasBuff(h,k){return h.buffs.some(b=>b.k===k)}
 function addBuff(h,b){const e=h.buffs.find(x=>x.k===b.k);if(e)Object.assign(e,b);else h.buffs.push(b)}
 function teamMult(h){return (1+.04*(G.dragon[h.team]||0))*(hasBuff(h,'caesar')?1.15:1)}
-function effAd(h){return h.ad*(1+buffSum(h,'rage','ad'))*teamMult(h)}
-function effAp(h){return h.ap*teamMult(h)}
-function effMs(h){let v=h.ms*(1+buffSum(h,'haste','ms')+buffSum(h,'rage','ms'));if(hasBuff(h,'caesar'))v*=1.1;if(h.kind==='hero')v=Math.min(330,v);if(h.slowT>0)v*=(1-h.slowV);return Math.max(60,v)}
-function effAs(h){return Math.min(2.4,h.as*(1+buffSum(h,'haste','as')))}
+function effAd(h){let v=h.ad*(1+buffSum(h,'rage','ad')+buffSum(h,'stance','ad'))*teamMult(h);if(h.kind==='hero'&&h.hp/h.maxHp<.5)v*=1+passiveVal(h,'low_hp_dmg');return v}
+function effAp(h){let v=h.ap*(1+buffSum(h,'stance','ap'))*teamMult(h);if(h.kind==='hero'&&h.hp/h.maxHp<.5)v*=1+passiveVal(h,'low_hp_dmg');return v}
+function effMs(h){let v=h.ms*(1+buffSum(h,'haste','ms')+buffSum(h,'rage','ms'));if(hasBuff(h,'caesar'))v*=1.1;if(h.kind==='hero'&&h.hp/h.maxHp<.4)v*=1+passiveVal(h,'low_hp_ms');if(h.kind==='hero')v*=1+auraSum(h,'ms_aura');if(h.kind==='hero')v=Math.min(330,v);if(h.slowT>0)v*=(1-h.slowV);return Math.max(60,v)}
+function effAs(h){return Math.min(2.4,h.as*(1+buffSum(h,'haste','as')+buffSum(h,'stance','as')+passiveVal(h,'as_bonus')))}
 function statVal(h,s){return s==='ad'?effAd(h):s==='ap'?effAp(h):h.maxHp}
 function xpNeed(l){return 70+l*55}
 function addXp(h,x){if(h.level>=15)return;h.xp+=x;
@@ -1382,13 +1643,13 @@ function dealDamage(src,tgt,amt,type,opt){
  opt=opt||{};if(!tgt||tgt.dead||G.over&&tgt.kind==='core'&&G.winner>=0)return 0;
  if(tgt.shielded){if(tgt.msgT<=0){tgt.msgT=1;floatText(tgt.x,tgt.y-56,'BẤT KHẢ XÂM PHẠM',C.dim,10)}return 0}
  if(src&&src.kind==='hero'&&src.team!==0)amt*=DIFF[G.cfg.diff].dmg;
- else if(src&&src.kind==='hero'&&src.team===0&&!src.isPlayer)amt*=.95;
- if(type==='phys'&&opt.canCrit&&src&&src.crit&&Math.random()<src.crit){amt*=1.8;opt.crit=true}
- let def=type==='phys'?tgt.armor:type==='magic'?tgt.mr:0;if(src&&src.pen&&def>0)def*=1-src.pen;
+ else if(src&&src.kind==='hero'&&src.team===0&&!src.isPlayer)amt*=.95;if(src&&src.kind==='hero'){const _tb=src.buffs.find(b=>b.k==='taunted');if(_tb)amt*=1-(_tb.dmgRed||.3)}if(opt.aa&&src&&src.kind==='hero'){let _mul=1;if(src.empower>0)_mul*=1+(src.empowerBonus||.5);if(src.moveReady)_mul*=1+passiveVal(src,'move_dmg');amt*=_mul;if(src.weaveT>0){dealDamage(src,tgt,passiveVal(src,'spell_weave')*effAp(src),'magic',{silent:true});src.weaveT=0}if(src.moveReady){src.moveReady=false;src.moveDist=0}}
+ if(type==='phys'&&opt.canCrit&&src&&src.crit&&Math.random()<src.crit){amt*=1.8*(1+passiveVal(src,'crit_bonus'));opt.crit=true}
+ let def=type==='phys'?tgt.armor:type==='magic'?tgt.mr:0;if(tgt.kind==='hero'&&type==='phys')def+=auraSum(tgt,'armor_aura');if(src&&src.pen&&def>0)def*=1-src.pen;if(tgt.buffs){const _sb=tgt.buffs.find(b=>b.k==='shred');if(_sb)def*=1-(_sb.pct||.35)}
  let d=amt*100/(100+Math.max(0,def));
- if(tgt.shieldT>0&&tgt.shield>0){const ab=Math.min(tgt.shield,d);tgt.shield-=ab;d-=ab;if(tgt.shield<=0)tgt.shieldT=0}
+ if(tgt.shieldT>0&&tgt.shield>0){const ab=Math.min(tgt.shield,d);tgt.shield-=ab;d-=ab;if(tgt.shield<=0){tgt.shieldT=0;if(tgt.kind==='hero'&&hasPassive(tgt,'shield_bash')){const _sd=passiveVal(tgt,'shield_bash');forEachNear(tgt.x,tgt.y,150,u=>{if(isEnemy(tgt,u)&&!u.dead&&u.kind!=='tower'&&u.kind!=='core')u.stunT=Math.max(u.stunT,_sd)});fx('nova',tgt.x,tgt.y,{r:150,color:C.goldL,dur:.4})}}}
  if(d<=0)return 0;
- tgt.hp-=d;tgt.flash=.12;tgt.recallT=0;if(tgt.kind==='hero')tgt.lastHitT=G.time;tgt.revealT=Math.max(tgt.revealT,1.2);
+ tgt.hp-=d;tgt.flash=.12;if(tgt.kind==='hero'&&hasBuff(tgt,'immune')&&tgt.hp<1)tgt.hp=1;if(!opt.bonded&&tgt.kind==='hero'&&tgt.bondPartner){const _bp=G.byId.get(tgt.bondPartner);if(_bp&&!_bp.dead&&_bp.team===tgt.team)dealDamage(src,_bp,d*.2,type,{silent:true,bonded:true})}if(!opt.thorns&&tgt.kind==='hero'&&hasPassive(tgt,'thorns')&&type==='phys'&&src&&src.kind!=='tower'&&src.kind!=='core'){dealDamage(tgt,src,d*passiveVal(tgt,'thorns'),'true',{silent:true,thorns:true})}tgt.recallT=0;if(tgt.kind==='hero')tgt.lastHitT=G.time;tgt.revealT=Math.max(tgt.revealT,1.2);
  if(src){src.revealT=Math.max(src.revealT||0,1.2);
   if(src.kind==='hero'){
    if(tgt.kind==='hero'){src.dmgDealt+=d;tgt.recent[src.id]=G.time;
@@ -1400,7 +1661,7 @@ function dealDamage(src,tgt,amt,type,opt){
    if(src.ls>0)healUnit(src,d*src.ls);
    if(hasBuff(src,'burn')&&(tgt.kind==='hero'||tgt.kind==='minion')){tgt.slowT=Math.max(tgt.slowT,1);tgt.slowV=Math.max(tgt.slowV,.2);
     const extra=12*100/(100+0);tgt.hp-=extra;d+=extra}
-  }
+   if(opt.aa){    if(src.empower>0){src.empower--;tgt.slowT=Math.max(tgt.slowT,1.5);tgt.slowV=Math.max(tgt.slowV,src.empowerSlow||.3)}    if(hasPassive(src,'poison_blade')){tgt.poisonT=Math.max(tgt.poisonT||0,3);tgt.poisonDps=Math.max(tgt.poisonDps||0,passiveVal(src,'poison_blade'));tgt.poisonSrc=src}    if(hasPassive(src,'slow_blade')){tgt.slowT=Math.max(tgt.slowT,1.5);tgt.slowV=Math.max(tgt.slowV,passiveVal(src,'slow_blade'))}   }   if(type==='phys')healUnit(src,d*passiveVal(src,'lifesteal'));   if(type==='magic')healUnit(src,d*passiveVal(src,'spellvamp_p'));   if(hasBuff(src,'spellvamp')&&type==='magic'){const _sv=src.buffs.find(b=>b.k==='spellvamp');healUnit(src,d*(_sv?_sv.pct||.3:.3))}   if(hasPassive(src,'cd_on_hit')&&src.cdHitT<=0){src.cdHitT=.5;src.skills[0].cd=Math.max(0,src.skills[0].cd-passiveVal(src,'cd_on_hit'));src.skills[1].cd=Math.max(0,src.skills[1].cd-passiveVal(src,'cd_on_hit'))}  }
  }
  if(!opt.silent&&(src&&src.kind==='hero'||tgt.kind==='hero'||tgt.kind==='camp'||tgt.kind==='tower'||tgt.kind==='core')){
   const col=type==='magic'?'#b48bff':type==='true'?'#ffffff':'#ffcf6e';
@@ -1431,7 +1692,7 @@ function killUnit(src,tgt){
   const killer=src&&src.kind==='hero'?src:null;
   let bounty=200+tgt.level*8;
   if(killer){killer.kills++;killer.streak++;killer.multi++;killer.multiT=4;
-   bounty+=Math.min(5,ks)*40;killer.gold+=bounty;addXp(killer,150+tgt.level*20);
+   bounty+=Math.min(5,ks)*40;killer.gold+=bounty;addXp(killer,150+tgt.level*20);   if(hasPassive(killer,'heal_on_kill'))healUnit(killer,killer.maxHp*passiveVal(killer,'heal_on_kill'));   if(hasPassive(killer,'extra_gold')){killer.gold+=passiveVal(killer,'extra_gold')}   if(hasPassive(killer,'reset_on_kill')&&Math.random()<passiveVal(killer,'reset_on_kill')){killer.skills[0].cd=0;killer.skills[1].cd=0}
    G.kills[killer.team]++;
    if(killer.isPlayer){sfx('kill');G.shake=Math.max(G.shake,4)}
    if(!G.firstBlood){G.firstBlood=true;announce('CHIẾN CÔNG ĐẦU!',killer.def.name+' mở tỉ số',C.goldL,2.4)}
@@ -1440,7 +1701,7 @@ function killUnit(src,tgt){
    feed([{t:killer.def.name,c:TEAMC[killer.team]},{t:' ⚔ ',c:C.dim},{t:tgt.def.name,c:TEAMC[tgt.team]}]);
   } else feed([{t:TEAMC[tgt.team]===TEAMC[0]?'Đồng minh':'Kẻ địch',c:TEAMC[tgt.team]},{t:' '+tgt.def.name+' đã bị hạ',c:C.dim}]);
   for(const h of G.heroes){if(h===killer||h.team===tgt.team)continue;
-   const t=tgt.recent[h.id];if(t&&G.time-t<6){h.assists++;const ag=Math.round(bounty*.4);h.gold+=ag;addXp(h,80);if(h.isPlayer){floatText(h.x,h.y-40,'+'+ag+' hỗ trợ',C.goldL,12);sfx('gold')}}}
+   const t=tgt.recent[h.id];if(t&&G.time-t<6){h.assists++;const ag=Math.round(bounty*.4);h.gold+=ag;addXp(h,80);if(hasPassive(h,'assist_heal'))healUnit(h,h.maxHp*passiveVal(h,'assist_heal'));if(h.isPlayer){floatText(h.x,h.y-40,'+'+ag+' hỗ trợ',C.goldL,12);sfx('gold')}}}
   tgt.recent={};
   if(tgt.isPlayer){announce('BẠN ĐÃ TỬ TRẬN','Hồi sinh sau '+Math.ceil(tgt.respawnT)+'s',C.red,2);sfx('death');G.shake=Math.max(G.shake,9)}
   else if(killer&&killer.isPlayer)announce('HẠ GỤC!','+ '+bounty+' vàng',C.goldL,1.4);
@@ -1506,9 +1767,9 @@ function tryAttack(h){
  if(!t||!validTarget(h,t,10))return;
  h.face=Math.atan2(t.y-h.y,t.x-h.x);h.atkCd=1/effAs(h);h.atkAnim=.22;h.stopT=.16;h.recallT=0;h.revealT=1.2;
  const dmg=effAd(h);
- if(h.melee){dealDamage(h,t,dmg,h.autoType||'phys',{canCrit:true});fx('arc',h.x,h.y,{ang:h.face,r:h.range+t.r,color:h.def?h.def.colA:TEAML[h.team],dur:.18})}
+ if(h.stealthT>0)h.stealthT=0;if(h.melee){dealDamage(h,t,dmg,h.autoType||'phys',{canCrit:true,aa:true});fx('arc',h.x,h.y,{ang:h.face,r:h.range+t.r,color:h.def?h.def.colA:TEAML[h.team],dur:.18})}
  else G.proj.push({x:h.x,y:h.y,target:t,src:h,speed:h.kind==='tower'?520:760,r:6,dmg,type:h.autoType||(h.kind==='tower'?'phys':'phys'),
-  kind:h.kind==='tower'?'tower':'atk',color:h.def?h.def.colA:TEAML[h.team],canCrit:h.kind==='hero',life:3});
+  kind:h.kind==='tower'?'tower':'atk',color:h.def?h.def.colA:TEAML[h.team],canCrit:h.kind==='hero',aa:h.kind==='hero',life:3});
  if(h.kind==='tower'){h.beamT=.1;h.beamX=t.x;h.beamY=t.y;
   if(h.rampId===t.id)h.rampN=Math.min(4,h.rampN+1);else{h.rampId=t.id;h.rampN=0}}
 }
@@ -1527,7 +1788,7 @@ function bestSkillTarget(h,range,needHero){
 function deny(h){if(h&&h.isPlayer)sfx('deny');return false}
 function castSkill(h,i,aim,tgt,manual){
  const s=h.skills[i],d=s.def;
- if(h.dead||h.stunT>0||h.recallT>0||h.dash)return deny(h);
+ if(h.dead||h.stunT>0||h.recallT>0||h.dash||h.silenceT>0||h.fearT>0)return deny(h);
  if(d.ult&&s.lvl<1){if(h.isPlayer)toast('Chiêu cuối mở khóa ở cấp 4');return deny(h)}
  if(s.cd>0)return deny(h);
  if(h.mp<d.mana){if(h.isPlayer)toast('Không đủ năng lượng');return deny(h)}
@@ -1544,9 +1805,9 @@ function castSkill(h,i,aim,tgt,manual){
  sfxMute=!(h.isPlayer||dist2(h.x,h.y,G.player.x,G.player.y)<700*700);
  const ok=execSkill(h,d,aim,tgt,mult);sfxMute=false;
  if(!ok)return deny(h);
- const cdr=Math.min(.4,(hasBuff(h,'cdr')?.15:0)+(h.cdr||0));
+ const cdr=Math.min(.4,(hasBuff(h,'cdr')?.15:0)+(h.cdr||0)+(d.ult?passiveVal(h,'cdr_ult'):0));
  s.cd=d.cd*(1-.04*(Math.max(1,s.lvl)-1))*(1-cdr);
- h.mp-=d.mana;h.revealT=1.2;h.recallT=0;
+ h.mp-=d.mana;h.revealT=1.2;h.recallT=0;if(d.ult&&hasPassive(h,'shield_on_ult')){h.shield=Math.max(h.shield,passiveVal(h,'shield_on_ult')*h.maxHp);h.shieldT=Math.max(h.shieldT,3)}if(hasPassive(h,'spell_weave'))h.weaveT=4;if(h.stealthT>0)h.stealthT=0;
  
  if(h.isPlayer){sfx(d.ult?'ult':'cast');fx('ring',h.x,h.y,{r:d.range||160,color:h.def.colA,dur:.35,faint:true});
   if(d.ult)G.shake=Math.max(G.shake,5)}
@@ -1608,6 +1869,45 @@ function execSkill(h,d,aim,tgt,mult){
    if(dist2(a.x,a.y,h.x,h.y)<d.range*d.range){healUnit(a,pow);a.shield=Math.max(a.shield,d.shield+d.sratio*statVal(h,d.stat));a.shieldT=Math.max(a.shieldT,d.dur);
     addBuff(a,{k:'haste',ms:d.haste,as:0,t:d.dur});fx('spark',a.x,a.y,{color:C.goldL,dur:.6})}}
    fx('nova',h.x,h.y,{r:d.range,color:C.goldL,dur:.8});sfx('heal');return true}
+  case 'pierce':{const ba=Math.atan2(aim.y-h.y,aim.x-h.x);G.proj.push({x:h.x,y:h.y,vx:Math.cos(ba),vy:Math.sin(ba),src:h,speed:d.speed,r:13,dmg:pow,type:d.dt,kind:'skill',color:col,life:d.range/d.speed,slow:d.slow,pierces:d.pierces,hit:{}});sfx('bolt');return true}
+  case 'bounce':{const ba=Math.atan2(aim.y-h.y,aim.x-h.x);G.proj.push({x:h.x,y:h.y,vx:Math.cos(ba),vy:Math.sin(ba),src:h,speed:d.speed,r:11,dmg:pow,type:d.dt,kind:'skill',color:col,life:d.range/d.speed+1.5,bounces:d.bounces,falloff:d.falloff||.85,hit:{}});sfx('bolt');return true}
+  case 'split':{const ba=Math.atan2(aim.y-h.y,aim.x-h.x);G.proj.push({x:h.x,y:h.y,vx:Math.cos(ba),vy:Math.sin(ba),src:h,speed:d.speed,r:12,dmg:pow,type:d.dt,kind:'skill',color:col,life:d.range/d.speed,split:true,n:d.n||5,spread:d.spread||.7,sub:pow*.6});sfx('bolt');return true}
+  case 'boomerang':{const ba=Math.atan2(aim.y-h.y,aim.x-h.x);G.proj.push({x:h.x,y:h.y,vx:Math.cos(ba),vy:Math.sin(ba),src:h,speed:d.speed,r:13,dmg:pow,type:d.dt,kind:'skill',color:col,life:(d.range/d.speed)*2+1,boomerang:true,turnDist:d.turnDist||d.range*.7,travel:0,state:0,hit:{}});sfx('bolt');return true}
+  case 'homing':{if(!tgt)return false;G.proj.push({x:h.x,y:h.y,target:tgt,src:h,speed:d.speed,r:12,dmg:pow,type:d.dt,kind:'skill',color:col,life:4});sfx('bolt');return true}
+  case 'snipe':{const ba=Math.atan2(aim.y-h.y,aim.x-h.x);G.proj.push({x:h.x,y:h.y,vx:Math.cos(ba),vy:Math.sin(ba),src:h,speed:d.speed,r:10,dmg:pow,type:d.dt,kind:'skill',color:col,life:d.range/d.speed,snipe:true,hit:{}});sfx('bolt');return true}
+  case 'backstep':{const a=Math.atan2(aim.y-h.y,aim.x-h.x);h.dash={t:.16,vx:-Math.cos(a)*d.range/.16,vy:-Math.sin(a)*d.range/.16,hit:new Set(),pow:0,type:d.dt,src:h};G.proj.push({x:h.x,y:h.y,vx:Math.cos(a),vy:Math.sin(a),src:h,speed:d.speed,r:12,dmg:pow,type:d.dt,kind:'skill',color:col,life:d.range/d.speed});sfx('dash');return true}
+  case 'roll':{const a=Math.atan2(aim.y-h.y,aim.x-h.x);h.dash={t:.18,vx:Math.cos(a)*d.range/.18,vy:Math.sin(a)*d.range/.18,hit:new Set(),pow:pow,type:d.dt,src:h};h.empower=Math.max(h.empower||0,1);h.empowerBonus=d.bonus||.6;sfx('dash');return true}
+  case 'global':{const ba=Math.atan2(aim.y-h.y,aim.x-h.x);G.proj.push({x:h.x,y:h.y,vx:Math.cos(ba),vy:Math.sin(ba),src:h,speed:d.speed,r:16,dmg:pow,type:d.dt,kind:'skill',color:col,life:3,pierces:99,hit:{}});sfx('ult');return true}
+  case 'leap':{G.zonesEx.push({kind:'delayed',x:aim.x,y:aim.y,r:d.r,t:d.delay||.35,src:h,pow,type:d.dt,stun:d.stun,color:col,big:!!d.ult});fx('ring',aim.x,aim.y,{r:d.r,color:col,dur:d.delay||.35});sfx('cast');return true}
+  case 'grapple':{const dx=aim.x-h.x,dy=aim.y-h.y,dd=hyp(dx,dy)||1,dist=Math.min(dd,d.range);const a=Math.atan2(dy,dx);h.dash={t:.22,vx:Math.cos(a)*dist/.22,vy:Math.sin(a)*dist/.22,hit:new Set(),pow,type:d.dt,src:h};sfx('dash');return true}
+  case 'pull':{if(!tgt)return false;const dx=h.x-tgt.x,dy=h.y-tgt.y,dd=hyp(dx,dy)||1;const pd=Math.min(d.pullDist||220,Math.max(0,dd-35));if(pd>0){tgt.x+=dx/dd*pd;tgt.y+=dy/dd*pd}dealDamage(h,tgt,pow,d.dt,{});fx('beam',h.x,h.y,{x2:tgt.x,y2:tgt.y,color:col,dur:.3});return true}
+  case 'root':{aoeDamage(h,aim.x,aim.y,d.r,pow,d.dt,{});forEachNear(aim.x,aim.y,d.r,u=>{if(u===h||!isEnemy(h,u)||u.dead||u.kind==='tower'||u.kind==='core')return;u.rootT=Math.max(u.rootT||0,d.dur)});fx('zone',aim.x,aim.y,{r:d.r,color:'#8a7bff',dur:.6});return true}
+  case 'silence':{aoeDamage(h,aim.x,aim.y,d.r,pow,d.dt,{});forEachNear(aim.x,aim.y,d.r,u=>{if(u===h||!isEnemy(h,u)||u.dead||u.kind==='tower'||u.kind==='core')return;u.silenceT=Math.max(u.silenceT||0,d.dur)});fx('zone',aim.x,aim.y,{r:d.r,color:'#d8d8d8',dur:.6});return true}
+  case 'knockup':{aoeDamage(h,aim.x,aim.y,d.r,pow,d.dt,{stun:d.stun});fx('nova',aim.x,aim.y,{r:d.r,color:col,dur:.5});return true}
+  case 'fear':{aoeDamage(h,aim.x,aim.y,d.r,pow,d.dt,{});forEachNear(aim.x,aim.y,d.r,u=>{if(u===h||!isEnemy(h,u)||u.dead||u.kind==='tower'||u.kind==='core'||u.kind==='camp')return;u.fearT=Math.max(u.fearT||0,d.dur);u.fearX=aim.x;u.fearY=aim.y});fx('nova',aim.x,aim.y,{r:d.r,color:'#a06bff',dur:.5});return true}
+  case 'taunt':{forEachNear(h.x,h.y,d.range,u=>{if(u===h||!isEnemy(h,u)||u.dead||u.kind==='tower'||u.kind==='core')return;u.slowT=Math.max(u.slowT,d.dur);u.slowV=Math.max(u.slowV,.35);addBuff(u,{k:'taunted',dmgRed:d.dmgRed||.3,t:d.dur})});fx('nova',h.x,h.y,{r:d.range,color:C.orange,dur:.5});return true}
+  case 'truedmg':{if(!tgt)return false;dealDamage(h,tgt,pow,'true',{});fx('slash',tgt.x,tgt.y,{ang:h.face,r:50,color:'#ffffff',dur:.3});return true}
+  case 'manaburn':{if(!tgt)return false;const burn=Math.min(tgt.mp||0,(tgt.maxMp||tgt.mp||1)*(d.burnPct||.25));if(tgt.mp!==undefined)tgt.mp=Math.max(0,tgt.mp-burn);dealDamage(h,tgt,Math.max(pow,burn*1.2),d.dt,{});fx('spark',tgt.x,tgt.y,{color:C.mana,dur:.4});return true}
+  case 'shred':{if(!tgt)return false;addBuff(tgt,{k:'shred',pct:d.shredPct||.35,t:d.dur||3});dealDamage(h,tgt,pow,d.dt,{});fx('slash',tgt.x,tgt.y,{ang:h.face,r:46,color:col,dur:.3});return true}
+  case 'poison':{if(!tgt)return false;tgt.poisonT=Math.max(tgt.poisonT||0,d.dur);tgt.poisonDps=Math.max(tgt.poisonDps||0,d.dps);tgt.poisonSrc=h;dealDamage(h,tgt,pow,d.dt,{});fx('spark',tgt.x,tgt.y,{color:'#3fe08f',dur:.4});return true}
+  case 'mark':{if(!tgt)return false;tgt.marks=tgt.marks||[];tgt.marks.push({src:h,base:pow,t:d.delay||2.5,type:d.dt});fx('ring',tgt.x,tgt.y,{r:30,color:col,dur:.5});return true}
+  case 'channel':{h.slowT=Math.max(h.slowT,d.delay||1.2);h.slowV=Math.max(h.slowV,.8);h.stopT=Math.max(h.stopT,d.delay||1.2);G.zonesEx.push({kind:'delayed',x:aim.x,y:aim.y,r:d.r,t:d.delay||1.2,src:h,pow,type:d.dt,stun:d.stun,color:col,big:true});fx('ring',aim.x,aim.y,{r:d.r,color:col,dur:d.delay||1.2});sfx('cast');return true}
+  case 'zonedot':{G.zonesEx.push({kind:'zonedot',x:aim.x,y:aim.y,r:d.r,t:d.dur,dur:d.dur,src:h,pow:d.dps,type:d.dt,slow:d.slow,color:col,arm:0});fx('zone',aim.x,aim.y,{r:d.r,color:col,dur:.6});return true}
+  case 'trap':{G.zonesEx.push({kind:'trap',x:aim.x,y:aim.y,r:d.r,t:d.life||30,src:h,pow,type:d.dt,stun:d.stun,color:col,invisible:true});return true}
+  case 'storm':{h.stormT=d.dur;h.stormDps=d.dps;h.stormR=d.range||180;h.stormTick=0;h.stormType=d.dt;fx('ring',h.x,h.y,{r:h.stormR,color:col,dur:.6});return true}
+  case 'orb':{h.orbT=d.dur;h.orbDps=d.dps;h.orbN=d.n||3;h.orbTick=0;h.orbAng=0;h.orbType=d.dt;return true}
+  case 'reflect':{addBuff(h,{k:'reflect',t:d.dur});fx('ring',h.x,h.y,{r:40,color:C.cyan,dur:.4});return true}
+  case 'cleanse':{h.stunT=0;h.slowT=0;h.slowV=0;h.rootT=0;h.silenceT=0;h.poisonT=0;addBuff(h,{k:'ccimmune',t:d.ccimmune||1.5});fx('nova',h.x,h.y,{r:60,color:C.green,dur:.5});sfx('heal');return true}
+  case 'immune':{addBuff(h,{k:'immune',t:d.dur||2.5});fx('nova',h.x,h.y,{r:70,color:C.goldL,dur:.6});sfx('ult');return true}
+  case 'stealth':{h.stealthT=d.dur;addBuff(h,{k:'haste',ms:d.ms||.2,as:0,t:d.dur});fx('ring',h.x,h.y,{r:40,color:'#c9c9c9',dur:.4});return true}
+  case 'reset':{h.skills[0].cd=0;h.skills[1].cd=0;h.mp=Math.min(h.maxMp,h.mp+h.maxMp*.3);fx('nova',h.x,h.y,{r:80,color:C.cyan,dur:.6});sfx('ult');return true}
+  case 'empower':{h.empower=d.charges||3;h.empowerBonus=d.bonus||.5;h.empowerSlow=d.slow||.3;fx('ring',h.x,h.y,{r:40,color:C.orange,dur:.4});return true}
+  case 'stance':{addBuff(h,{k:'stance',ad:d.adPct||.4,ap:d.adPct||.4,as:d.asPct||.3,t:d.dur||6});fx('nova',h.x,h.y,{r:60,color:col,dur:.6});return true}
+  case 'regen':{addBuff(h,{k:'regen',hps:d.hps,t:d.dur});forEachNear(h.x,h.y,d.range,a=>{if(a.dead||a.team!==h.team||a.kind!=='hero')return;addBuff(a,{k:'regen',hps:(d.hps||50)*.6,t:d.dur})});fx('ring',h.x,h.y,{r:d.range,color:C.green,dur:.5});return true}
+  case 'spellvamp':{addBuff(h,{k:'spellvamp',pct:d.pct||.3,t:d.dur||5});fx('ring',h.x,h.y,{r:40,color:'#a06bff',dur:.4});return true}
+  case 'spawn':{for(let k=0;k<(d.n||1);k++){const a=Math.random()*TAU;const m=baseUnit({kind:'minion',mtype:'summon',team:h.team,lane:h.lane,x:h.x+Math.cos(a)*40,y:h.y+Math.sin(a)*40,r:11,hp:d.hp,maxHp:d.hp,ad:d.ad,armor:15,mr:15,ms:200,as:.8,range:90,melee:true,gold:0,xp:0,wp:1,path:(h.path?h.path.slice():lanePath(G.map,h.team,h.lane)),deadAge:0,autoType:'phys',summonT:d.dur||12,stunT:0,slowT:0,slowV:0,shieldT:0,shield:0,buffs:[],revealT:0,flash:0,face:0,atkCd:0,stopT:0,acqT:0,focus:null,hidden:false,inBush:false,recallT:0,bob:Math.random()*TAU,recent:{},msgT:0});G.minions.push(m);G.byId.set(m.id,m)}fx('nova',h.x,h.y,{r:60,color:col,dur:.5});return true}
+  case 'bond':{let ally=null,bd=1e12;for(const a of G.heroes){if(a.dead||a.team!==h.team||a===h)continue;const dd=dist2(a.x,a.y,h.x,h.y);if(dd<(d.range*d.range)&&dd<bd){bd=dd;ally=a}}if(ally){h.bondPartner=ally.id;ally.bondPartner=h.id;addBuff(h,{k:'haste',ms:d.ms||.15,as:0,t:d.dur});addBuff(ally,{k:'haste',ms:d.ms||.15,as:0,t:d.dur});fx('beam',h.x,h.y,{x2:ally.x,y2:ally.y,color:'#ff8ad4',dur:.5})}else addBuff(h,{k:'haste',ms:d.ms||.15,as:0,t:d.dur});return true}
+  case 'wall':{const dx=aim.x-h.x,dy=aim.y-h.y,dd=hyp(dx,dy)||1;const nx=-dy/dd,ny=dx/dd;const n=d.n||3;for(let k=0;k<n;k++){const off=(k-(n-1)/2)*46;G.walls.push({x:aim.x+nx*off,y:aim.y+ny*off,r:20,t:d.dur||4})}fx('zone',aim.x,aim.y,{r:n*26,color:'#c9a06b',dur:.6});return true}
  }
  return false;
 }
@@ -1787,7 +2087,7 @@ function aiTeamThink(){
    let foes=0;for(const e of G.heroes)if(!e.dead&&e.team!==tm&&dist2(e.x,e.y,ep.x,ep.y)<800*800)foes++;
    if(cand.length>=3&&cand.length>=foes)cand.slice(0,4).forEach(a=>T.epicGo.add(a.id))}}
 }
-const NOCAMP={heal:1,shield:1,haste:1,sanctuary:1,blink:1,dash:1};
+const NOCAMP={heal:1,shield:1,haste:1,sanctuary:1,blink:1,dash:1,taunt:1,storm:1,orb:1,reflect:1,cleanse:1,immune:1,stealth:1,reset:1,empower:1,stance:1,regen:1,spellvamp:1,spawn:1,bond:1};
 function aiCampCast(h,c){
  if(Math.random()>.6||dist2(h.x,h.y,c.x,c.y)>420*420)return;
  for(let i=0;i<2;i++){const s=h.skills[i],d=s.def;
@@ -1829,6 +2129,15 @@ function aiSkills(h,t,mode,D){
    case 'drain':go=inR;tt=tg;break;
    case 'chain':go=inR&&fight;tt=tg;break;
    case 'assassinate':go=inR&&fight&&tg.hp<tg.maxHp*.7;tt=tg;break;
+   case 'pierce':case 'bounce':case 'split':case 'boomerang':case 'snipe':case 'global':case 'backstep':case 'roll':case 'leap':case 'grapple':case 'root':case 'silence':case 'knockup':case 'fear':case 'channel':case 'zonedot':case 'trap':case 'wall':case 'homing':case 'pull':case 'truedmg':case 'manaburn':case 'shred':case 'poison':case 'mark':go=inR&&fight;tt=tg;break;
+   case 'taunt':case 'storm':case 'orb':go=fh.some(u=>ds(u)<220);break;
+   case 'reflect':case 'cleanse':case 'immune':go=fh.length>0&&h.hp<h.maxHp*.7;break;
+   case 'stealth':go=mode==='retreat'&&fh.length>0;break;
+   case 'reset':go=(h.skills[0].cd>4||h.skills[1].cd>4||h.mp<h.maxMp*.4)&&fh.length>0;break;
+   case 'empower':case 'stance':case 'spellvamp':go=fight&&fh.length>0;break;
+   case 'regen':go=worst<.7;break;
+   case 'spawn':go=fight&&fh.length>0;break;
+   case 'bond':go=countNear(h,600,h.team)>=1&&fh.length>0;break;
   }
   if(go&&castSkill(h,i,aim,tt))n++}
 }
@@ -1937,18 +2246,18 @@ function moveUnit(u,dt){
   fx('spark',u.x,u.y,{color:u.def.colA,dur:.2});
   forEachNear(u.x,u.y,60,t=>{if(t!==u&&isEnemy(u,t)&&!t.dead&&!d.hit.has(t.id)&&t.kind!=='tower'&&t.kind!=='core'){d.hit.add(t.id);dealDamage(u,t,d.pow,d.type,{})}});
   if(d.t<=0)u.dash=null;
- } else if(u.stunT<=0&&u.recallT<=0){
-  let mx=u.mvx||0,my=u.mvy||0;const l=hyp(mx,my);
+ } else if(u.stunT<=0&&u.recallT<=0&&(u.rootT||0)<=0){
+  let mx=u.mvx||0,my=u.mvy||0;if(u.fearT>0){const fa=Math.atan2(u.y-u.fearY,u.x-u.fearX);mx=Math.cos(fa);my=Math.sin(fa)}const l=hyp(mx,my);
   if(l>0.01){if(l>1){mx/=l;my/=l}
    const sp=effMs(u)*(u.stopT>0?.2:1);
-   u.vx=mx*sp;u.vy=my*sp;u.x+=u.vx*dt;u.y+=u.vy*dt;
+   u.vx=mx*sp;u.vy=my*sp;u.x+=u.vx*dt;u.y+=u.vy*dt;if(u.kind==='hero'){u.moveDist=(u.moveDist||0)+hyp(u.vx,u.vy)*dt;if(u.moveDist>150)u.moveReady=true}
    if(!u.atkAnim||u.atkAnim<=0)u.face=Math.atan2(my,mx);
   } else {u.vx=0;u.vy=0}
  } else {u.vx=0;u.vy=0}
  u.x=clamp(u.x,45,S-45);u.y=clamp(u.y,45,S-45);
  if(G.nav&&(wallPush(u)|wallPush(u))&&u.dash)u.dash.t=0;
  for(const s of G.structures){if(s.dead)continue;const d=hyp(u.x-s.x,u.y-s.y),m=s.r+u.r;
-  if(d<m&&d>0){u.x=s.x+(u.x-s.x)/d*m;u.y=s.y+(u.y-s.y)/d*m}}
+  if(d<m&&d>0){u.x=s.x+(u.x-s.x)/d*m;u.y=s.y+(u.y-s.y)/d*m}} if(G.walls)for(const w of G.walls){const wd=hyp(u.x-w.x,u.y-w.y),wm=w.r+u.r;if(wd<wm&&wd>0){u.x=w.x+(u.x-w.x)/wd*wm;u.y=w.y+(u.y-w.y)/wd*wm}}
 }
 function separation(u){
  forEachNear(u.x,u.y,u.r*2.4,v=>{
@@ -1968,11 +2277,11 @@ function updateStealth(u){
 function updateHero(h,dt){
  if(h.dead){h.deadAge+=dt;h.respawnT-=dt;
   if(h.respawnT<=0&&!G.over){h.dead=false;const f=h.team===0?G.map.fountain0:G.map.fountain1;
-   h.x=f.x;h.y=f.y;h.hp=h.maxHp;h.mp=h.maxMp;h.shield=h.maxHp*.25;h.shieldT=2;h.aiState='push';h.wp=0;h.focus=null;h.stunT=0;h.slowT=0;
+   h.x=f.x;h.y=f.y;h.hp=h.maxHp;h.mp=h.maxMp;h.shield=h.maxHp*.25;h.shieldT=2;h.aiState='push';h.wp=0;h.focus=null;h.stunT=0;h.slowT=0;h.rootT=0;h.silenceT=0;h.fearT=0;h.stealthT=0;h.poisonT=0;h.empower=0;h.bondPartner=0;h.marks=[];h.stormT=0;h.orbT=0;
    burst(h.x,h.y,TEAMC[h.team],16);if(h.isPlayer)fx('nova',h.x,h.y,{r:120,color:TEAML[0],dur:.6})}
   return}
  h.atkCd-=dt;h.atkAnim=Math.max(0,h.atkAnim-dt);h.stopT=Math.max(0,h.stopT-dt);
- h.stunT=Math.max(0,h.stunT-dt);h.slowT=Math.max(0,h.slowT-dt);if(h.slowT<=0)h.slowV=0;
+ const _ten=1+passiveVal(h,'tenacity');h.stunT=Math.max(0,h.stunT-dt*_ten);h.slowT=Math.max(0,h.slowT-dt*_ten);if(h.slowT<=0)h.slowV=0;h.rootT=Math.max(0,(h.rootT||0)-dt*_ten);h.silenceT=Math.max(0,(h.silenceT||0)-dt*_ten);h.fearT=Math.max(0,(h.fearT||0)-dt*_ten);if(hasBuff(h,'ccimmune')){h.stunT=0;h.rootT=0;h.silenceT=0;h.fearT=0}h.stealthT=Math.max(0,(h.stealthT||0)-dt);h.weaveT=Math.max(0,(h.weaveT||0)-dt);if(h.poisonT>0){h.poisonT-=dt;h.hp-=(h.poisonDps||0)*dt;if(Math.random()<dt*4)spawnPart(h.x,h.y,0,-30,.4,2,'#3fe08f',true);if(h.hp<=0)killUnit(h.poisonSrc||null,h)}if(h.marks&&h.marks.length){for(let _mi=h.marks.length-1;_mi>=0;_mi--){const _m=h.marks[_mi];_m.t-=dt;if(_m.t<=0){dealDamage(_m.src,h,_m.base,_m.type,{});fx('nova',h.x,h.y,{r:50,color:(_m.src&&_m.src.def)?_m.src.def.colA:'#fff',dur:.4});h.marks.splice(_mi,1)}}}if(h.stormT>0){h.stormT-=dt;h.stormTick=(h.stormTick||0)+dt;if(h.stormTick>=.5){h.stormTick=0;aoeDamage(h,h.x,h.y,h.stormR,(h.stormDps||0)*.5,h.stormType,{});fx('ring',h.x,h.y,{r:h.stormR,color:h.def.colA,dur:.4,faint:true})}}if(h.orbT>0){h.orbT-=dt;h.orbAng=(h.orbAng||0)+dt*3;h.orbTick=(h.orbTick||0)+dt;if(h.orbTick>=.5){h.orbTick=0;aoeDamage(h,h.x,h.y,70,(h.orbDps||30)*.5*(h.orbN||3)/3,h.orbType,{});fx('spark',h.x+Math.cos(h.orbAng)*60,h.y+Math.sin(h.orbAng)*60,{color:h.def.colA,dur:.3})}}h.cdHitT=Math.max(0,(h.cdHitT||0)-dt);
  h.shieldT=Math.max(0,h.shieldT-dt);if(h.shieldT<=0)h.shield=0;
  h.revealT=Math.max(0,h.revealT-dt);h.flash=Math.max(0,h.flash-dt);h.msgT=Math.max(0,h.msgT-dt);
  h.multiT-=dt;if(h.multiT<=0)h.multi=0;
@@ -1982,7 +2291,7 @@ function updateHero(h,dt){
  // regen
  h.regenT+=dt;const ooc=G.time-(h.lastHitT||0)>4;
  h.hp=Math.min(h.maxHp,h.hp+h.maxHp*(ooc?.02:.008)*dt);
- h.mp=Math.min(h.maxMp,h.mp+h.maxMp*(hasBuff(h,'cdr')?.03:.014)*dt);
+ h.mp=Math.min(h.maxMp,h.mp+h.maxMp*(hasBuff(h,'cdr')?.03:.014)*(1+passiveVal(h,'manaflow'))*dt);h.hp=Math.min(h.maxHp,h.hp+passiveVal(h,'regen_p')/5*dt);if(hasBuff(h,'regen')){const _rb=h.buffs.find(b=>b.k==='regen');if(_rb)h.hp=Math.min(h.maxHp,h.hp+(_rb.hps||50)*dt)}
  h.gold+=(1.3*(h.team===1?DIFF[G.cfg.diff].gold:1))*dt;
  addXp(h,2.4*dt);
  // recall
@@ -2014,7 +2323,7 @@ function playerControl(h,dt){
  else if(!moving&&h.focus&&!validTarget(h,h.focus,10))h.focus=null;
 }
 function updateMinion(m,dt){
- if(m.dead){m.deadAge+=dt;return}
+ if(m.dead){m.deadAge+=dt;return;}if(m.summonT>0){m.summonT-=dt;if(m.summonT<=0){m.dead=true;m.hp=0;return}}
  m.atkCd-=dt;m.atkAnim=Math.max(0,m.atkAnim-dt);m.stopT=Math.max(0,m.stopT-dt);
  m.stunT=Math.max(0,m.stunT-dt);m.slowT=Math.max(0,m.slowT-dt);if(m.slowT<=0)m.slowV=0;
  m.flash=Math.max(0,m.flash-dt);m.revealT=Math.max(0,m.revealT-dt);
@@ -2075,27 +2384,72 @@ function updateCamp(c,dt){
 function updateProjectiles(dt){
  for(let i=G.proj.length-1;i>=0;i--){
   const p=G.proj[i];p.life-=dt;
-  if(p.target){ // homing
+  if(p.target){
    const t=p.target;
    if(t.dead){p.life=Math.min(p.life,.15)}
    const d=hyp(t.x-p.x,t.y-p.y);
    if(d<t.r+p.r+4){
     let dmg=p.dmg;if(p.kind==='tower'&&p.src){dmg*=1+.25*(p.src.rampN||0)}
-    dealDamage(p.src,t,dmg,p.type,{canCrit:p.canCrit});
+    dealDamage(p.src,t,dmg,p.type,{canCrit:p.canCrit,aa:p.aa});
     if(p.kind==='tower')hitParts(t.x,t.y,TEAMC[p.src.team],6);
     G.proj.splice(i,1);continue}
    p.vx=(t.x-p.x)/d;p.vy=(t.y-p.y)/d;
   } else {
    let hit=null;forEachNear(p.x,p.y,p.r+6,u=>{
     if(hit||u===p.src||!isEnemy(p.src,u)||u.dead||u.kind==='tower'||u.kind==='core')return;hit=u});
-   if(hit){dealDamage(p.src,hit,p.dmg,p.type,{});
-    if(p.slow){hit.slowT=Math.max(hit.slowT,1.5);hit.slowV=Math.max(hit.slowV,p.slow)}
-    hitParts(p.x,p.y,p.color,6);G.proj.splice(i,1);continue}
+   if(hit){
+    if(hit.kind==='hero'&&hasBuff(hit,'reflect')&&!p.reflected){
+     p.reflected=true;p.src=hit;p.vx=-p.vx;p.vy=-p.vy;p.hit={};p.life=Math.min(p.life,1.5);
+     fx('spark',hit.x,hit.y,{color:C.cyan,dur:.3})}
+    else {
+     p.hit=p.hit||{};
+     if(!p.hit[hit.id]){
+      p.hit[hit.id]=1;
+      let dmg=p.dmg;if(p.snipe&&hit.kind==='hero')dmg*=2;
+      dealDamage(p.src,hit,dmg,p.type,{aa:p.aa});
+      if(p.slow){hit.slowT=Math.max(hit.slowT,1.5);hit.slowV=Math.max(hit.slowV,p.slow)}
+      hitParts(p.x,p.y,p.color,6);
+      if(p.bounces!==undefined){
+       if(p.bounces>0){let nt=null,nb=1e12;forEachNear(hit.x,hit.y,360,u=>{if(nt||u===hit||u===p.src||!isEnemy(p.src,u)||u.dead||u.kind==='tower'||u.kind==='core'||p.hit[u.id])return;const dd=dist2(u.x,u.y,hit.x,hit.y);if(dd<nb){nb=dd;nt=u}});
+        if(nt){p.bounces--;p.dmg*=(p.falloff||.85);const dd=hyp(nt.x-p.x,nt.y-p.y)||1;p.vx=(nt.x-p.x)/dd;p.vy=(nt.y-p.y)/dd;p.life=Math.max(p.life,1.2)}
+        else {G.proj.splice(i,1);continue}}
+       else {G.proj.splice(i,1);continue}
+      } else if(p.pierces!==undefined){p.pierces--;if(p.pierces<0){G.proj.splice(i,1);continue}}
+      else if(p.split){const base=Math.atan2(p.vy,p.vx);
+       for(let k=0;k<(p.n||5);k++){const a=base+(k/(p.n-1)-.5)*(p.spread||.7);
+        G.proj.push({x:p.x,y:p.y,vx:Math.cos(a),vy:Math.sin(a),src:p.src,speed:p.speed*.9,r:8,dmg:p.sub||p.dmg*.6,type:p.type,kind:'skill',color:p.color,life:1.2})}
+       G.proj.splice(i,1);continue}
+      else if(!p.boomerang){G.proj.splice(i,1);continue}
+     }
+    }
+   }
+   if(p.boomerang){p.travel=(p.travel||0)+p.speed*dt;
+    if(p.state===0&&p.travel>=(p.turnDist||300))p.state=1;
+    if(p.state===1){const dd=hyp(p.src.x-p.x,p.src.y-p.y)||1;p.vx=(p.src.x-p.x)/dd;p.vy=(p.src.y-p.y)/dd;
+     if(dd<24||p.src.dead){G.proj.splice(i,1);continue}}}
   }
   p.x+=p.vx*p.speed*dt;p.y+=p.vy*p.speed*dt;
   if(Math.random()<dt*30)spawnPart(p.x,p.y,0,0,.2,p.r*.5,p.color,true);
-  if(p.life<=0||p.x<0||p.y<0||p.x>G.map.S||p.y>G.map.S)G.proj.splice(i,1);
+  if(p.life<=0){
+   if(p.split){const base=Math.atan2(p.vy,p.vx);
+    for(let k=0;k<(p.n||5);k++){const a=base+(k/(p.n-1)-.5)*(p.spread||.7);
+     G.proj.push({x:p.x,y:p.y,vx:Math.cos(a),vy:Math.sin(a),src:p.src,speed:p.speed*.9,r:8,dmg:p.sub||p.dmg*.6,type:p.type,kind:'skill',color:p.color,life:1.2})}}
+   G.proj.splice(i,1);continue}
+  if(p.x<0||p.y<0||p.x>G.map.S||p.y>G.map.S)G.proj.splice(i,1);
  }
+}
+function updateZonesEx(dt){
+ for(let i=G.zonesEx.length-1;i>=0;i--){const z=G.zonesEx[i];z.t-=dt;
+  if(z.kind==='zonedot'){z.arm=(z.arm||0)+dt;if(z.arm>=.5){z.arm=0;
+    forEachNear(z.x,z.y,z.r,u=>{if(u===z.src||!isEnemy(z.src,u)||u.dead||u.kind==='tower'||u.kind==='core')return;
+      dealDamage(z.src,u,z.pow,z.type,{});if(z.slow){u.slowT=Math.max(u.slowT,1);u.slowV=Math.max(u.slowV,z.slow)}})}
+   if(z.t<=0)G.zonesEx.splice(i,1);continue}
+  if(z.kind==='trap'){let trig=false;forEachNear(z.x,z.y,z.r,u=>{if(trig||u===z.src||!isEnemy(z.src,u)||u.dead||u.kind==='tower'||u.kind==='core')return;trig=true});
+   if(trig){aoeDamage(z.src,z.x,z.y,z.r,z.pow,z.type,{stun:z.stun||1});fx('nova',z.x,z.y,{r:z.r,color:z.color,dur:.5});burst(z.x,z.y,z.color,16);G.zonesEx.splice(i,1);continue}
+   if(z.t<=0)G.zonesEx.splice(i,1);continue}
+  if(z.kind==='delayed'){if(z.t<=0){aoeDamage(z.src,z.x,z.y,z.r,z.pow,z.type,{stun:z.stun||0});fx('nova',z.x,z.y,{r:z.r,color:z.color,dur:.6});burst(z.x,z.y,z.color,z.big?30:16);if(z.big&&dist2(z.x,z.y,G.player.x,G.player.y)<700*700)G.shake=Math.max(G.shake,7);sfx('ult');G.zonesEx.splice(i,1)}continue}
+ }
+ for(let i=G.walls.length-1;i>=0;i--){G.walls[i].t-=dt;if(G.walls[i].t<=0)G.walls.splice(i,1)}
 }
 function updateWaves(dt){
  G.waveT-=dt;
@@ -2123,6 +2477,7 @@ function update(dt){
  for(const c of G.camps)updateCamp(c,dt);
  G.minions=G.minions.filter(m=>!(m.dead&&m.deadAge>.5));
  updateProjectiles(dt);
+ updateZonesEx(dt);
  for(let i=G.zones.length-1;i>=0;i--){const z=G.zones[i];z.t-=dt;
   if(z.t<=0){aoeDamage(z.src,z.x,z.y,z.r,z.pow,z.type,{});fx('nova',z.x,z.y,{r:z.r,color:z.color,dur:.6});
    burst(z.x,z.y,z.color,24);if(dist2(z.x,z.y,G.player.x,G.player.y)<600*600)G.shake=Math.max(G.shake,6);sfx('ult');G.zones.splice(i,1)}}
@@ -2175,7 +2530,10 @@ function render(){
   drawGlow(f.x,f.y,f.r*(1+.06*Math.sin(G.time*2)),TEAMC[team],.22)}
  // zones telegraph
  for(const z of G.zones){ctx.globalAlpha=.25;ctx.fillStyle=z.color;ctx.beginPath();ctx.arc(z.x,z.y,z.r,0,TAU);ctx.fill();
-  ctx.globalAlpha=.7;ctx.strokeStyle=z.color;ctx.lineWidth=3;ctx.beginPath();ctx.arc(z.x,z.y,z.r*(1-z.t/(z.delay||.55)),0,TAU);ctx.stroke();ctx.globalAlpha=1}
+  ctx.globalAlpha=.7;ctx.strokeStyle=z.color;ctx.lineWidth=3;ctx.beginPath();ctx.arc(z.x,z.y,z.r*(1-z.t/(z.delay||.55)),0,TAU);ctx.stroke();  ctx.globalAlpha=1}
+ for(const z of G.zonesEx){if(z.invisible)continue;ctx.globalAlpha=z.kind==='zonedot'?.18:.3;ctx.fillStyle=z.color;ctx.beginPath();ctx.arc(z.x,z.y,z.r,0,TAU);ctx.fill();ctx.globalAlpha=.6;ctx.strokeStyle=z.color;ctx.lineWidth=2;ctx.beginPath();ctx.arc(z.x,z.y,z.r,0,TAU);ctx.stroke();ctx.globalAlpha=1}
+ for(const w of G.walls){ctx.globalAlpha=.75;ctx.fillStyle='#c9a06b';ctx.beginPath();ctx.arc(w.x,w.y,w.r,0,TAU);ctx.fill();ctx.globalAlpha=1}
+ for(const hh of G.heroes){if(hh.dead||!hh.def)continue;if(hh.stormT>0){ctx.globalAlpha=.15;ctx.fillStyle=hh.def.colA;ctx.beginPath();ctx.arc(hh.x,hh.y,hh.stormR,0,TAU);ctx.fill();ctx.globalAlpha=1}if(hh.orbT>0){for(let k=0;k<(hh.orbN||3);k++){const a=(hh.orbAng||0)+k*TAU/(hh.orbN||3);drawGlow(hh.x+Math.cos(a)*60,hh.y+Math.sin(a)*60,18,hh.def.colA,.6)}}}
  // recall circles
  for(const h of G.heroes)if(!h.dead&&h.recallT>0){ctx.strokeStyle=C.cyan;ctx.lineWidth=4;ctx.globalAlpha=.8;
   ctx.beginPath();ctx.arc(h.x,h.y,34,-Math.PI/2,-Math.PI/2+TAU*(1-h.recallT/4.5));ctx.stroke();ctx.globalAlpha=1;
@@ -2744,7 +3102,7 @@ $('surrenderBtn').onclick=()=>{
 function toLobby(){ambStop();G=null;AIM=null;SCR='lobby';clearLoad();$('endScreen').classList.add('hidden');showScr('lobby');updateLobby()}
 $('quitBtn').onclick=()=>{closePause();toLobby()};
 $('closeScore').onclick=toggleScore;
-$('againBtn').onclick=()=>beginLoading(true);
+$('againBtn').onclick=()=>{ambStop();G=null;AIM=null;clearLoad();$('endScreen').classList.add('hidden');sfx('click');startPick()};
 $('lobbyBtn').onclick=toLobby;
 
 /* ================= MATCH FLOW ================= */
