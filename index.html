@@ -321,6 +321,59 @@ body{-webkit-touch-callout:none;-webkit-text-size-adjust:100%}
 .htile>img{position:absolute;left:0;top:0}
 .teamcol{min-width:0}.tslot{min-width:0}.tslot span{min-width:0}
 .pk-left .teams{margin:0 8px 8px;gap:6px}
+
+/* ================= LOBBY V2 ================= */
+#lobby .topbar{background:linear-gradient(180deg,rgba(6,12,24,.95),rgba(6,12,24,.35));border-bottom:1px solid rgba(242,193,78,.28);position:relative;z-index:3}
+#lobby .logo .t1{background:linear-gradient(180deg,#fff3c4,#f2c14e 60%,#c9963a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lb{flex:1;display:grid;grid-template-columns:1fr minmax(250px,37%);gap:14px;min-height:0;position:relative;z-index:2;padding:6px max(18px,var(--sar)) max(12px,var(--sab)) max(18px,var(--sal))}
+.lb-stage{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:0;overflow:hidden;border-radius:18px;
+ background:radial-gradient(ellipse at 50% 55%,rgba(60,40,110,.55),rgba(10,18,34,.2) 60%,transparent 80%);animation:fadeUp .5s ease both}
+.lb-rays{position:absolute;left:50%;top:46%;width:150%;aspect-ratio:1;transform:translate(-50%,-50%);opacity:.5;pointer-events:none;
+ background:repeating-conic-gradient(from 0deg,rgba(255,224,138,.13) 0 6deg,transparent 6deg 18deg);-webkit-mask:radial-gradient(circle,#000,transparent 58%);mask:radial-gradient(circle,#000,transparent 58%);animation:lbSpin 70s linear infinite}
+.lb-ring{position:absolute;left:50%;top:44%;border-radius:50%;pointer-events:none;transform:translate(-50%,-50%)}
+.lb-ring.r1{width:min(66vh,60%);aspect-ratio:1;border:2px dashed rgba(242,193,78,.35);animation:lbSpin 40s linear infinite}
+.lb-ring.r2{width:min(54vh,50%);aspect-ratio:1;border:1px solid rgba(57,230,255,.35);box-shadow:0 0 30px rgba(57,230,255,.15) inset;animation:lbSpin 26s linear infinite reverse}
+.lb-floor{position:absolute;left:50%;bottom:20%;width:56%;height:12%;transform:translateX(-50%);border-radius:50%;background:radial-gradient(ellipse,rgba(242,193,78,.45),transparent 70%);filter:blur(4px)}
+.lb-embers{position:absolute;inset:0;pointer-events:none}
+.lb-embers i{position:absolute;bottom:-8px;left:var(--x);width:var(--s);height:var(--s);border-radius:50%;background:#ffe08a;box-shadow:0 0 8px #f2c14e;opacity:0;animation:lbRise var(--t) linear var(--d) infinite}
+.lb-hero{position:relative;height:clamp(110px,46vh,270px);aspect-ratio:1;animation:lbFloat 4s ease-in-out infinite}
+.lb-frame{width:100%;height:100%;padding:3px;background:linear-gradient(135deg,#fff3c4,#c9963a 40%,#7a5a1e 70%,#f2c14e);
+ clip-path:polygon(14% 0,100% 0,100% 86%,86% 100%,0 100%,0 14%);filter:drop-shadow(0 0 18px rgba(242,193,78,.5))}
+#lobby #shImg{width:100%;height:100%;aspect-ratio:auto;border:0;border-radius:0;box-shadow:none;display:block;clip-path:polygon(14% 0,100% 0,100% 86%,86% 100%,0 100%,0 14%)}
+.lb-plate{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:2px;margin-top:-14px;padding:6px 26px 8px;max-width:94%;
+ background:linear-gradient(90deg,transparent,rgba(8,14,28,.92) 18%,rgba(8,14,28,.92) 82%,transparent);border-top:1px solid rgba(242,193,78,.5)}
+#lobby #shRole{font-size:10px;font-weight:900;letter-spacing:1.5px;padding:2px 12px;border-radius:3px;transform:skewX(-12deg)}
+#lobby #shName{font-size:clamp(20px,5vh,34px);line-height:1.05;background:linear-gradient(180deg,#fff,#ffe08a 55%,#f2c14e);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none;filter:drop-shadow(0 2px 6px rgba(0,0,0,.7))}
+#lobby #shTitle{letter-spacing:2px;font-size:11px}
+#shStats .skchips{justify-content:center;margin:4px 0 0}
+#shStats .skchip{background:rgba(10,20,36,.7);font-size:10px}
+.lb-side{display:flex;flex-direction:column;gap:7px;min-height:0;animation:fadeUp .5s .1s ease both}
+.lb-profile{display:flex;align-items:center;gap:10px;padding:7px 10px;border-radius:12px;border:1px solid var(--line2);background:linear-gradient(110deg,rgba(242,193,78,.14),rgba(16,31,54,.9) 60%)}
+.lb-profile img{width:42px;height:42px;border-radius:50%;border:2px solid var(--gold);box-shadow:0 0 10px rgba(242,193,78,.45)}
+.pf-info{flex:1;min-width:0}.pf-info b{font-size:13px;color:var(--goldL);font-style:italic;display:block}.pf-info small{font-size:9.5px;color:var(--dim)}
+.pf-bar{height:5px;border-radius:3px;background:#0a1626;margin:3px 0;overflow:hidden}.pf-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#3fe08f,#ffe08a);transition:width .6s}
+.lb-label{font-size:10px;font-weight:900;letter-spacing:3px;color:var(--gold);display:flex;align-items:center;gap:8px;margin-top:2px}
+.lb-label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(242,193,78,.5),transparent)}
+.mc{position:relative;display:flex;align-items:center;gap:10px;padding:8px 12px;text-align:left;border-radius:12px;border:1px solid var(--line2);background:linear-gradient(110deg,rgba(16,31,54,.95),rgba(10,20,36,.85));transition:.15s;overflow:hidden}
+.mc svg{width:38px;height:38px;flex:0 0 auto}.mc b{display:block;font-size:15px;font-style:italic;font-weight:900}
+.mc span{font-size:10px;color:var(--dim);display:block;line-height:1.3}
+.mc em{position:absolute;top:0;right:0;font-size:8px;font-weight:900;font-style:normal;background:linear-gradient(180deg,#ff6b4a,#d63a2a);color:#fff;padding:2px 9px 2px 12px;border-bottom-left-radius:10px;letter-spacing:1px}
+.mc.on{border-color:var(--gold);background:linear-gradient(110deg,rgba(242,193,78,.28),rgba(57,169,255,.1));box-shadow:0 0 18px rgba(242,193,78,.3),inset 0 0 14px rgba(242,193,78,.15)}
+.mc.on::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,#ffe08a,#c9963a)}
+#lobby .seg{margin:0;border-radius:12px;background:rgba(10,20,36,.7)}
+#lobby .seg button{padding:9px 0;font-size:12.5px}
+#lobby .seg button[data-d="0"].on{background:linear-gradient(180deg,#5cf0a8,#2aa866);color:#052614}
+#lobby .seg button[data-d="2"].on{background:linear-gradient(180deg,#ff7a85,#d63a4a);color:#2b0509}
+#lobby #startBtn{position:relative;overflow:hidden;margin:auto 0 0;padding:0;min-height:clamp(46px,9vh,62px);font-size:clamp(17px,3.4vh,22px);letter-spacing:3px;border-radius:14px;
+ box-shadow:0 0 26px rgba(242,193,78,.55),0 5px 0 #7a5a1e;animation:lbPulse 2s ease-in-out infinite}
+#lobby #startBtn::after{content:'';position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.65),transparent);transform:skewX(-20deg);animation:lbShine 3.2s ease-in-out infinite}
+@keyframes lbSpin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes lbFloat{50%{transform:translateY(-7px)}}
+@keyframes lbRise{0%{opacity:0;transform:translateY(0)}15%{opacity:.9}100%{opacity:0;transform:translateY(-70vh)}}
+@keyframes lbShine{0%,55%{left:-60%}100%{left:130%}}
+@keyframes lbPulse{50%{box-shadow:0 0 40px rgba(242,193,78,.85),0 5px 0 #7a5a1e}}
+@media (max-height:430px){.lb{gap:10px;padding-top:2px}.lb-side{gap:5px}.mc{padding:5px 10px}.mc svg{width:30px;height:30px}.mc span{display:none}.lb-profile{padding:4px 8px}.lb-profile img{width:32px;height:32px}.lb-label{font-size:9px}#lobby .seg button{padding:6px 0}#shTitle{display:none}}
+@media (prefers-reduced-motion:reduce){.lb-rays,.lb-ring,.lb-hero,.lb-embers i,#lobby #startBtn,#lobby #startBtn::after{animation:none!important}}
 </style>
 </head>
 <body>
@@ -345,28 +398,25 @@ body{-webkit-touch-callout:none;-webkit-text-size-adjust:100%}
     <button class="icobtn" id="sndBtn" title="Âm thanh">🔊</button>
     <button class="icobtn" id="fsBtn" title="Toàn màn hình">⛶</button>
   </div>
-  <div class="lobmain">
-    <div class="panel lob-left">
-      <div class="ptitle">CHẾ ĐỘ ĐẤU</div>
-      <button class="modecard on" id="mode5">
-        <svg viewBox="0 0 44 44"><rect x="2" y="2" width="40" height="40" rx="6" fill="#0a1c14" stroke="#2c5482"/><path d="M6 38 L38 6 M6 38 L6 6 L38 6 M6 38 L38 38 L38 6" stroke="#c9963a" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="8" cy="36" r="4" fill="#39a9ff"/><circle cx="36" cy="8" r="4" fill="#ff4d5e"/></svg>
-        <div><b>5 vs 5</b><span>Thung Lũng Cổ Đại • 3 đường • rừng • Rồng &amp; Caesar</span></div>
-      </button>
-      <button class="modecard" id="mode1">
-        <svg viewBox="0 0 44 44"><rect x="2" y="2" width="40" height="40" rx="6" fill="#0a1c14" stroke="#2c5482"/><path d="M7 37 L37 7" stroke="#c9963a" stroke-width="2.6" stroke-linecap="round"/><circle cx="8" cy="36" r="4" fill="#39a9ff"/><circle cx="36" cy="8" r="4" fill="#ff4d5e"/></svg>
-        <div><b>1 vs 1</b><span>Độc Đạo Tranh Hùng • solo đường giữa</span></div>
-      </button>
-      <div class="ptitle">ĐỘ KHÓ MÁY</div>
+  <div class="lb">
+    <div class="lb-stage">
+      <div class="lb-rays"></div><div class="lb-embers"><i style="--x:46%;--d:7.6s;--s:6px;--t:12s"></i><i style="--x:11%;--d:0.6s;--s:3px;--t:9s"></i><i style="--x:79%;--d:0.5s;--s:4px;--t:7s"></i><i style="--x:16%;--d:3.5s;--s:3px;--t:8s"></i><i style="--x:16%;--d:4.4s;--s:3px;--t:11s"></i><i style="--x:20%;--d:7.6s;--s:3px;--t:11s"></i><i style="--x:79%;--d:3.2s;--s:4px;--t:7s"></i><i style="--x:76%;--d:6.9s;--s:5px;--t:10s"></i><i style="--x:23%;--d:4.3s;--s:5px;--t:11s"></i><i style="--x:92%;--d:1.4s;--s:4px;--t:9s"></i><i style="--x:17%;--d:4.4s;--s:3px;--t:11s"></i><i style="--x:12%;--d:5.0s;--s:6px;--t:12s"></i><i style="--x:73%;--d:3.4s;--s:5px;--t:10s"></i><i style="--x:79%;--d:7.4s;--s:5px;--t:9s"></i></div>
+      <div class="lb-ring r1"></div><div class="lb-ring r2"></div><div class="lb-floor"></div>
+      <div class="lb-hero"><div class="lb-frame"><img id="shImg" alt=""></div></div>
+      <div class="lb-plate">
+        <span id="shRole"></span>
+        <div id="shName"></div><div id="shTitle"></div>
+        <div id="shStats"></div>
+      </div>
+    </div>
+    <div class="lb-side">
+      <div class="lb-profile"><img id="pfImg" alt=""><div class="pf-info"><b id="pfRank">Hạng Đồng</b><div class="pf-bar"><i id="pfWr"></i></div><small id="pfWrT">0% thắng</small></div></div>
+      <div class="lb-label">CHẾ ĐỘ ĐẤU</div>
+      <button class="mc on" id="mode5"><svg viewBox="0 0 44 44"><rect x="2" y="2" width="40" height="40" rx="8" fill="#0a1c14" stroke="#2c5482"/><path d="M6 38 L38 6 M6 38 L6 6 L38 6 M6 38 L38 38 L38 6" stroke="#c9963a" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="8" cy="36" r="4" fill="#39a9ff"/><circle cx="36" cy="8" r="4" fill="#ff4d5e"/></svg><div><b>5 vs 5</b><span>Thung Lũng Cổ Đại • 3 đường • Rồng &amp; Caesar</span></div><em>HOT</em></button>
+      <button class="mc" id="mode1"><svg viewBox="0 0 44 44"><rect x="2" y="2" width="40" height="40" rx="8" fill="#0a1c14" stroke="#2c5482"/><path d="M7 37 L37 7" stroke="#c9963a" stroke-width="2.6" stroke-linecap="round"/><circle cx="8" cy="36" r="4" fill="#39a9ff"/><circle cx="36" cy="8" r="4" fill="#ff4d5e"/></svg><div><b>1 vs 1</b><span>Độc Đạo Tranh Hùng • solo đường giữa</span></div></button>
+      <div class="lb-label">ĐỘ KHÓ MÁY</div>
       <div class="seg" id="diffSeg"><button data-d="0">Dễ</button><button data-d="1" class="on">Thường</button><button data-d="2">Khó</button></div>
       <button id="startBtn">⚔ TÌM TRẬN</button>
-      <div class="hintline">Chạy 100% offline • Không cần mạng<br>Cảm hứng MOBA mobile • Tài nguyên tự dựng</div>
-    </div>
-    <div class="panel lob-show">
-      <div class="show-glow"></div>
-      <div class="ptitle" style="position:absolute;top:0;left:0">TƯỚNG GẦN NHẤT</div>
-      <img id="shImg" alt="">
-      <div id="shName"></div><div id="shTitle"></div><span id="shRole"></span>
-      <div class="show-hint">Nhấn <b>TÌM TRẬN</b> để vào phòng chọn tướng. Bạn chọn &amp; khóa tướng, đội hình đối thủ chỉ lộ diện ở màn hình ghép trận.</div>
     </div>
   </div>
 </div>
@@ -633,12 +683,20 @@ function skillDesc(d){
  }
  return '';
 }
+const NAMES=(function(){const A=[
+ 'Kaelgrim,Thạch Hùng,Orvane,Lôi Hạo,Bregor,Vạn Kiếm,Dravik,Tần Sơn,Hạo Thiên,Gorath,Cuồng Lan,Thương Khung,Rhogar,Hồng Phong,Taldur,Viên Chiến,Mạc Thiên,Zorvak,Liệt Hỏa,Kỳ Phong',
+ 'Selvara,Minh Nguyệt,Aurelith,Tử Hà,Vyrelle,Huyền Cơ,Nixara,Băng Tâm,Thalessa,Ly Hỏa,Orphelia,Mộ Tinh,Cerelune,Vân Du,Zephira,Hư Linh,Lunaris,Diệp Anh,Ysolde,Thiên Cơ',
+ 'Hawkren,Phi Vũ,Taryn,Lăng Phong,Corvane,Thanh Cung,Jorvik,Ưng Nhãn,Kestrel,Bạch Tiễn,Varlow,Lạc Ưng,Sylrik,Tống Nhạn,Daxen,Hàn Tiễn,Ostrix,Liệp Phong,Brynn,Nguyệt Xạ',
+ 'Vexil,Dạ Hành,Nyxar,Hắc Ảnh,Skorn,Tuyết Đao,Zareth,Mị Ảnh,Kiriel,Huyết Nguyệt,Umbrix,Tử Vô,Silvane,Ảnh Lang,Thorne,Quỷ Cốc,Lyrex,Bạch Ảnh,Vorin,Ám Hồn',
+ 'Granthor,Thiết Sơn,Magnar,Kim Cang,Durnak,Bàn Thạch,Torgun,Trấn Quan,Hakon,Cự Linh,Brakka,Huyền Vũ,Valdor,Địa Long,Garrak,Hộ Pháp,Oskar,Thạch Tôn,Brum,Kiên Thành',
+ 'Elowen,Từ Tâm,Sylphine,Ngọc Lan,Aurelle,Thanh Liên,Maelis,Phúc Duyên,Lirael,Tuệ Minh,Faelan,Bạch Hạc,Ondine,An Nhiên,Seraphel,Hoa Tiên,Idris,Cam Thảo,Nimue,Linh Đan'].map(x=>x.split(','));
+ return Array.from({length:120},(_,i)=>A[i%6][Math.floor(i/6)])})();
 const HEROES=[];
 (function(){
  const used=new Set();
  for(let i=0;i<120;i++){
   const rnd=mulberry32(1000+i*77);let name;
-  do{name=PRE[Math.floor(rnd()*PRE.length)]+SUF[Math.floor(rnd()*SUF.length)]}while(used.has(name));used.add(name);
+  do{name=PRE[Math.floor(rnd()*PRE.length)]+SUF[Math.floor(rnd()*SUF.length)]}while(used.has(name));used.add(name);name=NAMES[i];
   const role=ROLES[i%6],v=Math.floor(i/6)%3,b=BASE[role.id];
   const j=()=> .97+rnd()*.06;
   const def={id:i,name,role:role.id,v,title:TITLES[role.id][Math.floor(rnd()*6)],
@@ -795,6 +853,8 @@ function updateLobby(){
  const h=HEROES[SAVE.hero],r=ROLE_BY[h.role];
  $('shImg').src=heroImg(h,300);$('shName').textContent=h.name;$('shTitle').textContent='« '+h.title+' »';
  $('shRole').textContent=r.name;$('shRole').style.background=r.color;
+ $('shStats').innerHTML=statChips(h);$('pfImg').src=heroImg(h,72);
+ {const w=SAVE.wins,g=SAVE.games,wr=g?Math.round(100*w/g):0;$('pfRank').textContent='Hạng '+(w<3?'Đồng':w<8?'Bạc':w<15?'Vàng':w<25?'Bạch Kim':w<40?'Kim Cương':'Tinh Anh');$('pfWr').style.width=wr+'%';$('pfWrT').textContent=wr+'% thắng'}
  $('winsBadge').textContent=`🏆 ${SAVE.wins} thắng • ${SAVE.games} trận`;
 }
 function slotHero(h,cls,pre){return `<div class="tslot ${cls||''}"><img src="${heroImg(h,40)}" alt=""><span>${pre||''}${h.name}</span></div>`}
